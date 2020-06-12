@@ -13,10 +13,9 @@ jest.mock(
     }
 )
 
-global.fetch = jest.fn()
 
 beforeEach(() => {
-  global.fetch.mockImplementation((...args) => {
+  global.fetch = jest.fn((...args) => {
     console.warn('global.fetch needs to be mocked in tests', ...args)
     throw new Error('global.fetch needs to be mocked in tests')
   })

@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
 import {SCREENS} from '../../App'
 
+const ENDPOINT_URL = "https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login"
 // @ts-ignore
 const formSubmissionReducer = (state, action)=> {
   switch (action.type) {
@@ -19,11 +20,10 @@ const formSubmissionReducer = (state, action)=> {
       }
     }
     case 'REJECT': {
-      console.log(action)
       return {
         status: 'rejected',
         responseData: null,
-        errorMessage: action.error.errors[0],
+        errorMessage: action.error.message,
       }
     }
     default:
@@ -43,23 +43,22 @@ const useFormSubmission = ({endpoint, data})=> {
 
   React.useEffect(() => {
     if (fetchBody) {
-      dispatch({type: 'START'})
-      fetch(endpoint, {
-          method: 'POST',
-          body: fetchBody,
-          headers: {
-            'content-type': 'application/json',
-          },
-        })
-        .then(r => r.json())
-        .then(
-          responseData => {
-            dispatch({type: 'RESOLVE', responseData})
-          },
-          error => {
+      (async ()=> {
+        dispatch({type: 'START'})
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            body: fetchBody,
+            headers: {
+              'content-type': 'application/json',
+            },
+          })
+          const responseData = await response.json()
+          dispatch({type: 'RESOLVE', responseData})
+        } catch (error) {
             dispatch({type: 'REJECT', error})
-          },
-        )
+        }
+      })()
     }
   }, [fetchBody, endpoint])
 
@@ -76,18 +75,17 @@ const Spinner = ()=> {
 
 // @ts-ignore
 export default () => {
+  const navigation = useNavigation()
   const [formData, setFormData] = React.useState(null)
   const {status, responseData, errorMessage} = useFormSubmission({
-    endpoint: '/api/login',
+    endpoint: ENDPOINT_URL,
     data: formData,
   })
-
   const token = responseData?.token
   // @ts-ignore
   React.useEffect(() => {
     if (token) {
-      const navigation = useNavigation()
-      AsyncStorage.setItem('token', token)
+      (async ()=> await AsyncStorage.setItem('token', token))()
       navigation.navigate(SCREENS.HOME)
     }
   }, [token])
