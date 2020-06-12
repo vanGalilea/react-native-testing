@@ -1,13 +1,13 @@
 import 'react-native'
 import React from 'react'
 import {fireEvent, render, wait} from '@testing-library/react-native'
-import LoginSubmission from "../src/components/LoginSubmission"
-import { useNavigation } from '@react-navigation/native'
+import LoginSubmission from '../src/components/LoginSubmission'
+import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
 import {SCREENS} from '../App'
 
 //mocking async storage module
-jest.mock('@react-native-community/async-storage', ()=>({setItem: jest.fn()}))
+jest.mock('@react-native-community/async-storage', () => ({setItem: jest.fn()}))
 
 //mocking react-navigation and its modulels
 jest.mock('@react-navigation/native', () => {
@@ -16,10 +16,10 @@ jest.mock('@react-navigation/native', () => {
     useNavigation: jest.fn(),
   }
 })
-jest.mock('@react-navigation/stack', ()=> ({
-  createStackNavigator: jest.fn()
+jest.mock('@react-navigation/stack', () => ({
+  createStackNavigator: jest.fn(),
 }))
-jest.mock('@react-native-community/masked-view', ()=> ({}))
+jest.mock('@react-native-community/masked-view', () => ({}))
 
 beforeEach(() => {
   // @ts-ignore
@@ -39,7 +39,7 @@ it('renders correctly', async () => {
 
   const username = 'chucknorris'
   const password = 'i need no password'
-  const {getByText, getByPlaceholderText} =  render(<LoginSubmission/>)
+  const {getByText, getByPlaceholderText} = render(<LoginSubmission />)
   const button = getByText(/submit/i)
 
   await fireEvent.changeText(getByPlaceholderText(/username/i), username)
@@ -70,6 +70,6 @@ it('renders correctly', async () => {
   `)
 
   await wait(() => expect(mockNavigate).toHaveBeenCalledTimes(1))
-  expect(AsyncStorage.setItem).toHaveBeenCalledWith("token", "fake-token")
   expect(mockNavigate).toHaveBeenCalledWith(SCREENS.HOME)
-});
+  expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token')
+})
