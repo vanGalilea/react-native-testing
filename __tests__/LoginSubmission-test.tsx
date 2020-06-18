@@ -48,16 +48,19 @@ it('renders correctly', async () => {
 
   await getByText(/loading/i)
   // @ts-ignore
-  expect(global.fetch).toHaveBeenCalledWith('/api/login', {
-    method: 'POST',
-    body: JSON.stringify({username, password}),
-    headers: {'content-type': 'application/json'},
-  })
+  expect(global.fetch).toHaveBeenCalledWith(
+    'https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login',
+    {
+      method: 'POST',
+      body: JSON.stringify({username, password}),
+      headers: {'content-type': 'application/json'},
+    },
+  )
   // @ts-ignore
   expect(global.fetch.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "/api/login",
+        "https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login",
         Object {
           "body": "{\\"username\\":\\"chucknorris\\",\\"password\\":\\"i need no password\\"}",
           "headers": Object {
