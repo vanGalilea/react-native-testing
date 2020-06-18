@@ -1,12 +1,10 @@
 import 'react-native'
 import React from 'react'
-import {cleanup, fireEvent, render, wait} from '@testing-library/react-native'
+import {fireEvent, render, wait} from '@testing-library/react-native'
 import App from '../App'
 
 //mocking async storage module
 jest.mock('@react-native-community/async-storage', () => ({setItem: jest.fn()}))
-
-afterEach(cleanup)
 
 
 it('renders/navigats throughout app screens', async () => {
@@ -20,3 +18,4 @@ it('renders/navigats throughout app screens', async () => {
     expect(counterText.props.children).toEqual(["Current count: ", 0])
   })
 });
+
