@@ -73,6 +73,6 @@ it('renders correctly', async () => {
   `)
 
   await wait(() => expect(mockNavigate).toHaveBeenCalledTimes(1))
-  expect(mockNavigate).toHaveBeenCalledWith(SCREENS.HOME)
+  expect(mockNavigate).toHaveBeenCalledWith("Home")
   expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token')
 })
