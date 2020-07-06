@@ -86,7 +86,7 @@ export default () => {
   React.useEffect(() => {
     if (token) {
       (async ()=> await AsyncStorage.setItem('token', token))()
-      navigation.navigate(SCREENS.HOME)
+      navigation.navigate("Home")
     }
   }, [token])
 
