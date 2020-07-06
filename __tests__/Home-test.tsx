@@ -1,11 +1,12 @@
 import 'react-native'
 import React from 'react'
 import {fireEvent, render, wait} from '@testing-library/react-native'
-import App from '../App'
-
+import App from '../src/components/App'
+import {describe, expect, it, jest} from '@jest/globals'
+import AsyncStorage from '@react-native-community/async-storage';
 //mocking async storage module
-jest.mock('@react-native-community/async-storage', () => ({setItem: jest.fn()}))
-
+const mockedSetItem = jest.fn();
+jest.mock('@react-native-community/async-storage', () => ({setItem: mockedSetItem}))
 
 it('renders/navigats throughout app screens', async () => {
   const {getByText} = render(<App />)
@@ -13,9 +14,8 @@ it('renders/navigats throughout app screens', async () => {
   expect(homeText).not.toBeNull()
   fireEvent.press(getByText(/counter/i))
 
-  await wait(()=> {
+  await wait(() => {
     const counterText = getByText(/Current count:/i)
-    expect(counterText.props.children).toEqual(["Current count: ", 0])
+    expect(counterText.props.children).toEqual(['Current count: ', 0])
   })
-});
-
+})

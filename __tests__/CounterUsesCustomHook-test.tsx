@@ -1,9 +1,14 @@
 import 'react-native'
 import React from 'react'
-import {act, fireEvent, getByTestId, render} from '@testing-library/react-native'
+import {
+  act,
+  fireEvent,
+  render,
+} from '@testing-library/react-native'
 import CounterUsesCustomHook from '../src/components/CounterUsesCustomHook'
 import useCounter from '../src/hooks/useCounter'
 import {renderHook} from '@testing-library/react-hooks'
+import {describe, expect, it, test} from '@jest/globals'
 
 //testing with the component
 it('exposes the count and increment/decrement functions', () => {
@@ -13,13 +18,12 @@ it('exposes the count and increment/decrement functions', () => {
   const increment = getByTestId(/increment/i)
   const counterText = getByText(/Current count:/i)
 
-  expect(counterText.props.children).toEqual(["Current count: ", 0])
+  expect(counterText.props.children).toEqual(['Current count: ', 0])
   fireEvent.press(increment)
-  expect(counterText.props.children).toEqual(["Current count: ", 1])
+  expect(counterText.props.children).toEqual(['Current count: ', 1])
   fireEvent.press(decrement)
-  expect(counterText.props.children).toEqual(["Current count: ", 0])
-
-});
+  expect(counterText.props.children).toEqual(['Current count: ', 0])
+})
 
 // @ts-ignore
 function setup({initialProps} = {}) {

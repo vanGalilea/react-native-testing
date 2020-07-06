@@ -3,7 +3,6 @@ import {Text, View} from 'react-native'
 import Login from './Login'
 import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
-import {SCREENS} from '../../App'
 
 const ENDPOINT_URL = "https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login"
 // @ts-ignore

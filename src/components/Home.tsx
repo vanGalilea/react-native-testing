@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {Colors,} from 'react-native/Libraries/NewAppScreen'
-import {SCREENS} from '../../App'
+import {SCREENS} from './App'
 
 // @ts-ignore
 export default ({ navigation }) => {

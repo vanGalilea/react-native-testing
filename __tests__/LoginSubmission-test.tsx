@@ -4,12 +4,9 @@ import {fireEvent, render, wait} from '@testing-library/react-native'
 import LoginSubmission from '../src/components/LoginSubmission'
 import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
-import {SCREENS} from '../App'
 
-//mocking async storage module
 jest.mock('@react-native-community/async-storage', () => ({setItem: jest.fn()}))
 
-//mocking react-navigation and its modulels
 jest.mock('@react-navigation/native', () => {
   return {
     createNavigatorFactory: jest.fn(),
@@ -42,11 +39,11 @@ it('renders correctly', async () => {
   const {getByText, getByPlaceholderText} = render(<LoginSubmission />)
   const button = getByText(/submit/i)
 
-  await fireEvent.changeText(getByPlaceholderText(/username/i), username)
-  await fireEvent.changeText(getByPlaceholderText(/password/i), password)
+  fireEvent.changeText(getByPlaceholderText(/username/i), username)
+  fireEvent.changeText(getByPlaceholderText(/password/i), password)
   fireEvent.press(button)
 
-  await getByText(/loading/i)
+  getByText(/loading/i)
   // @ts-ignore
   expect(global.fetch).toHaveBeenCalledWith(
     'https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login',
