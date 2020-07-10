@@ -6,45 +6,46 @@ import Video from 'react-native-video'
 
 // @ts-ignore
 export default ({navigation}) => {
-  const videoRef = useRef()
-  const [isPlaying, setIsPlaying] = useState(true)
+  const [isPlaying, setIsPlaying] = useState(false)
   const [isFullScreen, setIsFullScreen] = useState(false)
   navigation.setOptions({ headerShown: !isFullScreen })
 
-  const showFullScreen = () => videoRef.current.presentFullscreenPlayer()
-  const exitFullScreen = () => videoRef.current.dismissFullscreenPlayer()
-  const pauseOrStart = () => null
+  const showFullScreen = () => setIsFullScreen(true)
+  const exitFullScreen = () => setIsFullScreen(false)
+  const togglePause = () => setIsPlaying(!isPlaying)
 
   return (
     <View style={styles.body}>
       <View style={styles.sectionContainer}>
-        <TouchableOpacity testID='full-screen' style={styles.button} onPress={showFullScreen}>
+        <TouchableOpacity testID='enter-full-screen' style={styles.button} onPress={showFullScreen}>
           <Text>Full screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity testID='pause' style={styles.button} onPress={pauseOrStart}>
+        <TouchableOpacity testID='pause-start' style={styles.button} onPress={togglePause}>
           <Text>Pause/Start</Text>
         </TouchableOpacity>
       </View>
       <>
         <Video
-           ref={videoRef}
-           source={{uri: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"}}
-           style={isFullScreen ? styles.videoFullScreen : styles.video}
-           resizeMode={'cover'}
-           onFullscreenPlayerWillPresent={()=> setIsFullScreen(true)}
-           onFullscreenPlayerDidDismiss={()=> setIsFullScreen(false)}
+          accessibilityLabel={"video component"}
+          source={{uri: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"}}
+          style={isFullScreen ? styles.videoFullScreen : styles.video}
+          resizeMode={'cover'}
+          paused={isPlaying}
+          fullscreen={isFullScreen}
         />
       </>
       {
         isFullScreen &&
           <View style={styles.fullScreenBG}>
             <StatusBar hidden={true}/>
-            <TouchableOpacity testID='full-screen' style={styles.button} onPress={exitFullScreen}>
+            <TouchableOpacity testID='exit-full-screen' style={styles.button} onPress={exitFullScreen}>
               <Text>Exit full screen</Text>
+            </TouchableOpacity>
+            <TouchableOpacity testID='pause-start-fs' style={styles.button} onPress={togglePause}>
+              <Text>Pause/Start</Text>
             </TouchableOpacity>
           </View>
       }
-
     </View>
   );
 };
