@@ -10,18 +10,6 @@ const navigationMock = {
   setOptions: jest.fn()
 }
 
-// jest.mock(
-//   'react-native-video',
-//   () => {
-//     const { View } = require('react-native')
-//     const MockTouchable = (props: JSX.IntrinsicAttributes) => {
-//       return <View {...props} />
-//     }
-//     MockTouchable.displayName = 'Video'
-//
-//     return MockTouchable
-//   }
-// )
 
 jest.mock('react-native-video', () => {
   const mockComponent = require('react-native/jest/mockComponent')
