@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import {fireEvent, getByTestId, render} from '@testing-library/react-native'
+import {fireEvent, render} from 'react-native-testing-library'
 import {expect, it} from '@jest/globals'
 import Video from '../src/components/Video'
 import {StatusBar} from 'react-native'
@@ -10,29 +10,16 @@ const navigationMock = {
   setOptions: jest.fn()
 }
 
-// jest.mock(
-//   'react-native-video',
-//   () => {
-//     const { View } = require('react-native')
-//     const MockTouchable = (props: JSX.IntrinsicAttributes) => {
-//       return <View {...props} />
-//     }
-//     MockTouchable.displayName = 'Video'
-//
-//     return MockTouchable
-//   }
-// )
-
 jest.mock('react-native-video', () => {
   const mockComponent = require('react-native/jest/mockComponent')
   return mockComponent('react-native-video')
 });
 
 it('renders/navigats throughout app screens', async () => {
-  const {getByLabelText, getByTestId} = render(<Video navigation={navigationMock}/>)
-  const video = getByLabelText(/video component/i)
-  const enterFullScreenButton = getByTestId(/enter-full-screen/i)
-  const pauseStartButton = getByTestId(/pause-start/i)
+  const {getByText, getByA11yLabel} = render(<Video navigation={navigationMock}/>)
+  const video = getByA11yLabel(/video component/i)
+  const enterFullScreenButton = getByText(/full screen/i)
+  const pauseStartButton = getByText(/pause\/start/i)
 
   //video is initially playing and presented not on full screen
   expect(video.props.paused).toBeFalsy()
@@ -53,14 +40,15 @@ it('renders/navigats throughout app screens', async () => {
     height: 200,
     zIndex: 5
   })
+  // @ts-ignore
   expect(StatusBar._propsStack[0].hidden.value).toBeTruthy()
 
   //play video and exit full screen mode
-  const pauseStartFSButton = getByTestId(/pause-start-fs/i)
+  const pauseStartFSButton = getByText(/pause \/ start/i)
   fireEvent.press(pauseStartFSButton)
   expect(video.props.paused).toBeFalsy()
 
-  const exitFullScreenButton = getByTestId(/exit-full-screen/i)
+  const exitFullScreenButton = getByText(/exit full screen/i)
   fireEvent.press(exitFullScreenButton)
   expect(video.props.fullscreen).toBeFalsy()
 })

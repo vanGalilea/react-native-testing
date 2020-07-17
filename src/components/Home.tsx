@@ -19,12 +19,12 @@ export default ({ navigation }) => {
                   if (screenName === SCREENS.HOME) return null
 
                   return (
-                    <View key={i} style={{padding: 8}}>
-                      <Button
-                        title={screenName}
-                        onPress={() => navigation.navigate(screenName)}
-                      />
-                    </View>
+                    <TouchableOpacity
+                      key={i} style={{padding: 8}}
+                      onPress={() => navigation.navigate(screenName)}
+                    >
+                      <Text>{screenName}</Text>
+                    </TouchableOpacity>
                   )
                 }
               )}

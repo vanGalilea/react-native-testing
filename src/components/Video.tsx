@@ -42,7 +42,7 @@ export default ({navigation}) => {
               <Text>Exit full screen</Text>
             </TouchableOpacity>
             <TouchableOpacity testID='pause-start-fs' style={styles.button} onPress={togglePause}>
-              <Text>Pause/Start</Text>
+              <Text>Pause / Start</Text>
             </TouchableOpacity>
           </View>
       }

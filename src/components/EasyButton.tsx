@@ -8,7 +8,7 @@ export default (props: any) => {
   const [theme] = useTheme()
   const {backgroundColor, color} = styles[theme]
   return (
-    <TouchableOpacity testID='easy-button' style={{backgroundColor, padding: 8}} {...props}>
+    <TouchableOpacity style={{backgroundColor, padding: 8}} {...props}>
       <Text style={{color}} >{props.children || 'Click me!'}</Text>
     </TouchableOpacity>
   );

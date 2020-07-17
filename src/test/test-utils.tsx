@@ -1,5 +1,5 @@
 import React, {ComponentType} from 'react'
-import {render as rtlRender} from '@testing-library/react-native'
+import {render as rtlRender} from 'react-native-testing-library'
 import {ThemeProvider} from '../utils/theme'
 import {createStackNavigator} from '@react-navigation/stack'
 import {NavigationContainer} from '@react-navigation/native'
@@ -13,7 +13,7 @@ function render(ui: any, {theme = 'light', ...options} = {}) {
   return rtlRender(ui, {wrapper: Wrapper, ...options})
 }
 
-export * from '@testing-library/react-native'
+export * from 'react-native-testing-library'
 // override React Testing Library's render with our own
 export {render}
 
@@ -24,6 +24,7 @@ export const renderWithNavigation = ({ screens = {}, navigatorConfig = {} } = {}
     <NavigationContainer>
       <Stack.Navigator {...navigatorConfig}>
         {
+          // @ts-ignore
           Object.keys(screens).map(name=> <Stack.Screen key={name} name={name} component={screens[name]} />)
         }
       </Stack.Navigator>

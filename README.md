@@ -1,4 +1,4 @@
-### This is how you should test 🧪 your react-native ⚛️ components with [Jest](https://jestjs.io/) and [React Native Testing Library](https://www.native-testing-library.com/)
+### This is how you should test 🧪 your react-native ⚛️ components with [Jest](https://jestjs.io/) and [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
 
 ##### 👏 Inspired by [Kent C. Dodds'](https://testingjavascript.com/) workshop [Test React Components with Jest and React Testing Library](https://github.com/testing-library/react-testing-library). For more info check [Epic React](https://epicreact.dev/)
 

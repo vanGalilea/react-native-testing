@@ -1,14 +1,14 @@
 import 'react-native'
 import React from 'react'
-import {fireEvent, render} from '@testing-library/react-native'
+import {fireEvent, render} from 'react-native-testing-library'
 import Counter from "../src/components/Counter"
 import {expect, it} from '@jest/globals'
 
 it('renders correctly', () => {
-  const {getByText, getByTestId, debug} = render(<Counter />)
-  // debug()
-  const decrement = getByTestId(/decrement/i)
-  const increment = getByTestId(/increment/i)
+  const {getByText} = render(<Counter />)
+
+  const decrement = getByText(/decrement/i)
+  const increment = getByText(/increment/i)
   const counterText = getByText(/Current count:/i)
 
   expect(counterText.props.children).toEqual(["Current count: ", 0])
