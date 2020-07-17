@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import {Colors,} from 'react-native/Libraries/NewAppScreen'
+import {Colors} from 'react-native/Libraries/NewAppScreen'
 // @ts-ignore
 import Video from 'react-native-video'
 
@@ -8,7 +8,10 @@ import Video from 'react-native-video'
 export default ({navigation}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFullScreen, setIsFullScreen] = useState(false)
-  navigation.setOptions({ headerShown: !isFullScreen })
+
+  useEffect(()=> {
+    navigation.setOptions({ headerShown: !isFullScreen })
+  }, [isFullScreen])
 
   const showFullScreen = () => setIsFullScreen(true)
   const exitFullScreen = () => setIsFullScreen(false)
@@ -17,10 +20,10 @@ export default ({navigation}) => {
   return (
     <View style={styles.body}>
       <View style={styles.sectionContainer}>
-        <TouchableOpacity testID='enter-full-screen' style={styles.button} onPress={showFullScreen}>
+        <TouchableOpacity style={styles.button} onPress={showFullScreen}>
           <Text>Full screen</Text>
         </TouchableOpacity>
-        <TouchableOpacity testID='pause-start' style={styles.button} onPress={togglePause}>
+        <TouchableOpacity style={styles.button} onPress={togglePause}>
           <Text>Pause/Start</Text>
         </TouchableOpacity>
       </View>
@@ -38,10 +41,10 @@ export default ({navigation}) => {
         isFullScreen &&
           <View style={styles.fullScreenBG}>
             <StatusBar hidden={true}/>
-            <TouchableOpacity testID='exit-full-screen' style={styles.button} onPress={exitFullScreen}>
+            <TouchableOpacity style={styles.button} onPress={exitFullScreen}>
               <Text>Exit full screen</Text>
             </TouchableOpacity>
-            <TouchableOpacity testID='pause-start-fs' style={styles.button} onPress={togglePause}>
+            <TouchableOpacity style={styles.button} onPress={togglePause}>
               <Text>Pause / Start</Text>
             </TouchableOpacity>
           </View>

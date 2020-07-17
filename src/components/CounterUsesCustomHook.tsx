@@ -10,10 +10,10 @@ export default () => {
     <View style={styles.body}>
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>Current count: {count}</Text>
-        <TouchableOpacity testID='decrement' style={styles.button} onPress={decrement}>
+        <TouchableOpacity style={styles.button} onPress={decrement}>
           <Text>Decrement</Text>
         </TouchableOpacity>
-        <TouchableOpacity testID='increment' style={styles.button} onPress={increment}>
+        <TouchableOpacity style={styles.button} onPress={increment}>
           <Text>Increment</Text>
         </TouchableOpacity>
       </View>

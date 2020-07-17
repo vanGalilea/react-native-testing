@@ -19,7 +19,7 @@
     "@react-navigation/stack": "^5.5.1",
     "@testing-library/react-hooks": "^3.3.0",
     "react": "16.13.1",
-    "react-native": "0.62.2",
+    "react-native": "0.63.1",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "^3.0.3",

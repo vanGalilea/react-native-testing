@@ -27,7 +27,7 @@ export default ({onSubmit}) => {
           onChangeText={(text => setPassword(text))}
           value={password}
         />
-        <TouchableOpacity testID='submit' style={styles.button} onPress={handleSubmit}>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
           <Text>Submit</Text>
         </TouchableOpacity>
       </View>
