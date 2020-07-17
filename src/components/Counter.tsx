@@ -1,6 +1,6 @@
 import React from 'react'
-import {StyleSheet, Text, TouchableOpacity, View,} from 'react-native'
-import {Colors,} from 'react-native/Libraries/NewAppScreen'
+import {Pressable, StyleSheet, Text, View} from 'react-native'
+import {Colors} from 'react-native/Libraries/NewAppScreen'
 
 
 export default () => {
@@ -12,12 +12,12 @@ export default () => {
     <View style={styles.body}>
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>Current count: {count}</Text>
-        <TouchableOpacity style={styles.button} onPress={decrement}>
+        <Pressable style={styles.button} onPress={decrement}>
           <Text>Decrement</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={increment}>
+        </Pressable>
+        <Pressable style={styles.button} onPress={increment}>
           <Text>Increment</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );

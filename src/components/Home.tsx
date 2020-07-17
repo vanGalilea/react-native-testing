@@ -1,5 +1,5 @@
 import React from 'react'
-import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {Pressable, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {SCREENS} from './App'
 
@@ -19,12 +19,12 @@ export default ({ navigation }) => {
                   if (screenName === SCREENS.HOME) return null
 
                   return (
-                    <TouchableOpacity
+                    <Pressable
                       key={i} style={styles.button}
                       onPress={() => navigation.navigate(screenName)}
                     >
                       <Text>{screenName}</Text>
-                    </TouchableOpacity>
+                    </Pressable>
                   )
                 }
               )}

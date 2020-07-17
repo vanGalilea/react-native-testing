@@ -32,7 +32,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@testing-library/jest-native": "^3.1.0",
     "@types/jest": "^26.0.0",
-    "@types/react-native": "^0.62.13",
+    "@types/react-native": "0.63.1",
     "@types/react-native-video": "^5.0.1",
     "@types/react-test-renderer": "16.9.2",
     "@typescript-eslint/eslint-plugin": "^^3.2.0",

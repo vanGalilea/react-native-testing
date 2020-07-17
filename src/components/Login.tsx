@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native'
+import {StyleSheet, Text, TextInput, Pressable, View,} from 'react-native'
 import {Colors,} from 'react-native/Libraries/NewAppScreen'
 
 
@@ -27,9 +27,9 @@ export default ({onSubmit}) => {
           onChangeText={(text => setPassword(text))}
           value={password}
         />
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <Pressable style={styles.button} onPress={handleSubmit}>
           <Text>Submit</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </View>
   );

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {StatusBar, StyleSheet, Text, Pressable, View} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 // @ts-ignore
 import Video from 'react-native-video'
@@ -20,12 +20,12 @@ export default ({navigation}) => {
   return (
     <View style={styles.body}>
       <View style={styles.sectionContainer}>
-        <TouchableOpacity style={styles.button} onPress={showFullScreen}>
+        <Pressable style={styles.button} onPress={showFullScreen}>
           <Text>Full screen</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={togglePause}>
+        </Pressable>
+        <Pressable style={styles.button} onPress={togglePause}>
           <Text>Pause/Start</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
       <>
         <Video
@@ -41,12 +41,12 @@ export default ({navigation}) => {
         isFullScreen &&
           <View style={styles.fullScreenBG}>
             <StatusBar hidden={true}/>
-            <TouchableOpacity style={styles.button} onPress={exitFullScreen}>
+            <Pressable style={styles.button} onPress={exitFullScreen}>
               <Text>Exit full screen</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={togglePause}>
+            </Pressable>
+            <Pressable style={styles.button} onPress={togglePause}>
               <Text>Pause / Start</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
       }
     </View>

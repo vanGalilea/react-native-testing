@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyleSheet, Text, TouchableOpacity,} from 'react-native'
+import {StyleSheet, Text, Pressable,} from 'react-native'
 import {useTheme} from "../utils/theme"
 
 
@@ -8,9 +8,9 @@ export default (props: any) => {
   const [theme] = useTheme()
   const {backgroundColor, color} = styles[theme]
   return (
-    <TouchableOpacity style={{backgroundColor, padding: 8}} {...props}>
+    <Pressable style={{backgroundColor, padding: 8}} {...props}>
       <Text style={{color}} >{props.children || 'Click me!'}</Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 
