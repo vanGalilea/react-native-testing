@@ -1,5 +1,6 @@
 import React from 'react'
 
+jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
 jest.mock(
     'react-native/Libraries/Components/Touchable/TouchableOpacity.js',
     () => {

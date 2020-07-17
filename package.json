@@ -30,6 +30,7 @@
     "@babel/core": "^7.10.2",
     "@babel/runtime": "^7.10.2",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^3.1.0",
     "@types/jest": "^26.0.0",
     "@types/react-native": "^0.62.13",
     "@types/react-native-video": "^5.0.1",

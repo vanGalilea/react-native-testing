@@ -1,10 +1,9 @@
 const path = require('path')
-const jestPreset = require('@testing-library/react-native/jest-preset');
 
 module.exports = {
-    preset: '@testing-library/react-native',
+    preset: "react-native",
     setupFilesAfterEnv: [
-        "@testing-library/react-native/cleanup-after-each",
+        "@testing-library/jest-native/extend-expect",
         './jest.setup.js'
     ],
     clearMocks: true,
