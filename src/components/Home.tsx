@@ -1,6 +1,6 @@
 import React from 'react'
-import {Button, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import {Colors,} from 'react-native/Libraries/NewAppScreen'
+import {SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {Colors} from 'react-native/Libraries/NewAppScreen'
 import {SCREENS} from './App'
 
 // @ts-ignore
@@ -20,7 +20,7 @@ export default ({ navigation }) => {
 
                   return (
                     <TouchableOpacity
-                      key={i} style={{padding: 8}}
+                      key={i} style={styles.button}
                       onPress={() => navigation.navigate(screenName)}
                     >
                       <Text>{screenName}</Text>
@@ -57,10 +57,10 @@ const styles = StyleSheet.create({
     color: Colors.black,
   },
   button: {
-    borderRadius: 12,
+    borderRadius: 8,
     padding: 6,
     margin: 6,
-    backgroundColor: "#9e9ef8",
+    backgroundColor: "#9ef8d4",
     justifyContent: "center",
     alignItems: "center"
   }
