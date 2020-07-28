@@ -30,7 +30,7 @@
     "@babel/core": "^7.10.2",
     "@babel/runtime": "^7.10.2",
     "@react-native-community/eslint-config": "^2.0.0",
-    "@testing-library/jest-native": "^3.1.0",
+    "@testing-library/jest-native": "^3.2.0",
     "@types/jest": "^26.0.0",
     "@types/react-native": "0.63.1",
     "@types/react-native-video": "^5.0.1",
@@ -45,6 +45,6 @@
     "prettier": "^2.0.5",
     "react-native-testing-library": "^2.1.1",
     "react-test-renderer": "16.13.1",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   }
 }
