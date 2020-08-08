@@ -8,10 +8,11 @@ import EasyButton from './EasyButton'
 import Home from './Home'
 import {ThemeProvider} from '../utils/theme'
 import Video from './Video'
+import Modal from './Modal'
 
 const Stack = createStackNavigator()
 
-export const SCREENS: Record<string,string> = {HOME: "Home", COUNTER: "Counter", LOGIN: "Login", EASYBUTTON: "EasyButton", VIDEO: "Video"}
+export const SCREENS: Record<string,string> = {HOME: "Home", COUNTER: "Counter", LOGIN: "Login", EASYBUTTON: "EasyButton", VIDEO: "Video", MODAL: "Modal"}
 export default () => {
   return (
     <>
@@ -23,6 +24,7 @@ export default () => {
             <Stack.Screen name={SCREENS.EASYBUTTON} component={EasyButton} />
             <Stack.Screen name={SCREENS.COUNTER} component={Counter} />
             <Stack.Screen name={SCREENS.VIDEO} component={Video} />
+            <Stack.Screen name={SCREENS.MODAL} component={Modal} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
