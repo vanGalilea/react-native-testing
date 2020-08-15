@@ -10,8 +10,8 @@ In this repo you'll find several examples that will cover:
 - 🧭 [Mocking navigation through screens](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/LoginSubmission.test.tsx#L13). ([react navigation v5](https://reactnavigation.org/))
 - 🔚 [E2E feel due to real navigation throughout screens](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Home.test.tsx).
 - 📥 [Handling and mocking providers](https://github.com/vanGalilea/react-native-testing/blob/master/src/test/test-utils.tsx).
-- 📹 [Mocking external lib.'s components](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Video-test.tsx).
-- 🎭 [Mocking and interacting with RN's Modal component](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Modal-test.tsx).
+- 📹 [Mocking external lib.'s components](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Video.test.tsx).
+- 🎭 [Mocking and interacting with RN's Modal component](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Modal.test.tsx).
 
 
 
