@@ -1,17 +1,15 @@
 import React, {useState} from 'react'
-import {Alert, Modal, Pressable, StyleSheet, Text, View} from 'react-native'
+import {Modal, Pressable, StyleSheet, Text, View} from 'react-native'
 
 export default () => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
       <Modal
-        animationType="slide"
-        transparent={true}
+        animationType={'fade'}
+        transparent
         visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
+        onRequestClose={() => setModalVisible(false)}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
