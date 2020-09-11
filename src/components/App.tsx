@@ -9,10 +9,19 @@ import Home from './Home'
 import {ThemeProvider} from '../utils/theme'
 import Video from './Video'
 import Modal from './Modal'
+import FlatList from './FlatList'
 
 const Stack = createStackNavigator()
 
-export const SCREENS: Record<string,string> = {HOME: "Home", COUNTER: "Counter", LOGIN: "Login", EASYBUTTON: "EasyButton", VIDEO: "Video", MODAL: "Modal"}
+export const SCREENS: Record<string, string> = {
+  HOME: 'Home',
+  COUNTER: 'Counter',
+  LOGIN: 'Login',
+  EASYBUTTON: 'EasyButton',
+  VIDEO: 'Video',
+  MODAL: 'Modal',
+  FLATLIST: 'FlatList',
+}
 export default () => {
   return (
     <>
@@ -25,6 +34,7 @@ export default () => {
             <Stack.Screen name={SCREENS.COUNTER} component={Counter} />
             <Stack.Screen name={SCREENS.VIDEO} component={Video} />
             <Stack.Screen name={SCREENS.MODAL} component={Modal} />
+            <Stack.Screen name={SCREENS.FLATLIST} component={FlatList} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
