@@ -12,6 +12,7 @@ In this repo you'll find several examples that will cover:
 - 📥 [Handling and mocking providers](https://github.com/vanGalilea/react-native-testing/blob/master/src/test/test-utils.tsx).
 - 📹 [Mocking external lib.'s components](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Video.test.tsx).
 - 🎭 [Mocking and interacting with RN's Modal component](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Modal.test.tsx).
+- 🧾 [Handling with a screen with RN's FlatList component](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/FlatList.test.tsx).
 
 
 
