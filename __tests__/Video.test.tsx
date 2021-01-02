@@ -1,21 +1,22 @@
 import 'react-native'
 import React from 'react'
-import {fireEvent, render} from 'react-native-testing-library'
+import {fireEvent, render} from '@testing-library/react-native'
 import Video from '../src/components/Video'
 import {StatusBar} from 'react-native'
 
-
 const navigationMock = {
-  setOptions: jest.fn()
+  setOptions: jest.fn(),
 }
 
 jest.mock('react-native-video', () => {
   const mockComponent = require('react-native/jest/mockComponent')
   return mockComponent('react-native-video')
-});
+})
 
 it('renders/navigates throughout app screens', async () => {
-  const {getByText, getByA11yLabel} = render(<Video navigation={navigationMock}/>)
+  const {getByText, getByA11yLabel} = render(
+    <Video navigation={navigationMock} />,
+  )
   const video = getByA11yLabel(/video component/i)
   const enterFullScreenButton = getByText(/full screen/i)
   const pauseStartButton = getByText(/pause\/start/i)
@@ -25,8 +26,8 @@ it('renders/navigates throughout app screens', async () => {
   expect(video.props.fullscreen).toBeFalsy()
 
   expect(video).toHaveStyle({
-    "width": 100,
-    "height": 100
+    width: 100,
+    height: 100,
   })
 
   //pause video and enter full screen mode
@@ -36,9 +37,9 @@ it('renders/navigates throughout app screens', async () => {
   expect(video.props.paused).toBeTruthy()
   expect(video.props.fullscreen).toBeTruthy()
   expect(video).toHaveStyle({
-    width: "100%",
+    width: '100%',
     height: 200,
-    zIndex: 5
+    zIndex: 5,
   })
   // @ts-ignore
   expect(StatusBar._propsStack[0].hidden.value).toBeTruthy()

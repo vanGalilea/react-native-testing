@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import {fireEvent, render} from 'react-native-testing-library'
+import {fireEvent, render} from '@testing-library/react-native'
 import Login from '../src/components/Login'
 import {expect, it, jest} from '@jest/globals'
 
@@ -10,13 +10,13 @@ it('renders correctly', async () => {
   let submittedData = {}
   // @ts-ignore
   const handleSubmit = jest.fn(data => (submittedData = data))
-  const {getByText, getByPlaceholder} = render(
+  const {getByText, getByPlaceholderText} = render(
     <Login onSubmit={handleSubmit} />,
   )
   const button = getByText(/submit/i)
 
-  await fireEvent.changeText(getByPlaceholder(/username/i), username)
-  await fireEvent.changeText(getByPlaceholder(/password/i), password)
+  await fireEvent.changeText(getByPlaceholderText(/username/i), username)
+  await fireEvent.changeText(getByPlaceholderText(/password/i), password)
   fireEvent.press(button)
 
   expect(submittedData).toEqual({password, username})

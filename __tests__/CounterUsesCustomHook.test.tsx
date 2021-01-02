@@ -1,10 +1,6 @@
 import 'react-native'
 import React from 'react'
-import {
-  act,
-  fireEvent,
-  render,
-} from 'react-native-testing-library'
+import {act, fireEvent, render} from '@testing-library/react-native'
 import CounterUsesCustomHook from '../src/components/CounterUsesCustomHook'
 import useCounter from '../src/hooks/useCounter'
 import {renderHook} from '@testing-library/react-hooks'

@@ -1,6 +1,6 @@
 import 'react-native'
 import React from 'react'
-import {fireEvent, render, waitFor} from 'react-native-testing-library'
+import {fireEvent, render, waitFor} from '@testing-library/react-native'
 import LoginSubmission from '../src/components/LoginSubmission'
 import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
@@ -35,11 +35,11 @@ it('renders correctly', async () => {
 
   const username = 'chucknorris'
   const password = 'i need no password'
-  const {getByText, getByPlaceholder} = render(<LoginSubmission />)
+  const {getByText, getByPlaceholderText} = render(<LoginSubmission />)
   const button = getByText(/submit/i)
 
-  fireEvent.changeText(getByPlaceholder(/username/i), username)
-  fireEvent.changeText(getByPlaceholder(/password/i), password)
+  fireEvent.changeText(getByPlaceholderText(/username/i), username)
+  fireEvent.changeText(getByPlaceholderText(/password/i), password)
   fireEvent.press(button)
 
   getByText(/loading/i)
@@ -69,6 +69,6 @@ it('renders correctly', async () => {
   `)
 
   await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1))
-  expect(mockNavigate).toHaveBeenCalledWith("Home")
+  expect(mockNavigate).toHaveBeenCalledWith('Home')
   expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token')
 })

@@ -5,7 +5,7 @@ import {
   render,
   waitFor,
   waitForElementToBeRemoved,
-} from 'react-native-testing-library'
+} from '@testing-library/react-native'
 import {expect, it} from '@jest/globals'
 import SectionList from '../src/components/FlatList'
 
@@ -38,4 +38,5 @@ it('scrolls to top and refreshes all items', async () => {
   fireEvent.scroll(getByTestId('flat-list'), eventData)
   await waitForElementToBeRemoved(() => getByText(/loading more dishes/i))
   await waitFor(() => expect(getByText(/the impossible burger/i)))
+  //2 awaits results in a warning at the moment see https://github.com/callstack/react-native-testing-library/issues/379
 })
