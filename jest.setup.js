@@ -1,6 +1,7 @@
 import React from 'react'
 import '@testing-library/jest-native/extend-expect'
 import {jest} from '@jest/globals'
+import {server} from './src/test/mocks/server'
 
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper')
 jest.mock('react-native-gesture-handler', () => {
@@ -37,6 +38,9 @@ jest.mock('react-native-gesture-handler', () => {
   }
 })
 
+//establish api mocking before all tests
+beforeAll(() => server.listen())
+
 beforeEach(() => {
   global.fetch = jest.fn((...args) => {
     console.warn('global.fetch needs to be mocked in tests', ...args)
@@ -44,6 +48,12 @@ beforeEach(() => {
   })
 })
 
+//clean up after the tests are finished
+afterAll(() => server.close())
+
 afterEach(() => {
   global.fetch.mockRestore()
+  //reset any requests handlers that we may add during the tests,
+  //so they don't affect other tests.
+  server.resetHandlers()
 })
