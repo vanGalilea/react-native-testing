@@ -4,6 +4,7 @@ import {Colors} from 'react-native/Libraries/NewAppScreen'
 // @ts-ignore
 import Video from 'react-native-video'
 
+const FOO_FIGHTERS_VIDEO = "https://cdn77-vid.xvideos-cdn.com/H7bKgXGzY9w1RRxgtrWbWg==,1622395890/videos/3gp/0/e/2/xvideos.com_0e2389203a2221da619cc648b95237df.mp4"
 // @ts-ignore
 export default ({navigation}) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -30,7 +31,7 @@ export default ({navigation}) => {
       <>
         <Video
           accessibilityLabel={"video component"}
-          source={{uri: "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"}}
+          source={{uri: FOO_FIGHTERS_VIDEO}}
           style={isFullScreen ? styles.videoFullScreen : styles.video}
           resizeMode={'cover'}
           paused={isPlaying}
@@ -77,8 +78,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   video: {
-    width: 100,
-    height: 100
+    width: 200,
+    height: 200
   },
   videoFullScreen: {
     width: "100%",
