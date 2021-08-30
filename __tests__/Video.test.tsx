@@ -26,8 +26,8 @@ it('renders/navigates throughout app screens', async () => {
   expect(video.props.fullscreen).toBeFalsy()
 
   expect(video).toHaveStyle({
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
   })
 
   //pause video and enter full screen mode
