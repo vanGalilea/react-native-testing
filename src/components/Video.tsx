@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react'
 import {StatusBar, StyleSheet, Text, Pressable, View} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
-// @ts-ignore
 import Video from 'react-native-video'
 
-const FOO_FIGHTERS_VIDEO = "https://cdn77-vid.xvideos-cdn.com/H7bKgXGzY9w1RRxgtrWbWg==,1622395890/videos/3gp/0/e/2/xvideos.com_0e2389203a2221da619cc648b95237df.mp4"
+const SOME_VIDEO =
+  'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
 // @ts-ignore
 export default ({navigation}) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFullScreen, setIsFullScreen] = useState(false)
 
-  useEffect(()=> {
-    navigation.setOptions({ headerShown: !isFullScreen })
+  useEffect(() => {
+    navigation.setOptions({headerShown: !isFullScreen})
   }, [isFullScreen])
 
   const showFullScreen = () => setIsFullScreen(true)
@@ -30,39 +30,38 @@ export default ({navigation}) => {
       </View>
       <>
         <Video
-          accessibilityLabel={"video component"}
-          source={{uri: FOO_FIGHTERS_VIDEO}}
+          accessibilityLabel={'video component'}
+          source={{uri: SOME_VIDEO}}
           style={isFullScreen ? styles.videoFullScreen : styles.video}
           resizeMode={'cover'}
           paused={isPlaying}
           fullscreen={isFullScreen}
         />
       </>
-      {
-        isFullScreen &&
-          <View style={styles.fullScreenBG}>
-            <StatusBar hidden={true}/>
-            <Pressable style={styles.button} onPress={exitFullScreen}>
-              <Text>Exit full screen</Text>
-            </Pressable>
-            <Pressable style={styles.button} onPress={togglePause}>
-              <Text>Pause / Start</Text>
-            </Pressable>
-          </View>
-      }
+      {isFullScreen && (
+        <View style={styles.fullScreenBG}>
+          <StatusBar hidden={true} />
+          <Pressable style={styles.button} onPress={exitFullScreen}>
+            <Text>Exit full screen</Text>
+          </Pressable>
+          <Pressable style={styles.button} onPress={togglePause}>
+            <Text>Pause / Start</Text>
+          </Pressable>
+        </View>
+      )}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   body: {
     backgroundColor: Colors.white,
-    alignItems: "center",
-    flex: 1
+    alignItems: 'center',
+    flex: 1,
   },
   sectionContainer: {
     padding: 24,
-    alignItems: "center"
+    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 24,
@@ -73,21 +72,21 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 6,
     margin: 6,
-    backgroundColor: "#9e9ef8",
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: '#9e9ef8',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   video: {
     width: 200,
-    height: 200
+    height: 200,
   },
   videoFullScreen: {
-    width: "100%",
+    width: '100%',
     height: 200,
-    zIndex: 5
+    zIndex: 5,
   },
   fullScreenBG: {
     backgroundColor: Colors.black,
-    ...StyleSheet.absoluteFillObject
-  }
+    ...StyleSheet.absoluteFillObject,
+  },
 })

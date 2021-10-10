@@ -9,7 +9,7 @@ declare global {
       toHaveProp(attr: string, value?: any): R
       toHaveTextContent(
         text: string | RegExp,
-        options?: {normalizeWhitespace: boolean}
+        options?: {normalizeWhitespace: boolean},
       ): R
       toBeEnabled(): R
       toHaveStyle(style: object[] | object): R

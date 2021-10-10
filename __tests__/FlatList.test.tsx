@@ -1,4 +1,5 @@
 import 'react-native'
+// @ts-ignore
 import React from 'react'
 import {
   fireEvent,
@@ -33,10 +34,9 @@ it('scrolls to top and refreshes all items', async () => {
 
   getByText(/pizza/i)
   expect(() => getByText(/the impossible burger/i)).toThrow(
-    /no instances found/i,
+    'Unable to find an element with text: /the impossible burger/i',
   ) //intially not shown
   fireEvent.scroll(getByTestId('flat-list'), eventData)
   await waitForElementToBeRemoved(() => getByText(/loading more dishes/i))
   await waitFor(() => expect(getByText(/the impossible burger/i)))
-  //2 awaits results in a warning at the moment see https://github.com/callstack/react-native-testing-library/issues/379
 })

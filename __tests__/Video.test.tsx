@@ -4,14 +4,11 @@ import {fireEvent, render} from '@testing-library/react-native'
 import Video from '../src/components/Video'
 import {StatusBar} from 'react-native'
 
+// 'react-native-video' is being mocked in /__mocks__/react-native-video.ts
+
 const navigationMock = {
   setOptions: jest.fn(),
 }
-
-jest.mock('react-native-video', () => {
-  const mockComponent = require('react-native/jest/mockComponent')
-  return mockComponent('react-native-video')
-})
 
 it('renders/navigates throughout app screens', async () => {
   const {getByText, getByA11yLabel} = render(

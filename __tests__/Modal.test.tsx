@@ -1,4 +1,5 @@
 import 'react-native'
+// @ts-ignore
 import React from 'react'
 import {fireEvent, render, waitFor} from '@testing-library/react-native'
 import {expect, it} from '@jest/globals'
@@ -13,13 +14,17 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
 })
 
 it('renders modal screen correctly', async () => {
-  const {getByText, debug} = render(<ModalScreen />)
+  const {getByText} = render(<ModalScreen />)
 
-  expect(() => getByText(/hello world/i)).toThrow(/no instances found/i) //modal is initially closed
+  expect(() => getByText(/hello world/i)).toThrow(
+    'Unable to find an element with text: /hello world/i',
+  ) //modal is initially closed
 
   fireEvent.press(getByText(/show modal/i))
   await waitFor(() => getByText(/hello world/i)) //modal is now visible
 
   fireEvent.press(getByText(/hide modal/i))
-  expect(() => getByText(/hide modal/i)).toThrow(/no instances found/i) //modal is closed again
+  expect(() => getByText(/hide modal/i)).toThrow(
+    'Unable to find an element with text: /hide modal/i',
+  ) //modal is closed again
 })
