@@ -11,6 +11,7 @@ import Video from './Video'
 import Modal from './Modal'
 import FlatList from './FlatList'
 import ListWithFetch from './ListWithFetch'
+import Images from './Images'
 
 const Stack = createStackNavigator()
 
@@ -23,6 +24,7 @@ export const SCREENS: Record<string, string> = {
   MODAL: 'Modal',
   FLATLIST: 'FlatList',
   LIST_WITH_FETCH: 'ListWithFetch',
+  IMAGES: 'Images',
 }
 export default () => {
   return (
@@ -41,6 +43,7 @@ export default () => {
               name={SCREENS.LIST_WITH_FETCH}
               component={ListWithFetch}
             />
+            <Stack.Screen name={SCREENS.IMAGES} component={Images} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
