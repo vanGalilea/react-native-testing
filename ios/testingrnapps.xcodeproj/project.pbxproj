@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* testingrnappsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* testingrnappsTests.m */; };
-		0B0078BFEEAB987184A028C4 /* libPods-testingrnapps-testingrnappsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 091A71B191ACF12D0297D15D /* libPods-testingrnapps-testingrnappsTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		23A3804CB6F0FDA150ABED48 /* libPods-testingrnapps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69D06399064CDF7C0787CF1C /* libPods-testingrnapps.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* testingrnappsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* testingrnappsTests.m */; };
+		C9F25ED94186A1BE87775F84 /* libPods-testingrnapps-testingrnappsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210389BA4999821AEE4E9D7E /* libPods-testingrnapps-testingrnappsTests.a */; };
+		DD951821285A218100856ACF /* BridgingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD951820285A218100856ACF /* BridgingFile.swift */; };
+		DD951822285A218100856ACF /* BridgingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD951820285A218100856ACF /* BridgingFile.swift */; };
+		DD951823285A218100856ACF /* BridgingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD951820285A218100856ACF /* BridgingFile.swift */; };
+		DD951824285A218100856ACF /* BridgingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD951820285A218100856ACF /* BridgingFile.swift */; };
+		FBA0F3F01E60737EB66A1A7D /* libPods-testingrnapps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E390CD81C8A5EA0A5BB37D1 /* libPods-testingrnapps.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +46,6 @@
 		00E356EE1AD99517003FC87E /* testingrnappsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testingrnappsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* testingrnappsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testingrnappsTests.m; sourceTree = "<group>"; };
-		091A71B191ACF12D0297D15D /* libPods-testingrnapps-testingrnappsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-testingrnapps-testingrnappsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* testingrnapps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testingrnapps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = testingrnapps/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = testingrnapps/AppDelegate.m; sourceTree = "<group>"; };
@@ -50,15 +53,21 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = testingrnapps/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = testingrnapps/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = testingrnapps/main.m; sourceTree = "<group>"; };
-		1A19940460D2384137E82525 /* Pods-testingrnapps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps.release.xcconfig"; path = "Target Support Files/Pods-testingrnapps/Pods-testingrnapps.release.xcconfig"; sourceTree = "<group>"; };
-		2758251B4658BEC780892B2F /* Pods-testingrnapps-testingrnappsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps-testingrnappsTests.release.xcconfig"; path = "Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests.release.xcconfig"; sourceTree = "<group>"; };
+		210389BA4999821AEE4E9D7E /* libPods-testingrnapps-testingrnappsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-testingrnapps-testingrnappsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* testingrnapps-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "testingrnapps-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* testingrnapps-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "testingrnapps-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		414829C8F038B024F4B19F86 /* Pods-testingrnapps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps.debug.xcconfig"; path = "Target Support Files/Pods-testingrnapps/Pods-testingrnapps.debug.xcconfig"; sourceTree = "<group>"; };
-		69D06399064CDF7C0787CF1C /* libPods-testingrnapps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-testingrnapps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E699AE357232EBEE269D1FD /* Pods-testingrnapps-testingrnappsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps-testingrnappsTests.debug.xcconfig"; path = "Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3603AE1B43763E66410AB763 /* Pods-testingrnapps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps.debug.xcconfig"; path = "Target Support Files/Pods-testingrnapps/Pods-testingrnapps.debug.xcconfig"; sourceTree = "<group>"; };
+		3D39DC8F9E93A4A221D19365 /* Pods-testingrnapps-testingrnappsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps-testingrnappsTests.debug.xcconfig"; path = "Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8E390CD81C8A5EA0A5BB37D1 /* libPods-testingrnapps.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-testingrnapps.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24D093EBE969283BB8576F7 /* Pods-testingrnapps-testingrnappsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps-testingrnappsTests.release.xcconfig"; path = "Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests.release.xcconfig"; sourceTree = "<group>"; };
+		DD95181C285A218000856ACF /* testingrnapps-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testingrnapps-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD95181D285A218000856ACF /* testingrnappsTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testingrnappsTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD95181E285A218000856ACF /* testingrnapps-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testingrnapps-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD95181F285A218000856ACF /* testingrnapps-tvOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "testingrnapps-tvOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD951820285A218100856ACF /* BridgingFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingFile.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		EFC16DBF14706DD7B3A448EC /* Pods-testingrnapps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testingrnapps.release.xcconfig"; path = "Target Support Files/Pods-testingrnapps/Pods-testingrnapps.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B0078BFEEAB987184A028C4 /* libPods-testingrnapps-testingrnappsTests.a in Frameworks */,
+				C9F25ED94186A1BE87775F84 /* libPods-testingrnapps-testingrnappsTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23A3804CB6F0FDA150ABED48 /* libPods-testingrnapps.a in Frameworks */,
+				FBA0F3F01E60737EB66A1A7D /* libPods-testingrnapps.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,8 +140,8 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				69D06399064CDF7C0787CF1C /* libPods-testingrnapps.a */,
-				091A71B191ACF12D0297D15D /* libPods-testingrnapps-testingrnappsTests.a */,
+				8E390CD81C8A5EA0A5BB37D1 /* libPods-testingrnapps.a */,
+				210389BA4999821AEE4E9D7E /* libPods-testingrnapps-testingrnappsTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,12 +156,17 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				DD951820285A218100856ACF /* BridgingFile.swift */,
 				13B07FAE1A68108700A75B9A /* testingrnapps */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* testingrnappsTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				A4F47195D1BC58BC63C148A5 /* Pods */,
+				DD95181C285A218000856ACF /* testingrnapps-Bridging-Header.h */,
+				DD95181D285A218000856ACF /* testingrnappsTests-Bridging-Header.h */,
+				DD95181E285A218000856ACF /* testingrnapps-tvOS-Bridging-Header.h */,
+				DD95181F285A218000856ACF /* testingrnapps-tvOSTests-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -173,10 +187,10 @@
 		A4F47195D1BC58BC63C148A5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				414829C8F038B024F4B19F86 /* Pods-testingrnapps.debug.xcconfig */,
-				1A19940460D2384137E82525 /* Pods-testingrnapps.release.xcconfig */,
-				6E699AE357232EBEE269D1FD /* Pods-testingrnapps-testingrnappsTests.debug.xcconfig */,
-				2758251B4658BEC780892B2F /* Pods-testingrnapps-testingrnappsTests.release.xcconfig */,
+				3603AE1B43763E66410AB763 /* Pods-testingrnapps.debug.xcconfig */,
+				EFC16DBF14706DD7B3A448EC /* Pods-testingrnapps.release.xcconfig */,
+				3D39DC8F9E93A4A221D19365 /* Pods-testingrnapps-testingrnappsTests.debug.xcconfig */,
+				D24D093EBE969283BB8576F7 /* Pods-testingrnapps-testingrnappsTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -188,12 +202,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "testingrnappsTests" */;
 			buildPhases = (
-				CFE0B0F625F10B65842D9DAA /* [CP] Check Pods Manifest.lock */,
+				4DB50E9D24B201BB9546716D /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				4CBF47984D57DFB94C703F41 /* [CP] Copy Pods Resources */,
-				CE719AFEFC7B1A7A2C6BD97D /* [CP] Embed Pods Frameworks */,
+				D12CBDA6EF425C6C8FC9906E /* [CP] Embed Pods Frameworks */,
+				F1DC3B0F25ADEDFCB7499B84 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,14 +223,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "testingrnapps" */;
 			buildPhases = (
-				7959B1E373E0F9810D8EA509 /* [CP] Check Pods Manifest.lock */,
+				CF9D53823277C41C17B218BF /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				3CED5A114262959658B13FCC /* [CP] Copy Pods Resources */,
-				9951DA7246AB9D2BD2D5876F /* [CP] Embed Pods Frameworks */,
+				B395BFDD5C4833EF677F98CE /* [CP] Embed Pods Frameworks */,
+				750E0E70748689120E984470 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -274,17 +288,20 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 1320;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1320;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1320;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1320;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
@@ -374,7 +391,29 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		3CED5A114262959658B13FCC /* [CP] Copy Pods Resources */ = {
+		4DB50E9D24B201BB9546716D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-testingrnapps-testingrnappsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		750E0E70748689120E984470 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,25 +431,27 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testingrnapps/Pods-testingrnapps-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4CBF47984D57DFB94C703F41 /* [CP] Copy Pods Resources */ = {
+		B395BFDD5C4833EF677F98CE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-testingrnapps/Pods-testingrnapps-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testingrnapps/Pods-testingrnapps-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7959B1E373E0F9810D8EA509 /* [CP] Check Pods Manifest.lock */ = {
+		CF9D53823277C41C17B218BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -432,27 +473,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9951DA7246AB9D2BD2D5876F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-testingrnapps/Pods-testingrnapps-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testingrnapps/Pods-testingrnapps-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CE719AFEFC7B1A7A2C6BD97D /* [CP] Embed Pods Frameworks */ = {
+		D12CBDA6EF425C6C8FC9906E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -472,26 +493,22 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CFE0B0F625F10B65842D9DAA /* [CP] Check Pods Manifest.lock */ = {
+		F1DC3B0F25ADEDFCB7499B84 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-testingrnapps-testingrnappsTests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-testingrnapps-testingrnappsTests/Pods-testingrnapps-testingrnappsTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -540,6 +557,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* testingrnappsTests.m in Sources */,
+				DD951822285A218100856ACF /* BridgingFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				DD951821285A218100856ACF /* BridgingFile.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
+				DD951823285A218100856ACF /* BridgingFile.swift in Sources */,
 				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DCD954D1E0B4F2C00145EB5 /* testingrnappsTests.m in Sources */,
+				DD951824285A218100856ACF /* BridgingFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,10 +620,11 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E699AE357232EBEE269D1FD /* Pods-testingrnapps-testingrnappsTests.debug.xcconfig */;
+			baseConfigurationReference = 3D39DC8F9E93A4A221D19365 /* Pods-testingrnapps-testingrnappsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -617,16 +639,20 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnappsTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testingrnapps.app/testingrnapps";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2758251B4658BEC780892B2F /* Pods-testingrnapps-testingrnappsTests.release.xcconfig */;
+			baseConfigurationReference = D24D093EBE969283BB8576F7 /* Pods-testingrnapps-testingrnappsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = testingrnappsTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -638,13 +664,15 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnappsTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testingrnapps.app/testingrnapps";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 414829C8F038B024F4B19F86 /* Pods-testingrnapps.debug.xcconfig */;
+			baseConfigurationReference = 3603AE1B43763E66410AB763 /* Pods-testingrnapps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -663,6 +691,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = testingrnapps;
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnapps-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -671,7 +700,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A19940460D2384137E82525 /* Pods-testingrnapps.release.xcconfig */;
+			baseConfigurationReference = EFC16DBF14706DD7B3A448EC /* Pods-testingrnapps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -685,6 +714,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = testingrnapps;
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnapps-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -696,6 +726,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -712,6 +743,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.testingrnapps-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnapps-tvOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -723,6 +757,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -739,6 +774,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.testingrnapps-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnapps-tvOS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -747,8 +784,10 @@
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -765,6 +804,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.testingrnapps-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnapps-tvOSTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testingrnapps-tvOS.app/testingrnapps-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -773,8 +815,10 @@
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -791,6 +835,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.testingrnapps-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "testingrnapps-tvOSTests-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/testingrnapps-tvOS.app/testingrnapps-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
@@ -829,7 +875,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -845,13 +891,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -891,7 +933,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -900,13 +942,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
