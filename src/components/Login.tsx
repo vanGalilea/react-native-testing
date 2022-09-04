@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
-import {StyleSheet, Text, TextInput, Pressable, View,} from 'react-native'
-import {Colors,} from 'react-native/Libraries/NewAppScreen'
-
+import {StyleSheet, Text, TextInput, Pressable, View} from 'react-native'
+import {Colors} from 'react-native/Libraries/NewAppScreen'
 
 // @ts-ignore
 export default ({onSubmit}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const handleSubmit = ()=> {
+  const handleSubmit = () => {
     setUsername('')
     setPassword('')
     onSubmit({username, password})
@@ -18,13 +17,13 @@ export default ({onSubmit}) => {
       <View style={styles.sectionContainer}>
         <TextInput
           placeholder="Username"
-          onChangeText={(text => setUsername(text))}
+          onChangeText={text => setUsername(text)}
           value={username}
         />
         <TextInput
           secureTextEntry={true}
           placeholder="Password"
-          onChangeText={(text => setPassword(text))}
+          onChangeText={text => setPassword(text)}
           value={password}
         />
         <Pressable style={styles.button} onPress={handleSubmit}>
@@ -32,8 +31,8 @@ export default ({onSubmit}) => {
         </Pressable>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   body: {
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   },
   sectionContainer: {
     padding: 24,
-    alignItems: "center"
+    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 24,
@@ -52,8 +51,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 6,
     margin: 6,
-    backgroundColor: "#9e9ef8",
-    justifyContent: "center",
-    alignItems: "center"
-  }
+    backgroundColor: '#9e9ef8',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 })

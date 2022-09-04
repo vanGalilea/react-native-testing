@@ -1,18 +1,22 @@
 import React, {useEffect, useState} from 'react'
-import {StatusBar, StyleSheet, Text, Pressable, View} from 'react-native'
+import {Pressable, StatusBar, StyleSheet, Text, View} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 import Video from 'react-native-video'
+import {useNavigation} from '@react-navigation/native'
+import {NavigationProps} from './App'
 
 const SOME_VIDEO =
-  'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4'
+  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
 // @ts-ignore
-export default ({navigation}) => {
+export default () => {
+  const {setOptions} = useNavigation<NavigationProps>()
+
   const [isPlaying, setIsPlaying] = useState(false)
   const [isFullScreen, setIsFullScreen] = useState(false)
 
   useEffect(() => {
-    navigation.setOptions({headerShown: !isFullScreen})
-  }, [isFullScreen])
+    setOptions({headerShown: !isFullScreen})
+  }, [isFullScreen, setOptions])
 
   const showFullScreen = () => setIsFullScreen(true)
   const exitFullScreen = () => setIsFullScreen(false)

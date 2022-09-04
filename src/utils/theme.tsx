@@ -1,8 +1,19 @@
-import React, {createContext, useContext} from 'react'
+import React, {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useState,
+} from 'react'
 
-const ThemeContext = createContext(null)
+export type ThemeType = 'dark' | 'light'
+type ThemeContextType = {
+  theme: ThemeType
+  setTheme: Dispatch<SetStateAction<ThemeType>>
+}
+const ThemeContext = createContext<ThemeContextType | null>(null)
 
-function useTheme() {
+const useTheme = () => {
   const context = useContext(ThemeContext)
   if (!context) {
     throw new Error('useTheme should be used within a ThemeProvider')
@@ -10,10 +21,15 @@ function useTheme() {
   return context
 }
 
-function ThemeProvider({initialTheme = 'light', ...props}) {
-  const [theme, setTheme] = React.useState(initialTheme)
-  // @ts-ignore
-  return <ThemeContext.Provider value={[theme, setTheme]} {...props} />
+const ThemeProvider = ({
+  initialTheme = 'light',
+  ...props
+}: {
+  initialTheme: ThemeType
+  children: React.ReactNode
+}): JSX.Element => {
+  const [theme, setTheme] = useState(initialTheme)
+  return <ThemeContext.Provider value={{theme, setTheme}} {...props} />
 }
 
 export {useTheme, ThemeProvider}

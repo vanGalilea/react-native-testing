@@ -1,7 +1,14 @@
 import React from 'react'
-import {fireEvent, render, waitFor} from '@testing-library/react-native'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react-native'
 import App from '../src/components/App'
-import {expect, it, jest} from '@jest/globals'
+
+afterEach(cleanup)
 
 //mocking async storage module
 const mockedSetItem = jest.fn()
@@ -10,7 +17,8 @@ jest.mock('@react-native-community/async-storage', () => ({
 }))
 
 it('renders/navigates throughout app screens', async () => {
-  const {getByText} = render(<App />)
+  render(<App />)
+  const {getByText} = screen
   const homeText = getByText(/home/i)
   expect(homeText).not.toBeNull()
   fireEvent.press(getByText(/counter/i))

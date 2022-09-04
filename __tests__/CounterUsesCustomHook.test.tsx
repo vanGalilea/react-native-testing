@@ -1,14 +1,20 @@
-import 'react-native'
 import React from 'react'
-import {act, fireEvent, render} from '@testing-library/react-native'
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from '@testing-library/react-native'
 import CounterUsesCustomHook from '../src/components/CounterUsesCustomHook'
 import useCounter from '../src/hooks/useCounter'
 import {renderHook} from '@testing-library/react-hooks'
-import {expect, it, test} from '@jest/globals'
 
-//testing with the component
+afterEach(cleanup)
+
 it('exposes the count and increment/decrement functions', () => {
-  const {getByText} = render(<CounterUsesCustomHook />)
+  render(<CounterUsesCustomHook />)
+  const {getByText} = screen
 
   const decrement = getByText(/decrement/i)
   const increment = getByText(/increment/i)
@@ -22,9 +28,9 @@ it('exposes the count and increment/decrement functions', () => {
 })
 
 // @ts-ignore
-function setup({initialProps} = {}) {
+const setup = ({initialProps} = {}) => {
   const result: any = {current: null}
-  function TestComponent(props: any) {
+  const TestComponent = (props: any) => {
     result.current = useCounter(props)
     return null
   }
@@ -32,8 +38,7 @@ function setup({initialProps} = {}) {
   return result
 }
 
-//testing without component
-test('exposes the count and increment/decrement functions', () => {
+it('exposes the count and increment/decrement functions-  without component', () => {
   const result = setup()
   expect(result.current.count).toBe(0)
   act(() => result.current.increment())
@@ -42,12 +47,12 @@ test('exposes the count and increment/decrement functions', () => {
   expect(result.current.count).toBe(0)
 })
 
-test('allows customization of the initial count', () => {
+it('allows customization of the initial count', () => {
   const result = setup({initialProps: {initialCount: 3}})
   expect(result.current.count).toBe(3)
 })
 
-test('allows customization of the step', () => {
+it('allows customization of the step', () => {
   const result = setup({initialProps: {step: 2}})
   expect(result.current.count).toBe(0)
   act(() => result.current.increment())
@@ -56,7 +61,7 @@ test('allows customization of the step', () => {
   expect(result.current.count).toBe(0)
 })
 
-test('exposes the count and increment/decrement functions', () => {
+it('exposes the count and increment/decrement functions- hook only', () => {
   const {result} = renderHook(useCounter)
   expect(result.current.count).toBe(0)
   act(() => result.current.increment())

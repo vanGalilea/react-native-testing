@@ -1,14 +1,14 @@
-import 'react-native'
 import React from 'react'
-import {render} from '@testing-library/react-native'
+import {cleanup, render, screen} from '@testing-library/react-native'
 import ListWithFetch from '../src/components/ListWithFetch'
 import {server} from '../src/test/mocks/server'
 import {rest} from 'msw'
 
+afterEach(cleanup)
+
 test('displays images from the server', async () => {
-  const {getByLabelText, findAllByLabelText, queryByLabelText} = render(
-    <ListWithFetch />,
-  )
+  render(<ListWithFetch />)
+  const {getByLabelText, findAllByLabelText, queryByLabelText} = screen
 
   // show loading spinner
   const loadingSpinner = getByLabelText(/loader/i)
@@ -35,9 +35,8 @@ test('displays error upon error esponse from server', async () => {
       },
     ),
   )
-  const {getByLabelText, getByText, findByLabelText, queryByLabelText} = render(
-    <ListWithFetch />,
-  )
+  render(<ListWithFetch />)
+  const {findByLabelText, getByLabelText, getByText, queryByLabelText} = screen
 
   // show loading spinner
   const loadingSpinner = getByLabelText(/loader/i)

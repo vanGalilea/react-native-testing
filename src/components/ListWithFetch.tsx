@@ -9,7 +9,7 @@ export default () => {
   const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    const fetchData = async () => {
       setLoading(true)
       try {
         const response = await axios.get(
@@ -22,7 +22,9 @@ export default () => {
       } finally {
         setLoading(false)
       }
-    })()
+    }
+
+    fetchData()
   }, [])
 
   return (
