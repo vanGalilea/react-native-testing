@@ -1,8 +1,15 @@
 import 'react-native'
 import React from 'react'
-import {fireEvent, render} from '@testing-library/react-native'
-import Video from '../src/components/Video'
-import {StatusBar} from 'react-native'
+import {
+  act,
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react-native'
+import App from '../src/components/App'
+import {useNavigationMock} from '../src/test/test-utils'
 
 // 'react-native-video' is being mocked in /__mocks__/react-native-video.ts
 
@@ -10,11 +17,21 @@ const navigationMock = {
   setOptions: jest.fn(),
 }
 
+jest.fn(useNavigationMock).mockReturnValue(navigationMock)
+jest.mock('@react-native-community/async-storage', () => ({
+  setItem: jest.fn(),
+}))
+
+afterEach(cleanup)
+
 it('renders/navigates throughout app screens', async () => {
-  const {getByText, getByA11yLabel} = render(
-    <Video navigation={navigationMock} />,
-  )
-  const video = getByA11yLabel(/video component/i)
+  render(<App />)
+  const {getByText, getAllByLabelText} = screen
+  const videoText = getByText(/video/i)
+  expect(videoText).not.toBeNull()
+  fireEvent.press(getByText(/video/i))
+
+  const [video] = getAllByLabelText(/video component/i)
   const enterFullScreenButton = getByText(/full screen/i)
   const pauseStartButton = getByText(/pause\/start/i)
 
@@ -38,9 +55,6 @@ it('renders/navigates throughout app screens', async () => {
     height: 200,
     zIndex: 5,
   })
-  // @ts-ignore
-  expect(StatusBar._propsStack[0].hidden.value).toBeTruthy()
-
   //play video and exit full screen mode
   const pauseStartFSButton = getByText(/pause \/ start/i)
   fireEvent.press(pauseStartFSButton)
@@ -48,5 +62,7 @@ it('renders/navigates throughout app screens', async () => {
 
   const exitFullScreenButton = getByText(/exit full screen/i)
   fireEvent.press(exitFullScreenButton)
-  expect(video.props.fullscreen).toBeFalsy()
+  await waitFor(() => {
+    expect(video.props.fullscreen).toBeFalsy()
+  })
 })

@@ -1,55 +1,69 @@
 import React from 'react'
-import {Pressable, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View} from 'react-native'
+import {
+  Pressable,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
-import {SCREENS} from './App'
+import {NavigationProps, SCREENS} from './App'
+import {useNavigation} from '@react-navigation/native'
 
-// @ts-ignore
-export default ({ navigation }) => {
+export default () => {
+  const {navigate} = useNavigation<NavigationProps>()
+
   return (
     <View style={styles.body}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={{flex: 1}}>
-        <ScrollView style={{flex: 1}} contentInsetAdjustmentBehavior="automatic">
+        <ScrollView
+          style={{flex: 1}}
+          contentInsetAdjustmentBehavior="automatic"
+        >
           <View style={styles.innerScrollView}>
             <Text>Go to component...</Text>
             <View>
-              {
-                Object.keys(SCREENS).map((key, i)=> {
-                  const screenName = SCREENS[key]
-                  if (screenName === SCREENS.HOME) return null
-
-                  return (
-                    <Pressable
-                      key={i} style={styles.button}
-                      onPress={() => navigation.navigate(screenName)}
-                    >
-                      <Text>{screenName}</Text>
-                    </Pressable>
-                  )
+              {Object.keys(SCREENS).map((key, i) => {
+                const screenName = SCREENS[key]
+                if (screenName === SCREENS.HOME) {
+                  return null
                 }
-              )}
+
+                return (
+                  <Pressable
+                    key={i}
+                    style={styles.button}
+                    onPress={() => navigate(screenName)}
+                  >
+                    <Text>{screenName}</Text>
+                  </Pressable>
+                )
+              })}
             </View>
           </View>
         </ScrollView>
       </SafeAreaView>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   body: {
     backgroundColor: Colors.white,
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
   },
   innerScrollView: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 16
+    padding: 16,
   },
   sectionContainer: {
     padding: 24,
-    alignItems: "center"
+    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 24,
@@ -60,8 +74,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 6,
     margin: 6,
-    backgroundColor: "#9ef8d4",
-    justifyContent: "center",
-    alignItems: "center"
-  }
+    backgroundColor: '#9ef8d4',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 })

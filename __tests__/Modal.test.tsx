@@ -1,20 +1,26 @@
-import 'react-native'
-// @ts-ignore
 import React from 'react'
-import {fireEvent, render, waitFor} from '@testing-library/react-native'
-import {expect, it} from '@jest/globals'
+import {
+  fireEvent,
+  render,
+  waitFor,
+  cleanup,
+  screen,
+} from '@testing-library/react-native'
 import ModalScreen from '../src/components/Modal'
+import {ModalProps} from 'react-native'
 
 //the modal component is automatically mocked by RN and apparently contains a bug which make the modal (and it's children) always visible in the test tree
 //this is a hack which fix this issue
 jest.mock('react-native/Libraries/Modal/Modal', () => {
   const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
-  // @ts-ignore
-  return props => <Modal {...props} />
+  return (props: ModalProps) => <Modal {...props} />
 })
 
+afterEach(cleanup)
+
 it('renders modal screen correctly', async () => {
-  const {getByText} = render(<ModalScreen />)
+  render(<ModalScreen />)
+  const {getByText} = screen
 
   expect(() => getByText(/hello world/i)).toThrow(
     'Unable to find an element with text: /hello world/i',

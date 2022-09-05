@@ -3,10 +3,12 @@ import {Text, View} from 'react-native'
 import Login from './Login'
 import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
+import {NavigationProps} from './App'
 
-const ENDPOINT_URL = "https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login"
+const ENDPOINT_URL =
+  'https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login'
 // @ts-ignore
-const formSubmissionReducer = (state, action)=> {
+const formSubmissionReducer = (state, action) => {
   switch (action.type) {
     case 'START': {
       return {status: 'pending', responseData: null, errorMessage: null}
@@ -31,7 +33,7 @@ const formSubmissionReducer = (state, action)=> {
 }
 
 // @ts-ignore
-const useFormSubmission = ({endpoint, data})=> {
+const useFormSubmission = ({endpoint, data}) => {
   const [state, dispatch] = React.useReducer(formSubmissionReducer, {
     status: 'idle',
     responseData: null,
@@ -41,8 +43,8 @@ const useFormSubmission = ({endpoint, data})=> {
   const fetchBody = data ? JSON.stringify(data) : null
 
   React.useEffect(() => {
-    if (fetchBody) {
-      (async ()=> {
+    const fetchData = async () => {
+      if (fetchBody) {
         dispatch({type: 'START'})
         try {
           const response = await fetch(endpoint, {
@@ -55,16 +57,17 @@ const useFormSubmission = ({endpoint, data})=> {
           const responseData = await response.json()
           dispatch({type: 'RESOLVE', responseData})
         } catch (error) {
-            dispatch({type: 'REJECT', error})
+          dispatch({type: 'REJECT', error})
         }
-      })()
+      }
     }
+    fetchData()
   }, [fetchBody, endpoint])
 
   return state
 }
 
-const Spinner = ()=> {
+const Spinner = () => {
   return (
     <View accessibilityLabel="loading...">
       <Text>loading...</Text>
@@ -72,22 +75,24 @@ const Spinner = ()=> {
   )
 }
 
-// @ts-ignore
 export default () => {
-  const navigation = useNavigation()
+  const {navigate} = useNavigation<NavigationProps>()
   const [formData, setFormData] = React.useState(null)
   const {status, responseData, errorMessage} = useFormSubmission({
     endpoint: ENDPOINT_URL,
     data: formData,
   })
   const token = responseData?.token
-  // @ts-ignore
+
   React.useEffect(() => {
-    if (token) {
-      (async ()=> await AsyncStorage.setItem('token', token))()
-      navigation.navigate("Home")
+    const setAndNavigate = async () => {
+      if (token) {
+        await AsyncStorage.setItem('token', token)
+        navigate('Home')
+      }
     }
-  }, [token])
+    setAndNavigate()
+  }, [token, navigate])
 
   if (status === 'resolved') {
     // TODO: navigate away on submission success
@@ -96,7 +101,9 @@ export default () => {
 
   return (
     <>
-      <Login onSubmit={(data: React.SetStateAction<null>) => setFormData(data)} />
+      <Login
+        onSubmit={(data: React.SetStateAction<null>) => setFormData(data)}
+      />
       {status === 'pending' ? <Spinner /> : null}
       <Text>{errorMessage}</Text>
     </>

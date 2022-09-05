@@ -25,6 +25,8 @@ const EXTRA_DATA = [
   'Cheesy Mushroom',
 ]
 
+const NETWORK_DELAY = 1000
+
 const Item = ({title}: {title: string}) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
@@ -41,16 +43,18 @@ export default () => {
     setTimeout(() => {
       setRefreshing(false)
       setData(DATA)
-    }, 2000)
+    }, NETWORK_DELAY)
   }
 
   const onEndReached = () => {
-    if (data.length > 15) return null
+    if (data.length > 15) {
+      return null
+    }
     setLoadingMore(true)
     setTimeout(() => {
       setData([...data, ...EXTRA_DATA])
       setLoadingMore(false)
-    }, 2000)
+    }, NETWORK_DELAY)
   }
 
   return (

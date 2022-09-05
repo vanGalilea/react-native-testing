@@ -1,12 +1,17 @@
 import 'react-native'
 import React from 'react'
-import {fireEvent, render, waitFor} from '@testing-library/react-native'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react-native'
 import LoginSubmission from '../src/components/LoginSubmission'
-import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
+import {useNavigationMock} from '../src/test/test-utils'
 
 jest.mock('@react-native-community/async-storage', () => ({setItem: jest.fn()}))
-
 jest.mock('@react-navigation/native', () => {
   return {
     createNavigatorFactory: jest.fn(),
@@ -18,24 +23,22 @@ jest.mock('@react-navigation/stack', () => ({
 }))
 jest.mock('@react-native-community/masked-view', () => ({}))
 
+afterEach(cleanup)
 beforeEach(() => {
-  // @ts-ignore
-  useNavigation.mockReset()
+  useNavigationMock.mockReset()
 })
-
 it('renders correctly', async () => {
+  const fetchMock = global.fetch as jest.MockedFunction<typeof global.fetch>
   const mockNavigate = jest.fn()
-  // @ts-ignore
-  useNavigation.mockImplementation(() => ({navigate: mockNavigate}))
-  const fakeResponse = Promise.resolve({token: 'fake-token'})
-  // @ts-ignore
-  global.fetch.mockResolvedValueOnce({
+  useNavigationMock.mockImplementation(() => ({navigate: mockNavigate}))
+  fetchMock.mockResolvedValueOnce({
     json: () => Promise.resolve({token: 'fake-token'}),
-  })
-
+  } as Response | Awaited<Response>)
   const username = 'chucknorris'
   const password = 'i need no password'
-  const {getByText, getByPlaceholderText} = render(<LoginSubmission />)
+
+  render(<LoginSubmission />)
+  const {getByText, getByPlaceholderText} = screen
   const button = getByText(/submit/i)
 
   fireEvent.changeText(getByPlaceholderText(/username/i), username)
@@ -43,8 +46,7 @@ it('renders correctly', async () => {
   fireEvent.press(button)
 
   getByText(/loading/i)
-  // @ts-ignore
-  expect(global.fetch).toHaveBeenCalledWith(
+  expect(fetchMock).toHaveBeenCalledWith(
     'https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login',
     {
       method: 'POST',
@@ -52,14 +54,13 @@ it('renders correctly', async () => {
       headers: {'content-type': 'application/json'},
     },
   )
-  // @ts-ignore
-  expect(global.fetch.mock.calls).toMatchInlineSnapshot(`
-    Array [
-      Array [
+  expect(fetchMock.mock.calls).toMatchInlineSnapshot(`
+    [
+      [
         "https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login",
-        Object {
-          "body": "{\\"username\\":\\"chucknorris\\",\\"password\\":\\"i need no password\\"}",
-          "headers": Object {
+        {
+          "body": "{"username":"chucknorris","password":"i need no password"}",
+          "headers": {
             "content-type": "application/json",
           },
           "method": "POST",

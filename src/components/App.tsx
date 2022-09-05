@@ -3,7 +3,10 @@ import React from 'react'
 import Counter from './Counter'
 import LoginSubmission from './LoginSubmission'
 import {NavigationContainer} from '@react-navigation/native'
-import {createStackNavigator} from '@react-navigation/stack'
+import {
+  createStackNavigator,
+  StackNavigationProp,
+} from '@react-navigation/stack'
 import EasyButton from './EasyButton'
 import Home from './Home'
 import {ThemeProvider} from '../utils/theme'
@@ -12,9 +15,21 @@ import Modal from './Modal'
 import FlatList from './FlatList'
 import ListWithFetch from './ListWithFetch'
 
-const Stack = createStackNavigator()
+export type RootStackParamList = {
+  Home: undefined
+  Counter: undefined
+  Login: undefined
+  EasyButton: undefined
+  Video: undefined
+  Modal: undefined
+  FlatList: undefined
+  ListWithFetch: undefined
+}
+export type NavigationProps = StackNavigationProp<RootStackParamList>
 
-export const SCREENS: Record<string, string> = {
+export const Stack = createStackNavigator<RootStackParamList>()
+
+export const SCREENS: Record<string, keyof RootStackParamList> = {
   HOME: 'Home',
   COUNTER: 'Counter',
   LOGIN: 'Login',

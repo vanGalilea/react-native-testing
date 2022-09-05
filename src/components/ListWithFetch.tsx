@@ -1,7 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import {ActivityIndicator, Image, StyleSheet, Text, View} from 'react-native'
+import {
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native'
 import {Colors} from 'react-native/Libraries/NewAppScreen'
 import axios from 'axios'
+
+const AVATAR_SIZE = 68
 
 export default () => {
   const [flavorsData, setFlavorsData] = useState([])
@@ -9,11 +18,11 @@ export default () => {
   const [hasError, setHasError] = useState(false)
 
   useEffect(() => {
-    ;(async () => {
+    const fetchData = async () => {
       setLoading(true)
       try {
         const response = await axios.get(
-          'https://4ec38857-2800-4f07-838e-535a78cf7d51.mock.pstmn.io/flavors',
+          'https://random-data-api.com/api/v2/users?size=10',
         )
         // @ts-ignore
         setFlavorsData(response.data)
@@ -22,13 +31,14 @@ export default () => {
       } finally {
         setLoading(false)
       }
-    })()
+    }
+
+    fetchData()
   }, [])
 
   return (
-    <View style={styles.body}>
-      <Text>The Ice Cream Shoppe</Text>
-      <Text>Today's Flavors</Text>
+    <ScrollView>
+      <Text>The Funky Users DB</Text>
       {loading && (
         <ActivityIndicator
           color={'#000'}
@@ -41,17 +51,27 @@ export default () => {
           <Text>Error oopsie!</Text>
         </View>
       )}
-      {flavorsData.map(({name, image}) => (
-        <View key={name} style={styles.flavorContainer}>
-          <Image
-            source={{uri: image}}
-            style={styles.image}
-            accessibilityLabel={`${name}-flavor`}
-          />
-          <Text>{name}</Text>
-        </View>
-      ))}
-    </View>
+      {flavorsData.map(
+        ({first_name, last_name, uid, avatar, email, phone_number}) => (
+          <View
+            key={uid}
+            style={styles.userContainer}
+            accessibilityLabel={`${uid}-user-container`}>
+          >
+            <View style={styles.avatarWrapper}>
+              <Image source={{uri: avatar}} style={styles.image} />
+            </View>
+            <View style={styles.userInfoContainer}>
+              <Text>
+                {first_name} {last_name}
+              </Text>
+              <Text>{email}</Text>
+              <Text>{phone_number}</Text>
+            </View>
+          </View>
+        ),
+      )}
+    </ScrollView>
   )
 }
 
@@ -62,6 +82,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   errorContainer: {backgroundColor: '#C63939', padding: 16, borderRadius: 6},
-  flavorContainer: {alignItems: 'center', margin: 8},
-  image: {width: 100, height: 100},
+  userContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    padding: 16,
+    marginBottom: 8,
+    flex: 1,
+  },
+  avatarWrapper: {
+    backgroundColor: 'rgba(88,186,224,0.65)',
+    padding: 16,
+    borderRadius: AVATAR_SIZE,
+  },
+  userInfoContainer: {flex: 1, marginLeft: 16},
+  image: {height: AVATAR_SIZE, width: AVATAR_SIZE},
 })
