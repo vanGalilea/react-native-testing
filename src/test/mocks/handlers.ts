@@ -1,21 +1,409 @@
 import {rest} from 'msw'
 
 export const handlers = [
-  rest.get(
-    'https://4ec38857-2800-4f07-838e-535a78cf7d51.mock.pstmn.io/flavors',
-    (req, res, ctx) => {
-      return res(
-        ctx.json([
-          {
-            name: 'Mint chip',
-            image: 'data:data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASw',
+  rest.get('https://random-data-api.com/api/v2/users', (req, res, ctx) => {
+    return res(
+      ctx.json([
+        {
+          id: 666,
+          uid: 'fb7cd002-58df-45bb-a736-233b8ed7de6c',
+          password: 'F6OtGnKTps',
+          first_name: 'Gerard',
+          last_name: 'Ebert',
+          username: 'gerard.ebert',
+          email: 'gerard.ebert@email.com',
+          avatar:
+            'https://robohash.org/nostrumconsequaturquidem.png?size=300x300&set=set1',
+          gender: 'Genderfluid',
+          phone_number: '+7 219.184.9980 x8655',
+          social_insurance_number: '567184460',
+          date_of_birth: '1988-01-26',
+          employment: {
+            title: 'Administration Facilitator',
+            key_skill: 'Confidence',
           },
-          {
-            name: 'Vanilla',
-            image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASw',
+          address: {
+            city: 'Weissnatburgh',
+            street_name: 'Eric Knoll',
+            street_address: '3637 Senger Estate',
+            zip_code: '74919-1728',
+            state: 'Utah',
+            country: 'United States',
+            coordinates: {
+              lat: 51.64801557811256,
+              lng: 138.12996688661605,
+            },
           },
-        ]),
-      )
-    },
-  ),
+          credit_card: {
+            cc_number: '5191-9883-5175-7699',
+          },
+          subscription: {
+            plan: 'Standard',
+            status: 'Active',
+            payment_method: 'Cheque',
+            term: 'Payment in advance',
+          },
+        },
+        {
+          id: 8225,
+          uid: '3bede3b5-4e87-44fa-be2f-1015c9b9131d',
+          password: 'aAbxs9T7vC',
+          first_name: 'Tobie',
+          last_name: 'Kutch',
+          username: 'tobie.kutch',
+          email: 'tobie.kutch@email.com',
+          avatar: 'https://robohash.org/debitisetrem.png?size=300x300&set=set1',
+          gender: 'Genderqueer',
+          phone_number: '+255 (331) 704-5472',
+          social_insurance_number: '129297172',
+          date_of_birth: '1967-10-31',
+          employment: {
+            title: 'Direct Retail Associate',
+            key_skill: 'Organisation',
+          },
+          address: {
+            city: 'Wunschhaven',
+            street_name: 'Loren Ridges',
+            street_address: '6036 Mitchell Fall',
+            zip_code: '89073-7414',
+            state: 'Alabama',
+            country: 'United States',
+            coordinates: {
+              lat: 19.425828212309355,
+              lng: 48.57324804324742,
+            },
+          },
+          credit_card: {
+            cc_number: '5548-8480-9187-8371',
+          },
+          subscription: {
+            plan: 'Student',
+            status: 'Active',
+            payment_method: 'Cash',
+            term: 'Full subscription',
+          },
+        },
+        {
+          id: 8220,
+          uid: '957db1e8-efe0-40dc-8a79-219a33e44cc5',
+          password: '9EuFBN0ycD',
+          first_name: 'Hugh',
+          last_name: 'Kuhic',
+          username: 'hugh.kuhic',
+          email: 'hugh.kuhic@email.com',
+          avatar:
+            'https://robohash.org/authicsimilique.png?size=300x300&set=set1',
+          gender: 'Polygender',
+          phone_number: '+47 603.883.4525',
+          social_insurance_number: '914800339',
+          date_of_birth: '1981-11-15',
+          employment: {
+            title: 'Advertising Associate',
+            key_skill: 'Communication',
+          },
+          address: {
+            city: 'South Lynnside',
+            street_name: 'Herman Orchard',
+            street_address: '2522 Glover Square',
+            zip_code: '53986-7520',
+            state: 'Indiana',
+            country: 'United States',
+            coordinates: {
+              lat: -84.88051867969389,
+              lng: 50.54457832142509,
+            },
+          },
+          credit_card: {
+            cc_number: '4927-5080-5788-2882',
+          },
+          subscription: {
+            plan: 'Professional',
+            status: 'Pending',
+            payment_method: 'Alipay',
+            term: 'Full subscription',
+          },
+        },
+        {
+          id: 2836,
+          uid: '5d2f2c16-cd73-4348-bf9c-42957e7427a7',
+          password: 'Z4mGaWuE1M',
+          first_name: 'Fletcher',
+          last_name: 'Swift',
+          username: 'fletcher.swift',
+          email: 'fletcher.swift@email.com',
+          avatar:
+            'https://robohash.org/maximequaeaut.png?size=300x300&set=set1',
+          gender: 'Female',
+          phone_number: '+680 194.212.5372 x126',
+          social_insurance_number: '919703603',
+          date_of_birth: '1965-02-15',
+          employment: {
+            title: 'Banking Producer',
+            key_skill: 'Self-motivated',
+          },
+          address: {
+            city: 'Lemkeville',
+            street_name: 'Damian Landing',
+            street_address: '41544 Klocko Squares',
+            zip_code: '88487',
+            state: 'Wyoming',
+            country: 'United States',
+            coordinates: {
+              lat: -47.63539094916929,
+              lng: -45.053633246977114,
+            },
+          },
+          credit_card: {
+            cc_number: '6771-8930-6860-4810',
+          },
+          subscription: {
+            plan: 'Platinum',
+            status: 'Idle',
+            payment_method: 'Money transfer',
+            term: 'Full subscription',
+          },
+        },
+        {
+          id: 3444,
+          uid: '13dd9971-8083-4335-8235-aa35cddc0dff',
+          password: 'wQPRqxboc4',
+          first_name: 'Darin',
+          last_name: 'Howe',
+          username: 'darin.howe',
+          email: 'darin.howe@email.com',
+          avatar:
+            'https://robohash.org/excepturirationenihil.png?size=300x300&set=set1',
+          gender: 'Polygender',
+          phone_number: '+254 318.136.5040 x31515',
+          social_insurance_number: '329531107',
+          date_of_birth: '1990-08-02',
+          employment: {
+            title: 'Retail Analyst',
+            key_skill: 'Communication',
+          },
+          address: {
+            city: 'Lake Carleneberg',
+            street_name: 'Gregorio Drive',
+            street_address: '3133 Wendell Knolls',
+            zip_code: '09789-4893',
+            state: 'Georgia',
+            country: 'United States',
+            coordinates: {
+              lat: 76.16982860563795,
+              lng: 139.075628039996,
+            },
+          },
+          credit_card: {
+            cc_number: '4632-5035-2802-5886',
+          },
+          subscription: {
+            plan: 'Silver',
+            status: 'Active',
+            payment_method: 'Cheque',
+            term: 'Payment in advance',
+          },
+        },
+        {
+          id: 484,
+          uid: '8f1ff55c-2719-477e-88b6-b83dfdfa3bb9',
+          password: 'dWKimXRqwQ',
+          first_name: 'Dirk',
+          last_name: 'Kreiger',
+          username: 'dirk.kreiger',
+          email: 'dirk.kreiger@email.com',
+          avatar:
+            'https://robohash.org/voluptatemnihiladipisci.png?size=300x300&set=set1',
+          gender: 'Non-binary',
+          phone_number: '+7-7 1-644-754-4680 x734',
+          social_insurance_number: '282706878',
+          date_of_birth: '1971-02-16',
+          employment: {
+            title: 'Senior Farming Planner',
+            key_skill: 'Technical savvy',
+          },
+          address: {
+            city: 'North Derick',
+            street_name: 'Treutel Field',
+            street_address: '221 Ratke Hill',
+            zip_code: '22963',
+            state: 'Iowa',
+            country: 'United States',
+            coordinates: {
+              lat: 2.30958966187481,
+              lng: 93.91641899420529,
+            },
+          },
+          credit_card: {
+            cc_number: '4736-2496-1567-6059',
+          },
+          subscription: {
+            plan: 'Gold',
+            status: 'Pending',
+            payment_method: 'Bitcoins',
+            term: 'Full subscription',
+          },
+        },
+        {
+          id: 3841,
+          uid: '523b2095-9c02-43ff-ac9f-ca037fbbfbd2',
+          password: 'nofYI0tGXh',
+          first_name: 'Vince',
+          last_name: 'Hirthe',
+          username: 'vince.hirthe',
+          email: 'vince.hirthe@email.com',
+          avatar:
+            'https://robohash.org/idcupiditatenostrum.png?size=300x300&set=set1',
+          gender: 'Genderfluid',
+          phone_number: '+32 894.226.2558 x8614',
+          social_insurance_number: '980277180',
+          date_of_birth: '1961-04-29',
+          employment: {
+            title: 'Retail Producer',
+            key_skill: 'Problem solving',
+          },
+          address: {
+            city: 'Melidaland',
+            street_name: 'Usha Motorway',
+            street_address: '98914 Dick Camp',
+            zip_code: '47151-5583',
+            state: 'Nebraska',
+            country: 'United States',
+            coordinates: {
+              lat: 59.19559287415632,
+              lng: 179.91452555752824,
+            },
+          },
+          credit_card: {
+            cc_number: '4481537003061',
+          },
+          subscription: {
+            plan: 'Free Trial',
+            status: 'Blocked',
+            payment_method: 'Paypal',
+            term: 'Monthly',
+          },
+        },
+        {
+          id: 4675,
+          uid: '034d9089-648c-4783-90a4-aee551790fff',
+          password: '8PrAGbQ9fV',
+          first_name: 'Normand',
+          last_name: 'Stroman',
+          username: 'normand.stroman',
+          email: 'normand.stroman@email.com',
+          avatar:
+            'https://robohash.org/molestiaeetullam.png?size=300x300&set=set1',
+          gender: 'Genderqueer',
+          phone_number: '+351 918.661.4660 x08495',
+          social_insurance_number: '536767999',
+          date_of_birth: '1973-06-08',
+          employment: {
+            title: 'Consulting Designer',
+            key_skill: 'Networking skills',
+          },
+          address: {
+            city: 'East Alexis',
+            street_name: 'Gulgowski Spurs',
+            street_address: '148 Williamson Landing',
+            zip_code: '87880',
+            state: 'Pennsylvania',
+            country: 'United States',
+            coordinates: {
+              lat: -63.32195389231552,
+              lng: -32.50464642808757,
+            },
+          },
+          credit_card: {
+            cc_number: '4105734234100',
+          },
+          subscription: {
+            plan: 'Basic',
+            status: 'Blocked',
+            payment_method: 'Cheque',
+            term: 'Full subscription',
+          },
+        },
+        {
+          id: 3609,
+          uid: '33e808ce-f0a0-4da3-baf0-35ee559e8c8b',
+          password: 'HBbMLp670Z',
+          first_name: 'Elijah',
+          last_name: 'Hilll',
+          username: 'elijah.hilll',
+          email: 'elijah.hilll@email.com',
+          avatar:
+            'https://robohash.org/atetvoluptate.png?size=300x300&set=set1',
+          gender: 'Male',
+          phone_number: '+1-684 (590) 495-1487 x52369',
+          social_insurance_number: '439985565',
+          date_of_birth: '1976-03-14',
+          employment: {
+            title: 'Senior Consulting Assistant',
+            key_skill: 'Technical savvy',
+          },
+          address: {
+            city: 'Schmittchester',
+            street_name: 'Boyer Rest',
+            street_address: '3639 Jacqualine Terrace',
+            zip_code: '48032-4432',
+            state: 'Colorado',
+            country: 'United States',
+            coordinates: {
+              lat: -77.33433004589763,
+              lng: 129.47445347437582,
+            },
+          },
+          credit_card: {
+            cc_number: '4805-3712-9121-0551',
+          },
+          subscription: {
+            plan: 'Business',
+            status: 'Blocked',
+            payment_method: 'Cheque',
+            term: 'Full subscription',
+          },
+        },
+        {
+          id: 6701,
+          uid: '9af52246-9d34-4474-bff7-86bfc7a1d5bd',
+          password: 'VOrcwZl7T3',
+          first_name: 'Marg',
+          last_name: 'Konopelski',
+          username: 'marg.konopelski',
+          email: 'marg.konopelski@email.com',
+          avatar:
+            'https://robohash.org/debitisrerumdoloremque.png?size=300x300&set=set1',
+          gender: 'Agender',
+          phone_number: '+254 1-639-458-7716 x74678',
+          social_insurance_number: '660150152',
+          date_of_birth: '2001-03-11',
+          employment: {
+            title: 'Internal Legal Supervisor',
+            key_skill: 'Fast learner',
+          },
+          address: {
+            city: 'Port Hilmaside',
+            street_name: 'Isiah Knolls',
+            street_address: '895 Myong Meadows',
+            zip_code: '76916',
+            state: 'New Mexico',
+            country: 'United States',
+            coordinates: {
+              lat: -62.266196097770745,
+              lng: 119.16023026724895,
+            },
+          },
+          credit_card: {
+            cc_number: '4756-0447-4603-9730',
+          },
+          subscription: {
+            plan: 'Business',
+            status: 'Pending',
+            payment_method: 'WeChat Pay',
+            term: 'Payment in advance',
+          },
+        },
+      ]),
+    )
+  }),
 ]
