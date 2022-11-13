@@ -6,7 +6,6 @@ import {
   fireEvent,
   render,
   screen,
-  waitFor,
 } from '@testing-library/react-native'
 import App from '../src/components/App'
 import {useNavigationMock} from '../src/test/test-utils'
@@ -56,6 +55,6 @@ it('renders/navigates throughout app screens', async () => {
   fireEvent.press(getByText(/pause \/ start/i))
   expect(video).toHaveProp('paused', false)
 
-  fireEvent.press(getByText(/exit full screen/i))
+  act(() => fireEvent.press(getByText(/exit full screen/i)))
   expect(video).toHaveProp('fullscreen', false)
 })
