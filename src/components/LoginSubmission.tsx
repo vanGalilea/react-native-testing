@@ -95,7 +95,7 @@ export default () => {
   }, [token, navigate])
 
   if (status === 'resolved') {
-    // TODO: navigate away on submission success
+    navigate('Home')
     return null
   }
 

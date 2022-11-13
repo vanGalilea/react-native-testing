@@ -19,12 +19,10 @@ jest.mock('@react-native-community/async-storage', () => ({
 it('renders/navigates throughout app screens', async () => {
   render(<App />)
   const {getByText} = screen
-  const homeText = getByText(/home/i)
-  expect(homeText).not.toBeNull()
-  fireEvent.press(getByText(/counter/i))
 
+  expect(getByText(/home/i)).toBeVisible()
+  fireEvent.press(getByText(/counter/i))
   await waitFor(() => {
-    const counterText = getByText(/Current count:/i)
-    expect(counterText.props.children).toEqual(['Current count: ', 0])
+    expect(getByText(/Current count: 0/i)).toBeVisible()
   })
 })

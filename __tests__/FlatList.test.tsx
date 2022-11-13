@@ -33,7 +33,7 @@ it('scrolls to top and refreshes all items', async () => {
   render(<SectionList />)
   const {getByText, getByTestId} = screen
 
-  getByText(/pizza/i)
+  expect(getByText(/pizza/i)).toBeVisible()
   expect(() => getByText(/the impossible burger/i)).toThrow(
     'Unable to find an element with text: /the impossible burger/i',
   ) //intially not shown
@@ -43,6 +43,6 @@ it('scrolls to top and refreshes all items', async () => {
   })
 
   await waitFor(() => {
-    expect(getByText(/the impossible burger/i)).toBeTruthy()
+    expect(getByText(/the impossible burger/i)).toBeVisible()
   })
 })

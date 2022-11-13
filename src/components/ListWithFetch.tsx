@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {
   ActivityIndicator,
+  FlatList,
   Image,
+  ListRenderItem,
+  ListRenderItemInfo,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,6 +14,15 @@ import {Colors} from 'react-native/Libraries/NewAppScreen'
 import axios from 'axios'
 
 const AVATAR_SIZE = 68
+
+type UserType = {
+  first_name: string
+  last_name: string
+  uid: string
+  avatar: string
+  email: string
+  phone_number: string
+}
 
 export default () => {
   const [flavorsData, setFlavorsData] = useState([])
@@ -36,9 +48,32 @@ export default () => {
     fetchData()
   }, [])
 
+  const renderItem = ({
+    item: {first_name, last_name, uid, avatar, email, phone_number},
+  }: ListRenderItemInfo<UserType>) => {
+    return (
+      <View
+        key={uid}
+        style={styles.userContainer}
+        accessibilityLabel={`${uid}-user-container`}
+      >
+        <View style={styles.avatarWrapper}>
+          <Image source={{uri: avatar}} style={styles.image} />
+        </View>
+        <View style={styles.userInfoContainer}>
+          <Text>
+            {first_name} {last_name}
+          </Text>
+          <Text>{email}</Text>
+          <Text>{phone_number}</Text>
+        </View>
+      </View>
+    )
+  }
+
   return (
-    <ScrollView>
-      <Text>The Funky Users DB</Text>
+    <View>
+      <Text style={styles.titleText}>The Funky Users DB</Text>
       {loading && (
         <ActivityIndicator
           color={'#000'}
@@ -51,27 +86,12 @@ export default () => {
           <Text>Error oopsie!</Text>
         </View>
       )}
-      {flavorsData.map(
-        ({first_name, last_name, uid, avatar, email, phone_number}) => (
-          <View
-            key={uid}
-            style={styles.userContainer}
-            accessibilityLabel={`${uid}-user-container`}>
-          >
-            <View style={styles.avatarWrapper}>
-              <Image source={{uri: avatar}} style={styles.image} />
-            </View>
-            <View style={styles.userInfoContainer}>
-              <Text>
-                {first_name} {last_name}
-              </Text>
-              <Text>{email}</Text>
-              <Text>{phone_number}</Text>
-            </View>
-          </View>
-        ),
-      )}
-    </ScrollView>
+      <FlatList<UserType>
+        data={flavorsData}
+        renderItem={renderItem}
+        keyExtractor={item => item.uid}
+      />
+    </View>
   )
 }
 
@@ -81,6 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
+  titleText: {textAlign: 'center', fontSize: 20, fontWeight: 'bold'},
   errorContainer: {backgroundColor: '#C63939', padding: 16, borderRadius: 6},
   userContainer: {
     alignItems: 'center',

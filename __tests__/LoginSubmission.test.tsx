@@ -27,6 +27,7 @@ afterEach(cleanup)
 beforeEach(() => {
   useNavigationMock.mockReset()
 })
+
 it('renders correctly', async () => {
   const fetchMock = global.fetch as jest.MockedFunction<typeof global.fetch>
   const mockNavigate = jest.fn()
@@ -39,13 +40,13 @@ it('renders correctly', async () => {
 
   render(<LoginSubmission />)
   const {getByText, getByPlaceholderText} = screen
-  const button = getByText(/submit/i)
 
   fireEvent.changeText(getByPlaceholderText(/username/i), username)
   fireEvent.changeText(getByPlaceholderText(/password/i), password)
-  fireEvent.press(button)
+  fireEvent.press(getByText(/submit/i))
 
-  getByText(/loading/i)
+  expect(getByText(/loading/i)).toBeVisible()
+
   expect(fetchMock).toHaveBeenCalledWith(
     'https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login',
     {
@@ -69,7 +70,7 @@ it('renders correctly', async () => {
     ]
   `)
 
-  await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1))
+  await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(2))
   expect(mockNavigate).toHaveBeenCalledWith('Home')
   expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token')
 })

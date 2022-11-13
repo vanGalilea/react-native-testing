@@ -6,22 +6,13 @@ import {rest} from 'msw'
 
 afterEach(cleanup)
 
-test('displays images from the server', async () => {
+test('displays users from the server', async () => {
   render(<ListWithFetch />)
   const {getByLabelText, findAllByLabelText, queryByLabelText} = screen
 
-  // show loading spinner
-  const loadingSpinner = getByLabelText(/loader/i)
-  expect(loadingSpinner).not.toBeUndefined()
-
-  //load images from server
-  const userContainers = await findAllByLabelText(/user-container/i)
-  expect(userContainers).toHaveLength(10)
-
-  //loading spinner no longer shows
+  expect(getByLabelText(/loader/i)).toBeVisible()
+  expect(await findAllByLabelText(/user-container/i)).toHaveLength(10)
   expect(queryByLabelText(/loader/i)).toBeNull()
-
-  //no error is visible
   expect(queryByLabelText(/alert/i)).toBeNull()
 })
 
@@ -35,16 +26,8 @@ test('displays error upon error response from server', async () => {
   render(<ListWithFetch />)
   const {findByLabelText, getByLabelText, getByText, queryByLabelText} = screen
 
-  // show loading spinner
-  const loadingSpinner = getByLabelText(/loader/i)
-  expect(loadingSpinner).not.toBeUndefined()
-
-  //show error
-  const error = await findByLabelText('alert')
-  expect(error).not.toBeUndefined()
-  // name option doesn't work for this particular dom
-  expect(getByText('Error oopsie!')).not.toBeNull()
-
-  //loading spinner no longer shows
+  expect(getByLabelText(/loader/i)).toBeVisible()
+  expect(await findByLabelText(/alert/i)).toBeVisible()
+  expect(getByText('Error oopsie!')).toBeVisible()
   expect(queryByLabelText(/loader/i)).toBeNull()
 })

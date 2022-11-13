@@ -20,4 +20,5 @@ it('renders correctly', async () => {
   expect(submittedData).toEqual({password, username})
   expect(handleSubmit).toHaveBeenCalledWith({password, username})
   expect(handleSubmit).toHaveBeenCalledTimes(1)
+  expect(getByText(/you are authenticated!/i)).toBeVisible()
 })

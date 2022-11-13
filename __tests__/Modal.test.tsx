@@ -27,7 +27,7 @@ it('renders modal screen correctly', async () => {
   ) //modal is initially closed
 
   fireEvent.press(getByText(/show modal/i))
-  await waitFor(() => getByText(/hello world/i)) //modal is now visible
+  await waitFor(() => expect(getByText(/hello world/i)).toBeVisible()) //modal is now visible
 
   fireEvent.press(getByText(/hide modal/i))
   expect(() => getByText(/hide modal/i)).toThrow(

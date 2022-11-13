@@ -6,10 +6,20 @@ import {Colors} from 'react-native/Libraries/NewAppScreen'
 export default ({onSubmit}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const handleSubmit = () => {
     setUsername('')
     setPassword('')
+    setIsAuthenticated(true)
     onSubmit({username, password})
+  }
+
+  if (isAuthenticated) {
+    return (
+      <View style={styles.body}>
+        <Text style={styles.sectionTitle}>You are authenticated!</Text>
+      </View>
+    )
   }
 
   return (
