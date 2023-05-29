@@ -9,8 +9,7 @@ export default () => {
         animationType={'fade'}
         transparent
         visible={modalVisible}
-        onRequestClose={() => setModalVisible(false)}
-      >
+        onRequestClose={() => setModalVisible(false)}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
@@ -18,8 +17,7 @@ export default () => {
               style={{...styles.openButton, backgroundColor: '#2196F3'}}
               onPress={() => {
                 setModalVisible(!modalVisible)
-              }}
-            >
+              }}>
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
           </View>
@@ -30,13 +28,12 @@ export default () => {
         style={styles.openButton}
         onPress={() => {
           setModalVisible(true)
-        }}
-      >
+        }}>
         <Text style={styles.textStyle}>Show Modal</Text>
       </Pressable>
     </View>
   )
-}
+};
 
 const styles = StyleSheet.create({
   centeredView: {

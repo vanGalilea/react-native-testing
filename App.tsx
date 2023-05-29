@@ -1,18 +1,18 @@
 import React from 'react';
-import Counter from './Counter';
-import LoginSubmission from './LoginSubmission';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   createStackNavigator,
   StackNavigationProp,
 } from '@react-navigation/stack';
-import EasyButton from './EasyButton';
-import Home from './Home';
-import {ThemeProvider} from '../utils/theme';
-import Video from './Video';
-import Modal from './Modal';
-import FlatList from './FlatList';
-import ListWithFetch from './ListWithFetch';
+import Home from './src/components/Home';
+import EasyButton from './src/components/EasyButton';
+import Video from './src/components/Video';
+import FlatList from './src/components/FlatList';
+import Modal from './src/components/Modal';
+import { ThemeProvider } from './src/utils/theme';
+import ListWithFetch from './src/components/ListWithFetch';
+import LoginSubmission from './src/components/LoginSubmission';
+import Counter from './src/components/Counter';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -60,4 +60,4 @@ export default () => {
       </ThemeProvider>
     </>
   );
-};
+}

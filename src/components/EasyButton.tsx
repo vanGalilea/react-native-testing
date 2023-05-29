@@ -10,7 +10,7 @@ export default (props: any) => {
       <Text style={{color}}>{props.children || 'Click me!'}</Text>
     </Pressable>
   )
-}
+};
 
 const styles = StyleSheet.create({
   dark: {

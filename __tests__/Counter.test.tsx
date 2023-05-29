@@ -1,5 +1,10 @@
 import React from 'react'
-import {cleanup, fireEvent, render, screen} from '@testing-library/react-native'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from '@testing-library/react-native'
 import Counter from '../src/components/Counter'
 
 afterEach(cleanup)
@@ -17,4 +22,4 @@ it('renders correctly after in/decrement action', () => {
   expect(counterText.props.children).toEqual(['Current count: ', 1])
   fireEvent.press(decrement)
   expect(counterText.props.children).toEqual(['Current count: ', 0])
-})
+});

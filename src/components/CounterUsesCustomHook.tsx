@@ -19,7 +19,7 @@ export default () => {
       </View>
     </View>
   )
-}
+};
 
 const styles = StyleSheet.create({
   body: {

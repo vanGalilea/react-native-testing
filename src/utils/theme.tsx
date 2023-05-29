@@ -6,11 +6,11 @@ import React, {
   useState,
 } from 'react'
 
-export type ThemeType = 'dark' | 'light'
+export type ThemeType = 'dark' | 'light';
 type ThemeContextType = {
-  theme: ThemeType
-  setTheme: Dispatch<SetStateAction<ThemeType>>
-}
+  theme: ThemeType;
+  setTheme: Dispatch<SetStateAction<ThemeType>>;
+};
 const ThemeContext = createContext<ThemeContextType | null>(null)
 
 const useTheme = () => {
@@ -19,17 +19,17 @@ const useTheme = () => {
     throw new Error('useTheme should be used within a ThemeProvider')
   }
   return context
-}
+};
 
 const ThemeProvider = ({
   initialTheme = 'light',
   ...props
 }: {
-  initialTheme: ThemeType
-  children: React.ReactNode
+  initialTheme: ThemeType;
+  children: React.ReactNode;
 }): JSX.Element => {
   const [theme, setTheme] = useState(initialTheme)
   return <ThemeContext.Provider value={{theme, setTheme}} {...props} />
-}
+};
 
 export {useTheme, ThemeProvider}

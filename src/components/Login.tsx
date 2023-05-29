@@ -10,7 +10,7 @@ export default ({onSubmit}) => {
     setUsername('')
     setPassword('')
     onSubmit({username, password})
-  }
+  };
 
   return (
     <View style={styles.body}>
@@ -32,7 +32,7 @@ export default ({onSubmit}) => {
       </View>
     </View>
   )
-}
+};
 
 const styles = StyleSheet.create({
   body: {

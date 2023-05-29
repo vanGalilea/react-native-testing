@@ -3,7 +3,7 @@ GEM
   specs:
     CFPropertyList (3.0.6)
       rexml
-    activesupport (7.0.4.3)
+    activesupport (7.0.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -86,13 +86,13 @@ GEM
       rexml (~> 3.2.4)
 
 PLATFORMS
-  arm64-darwin-22
+  ruby
 
 DEPENDENCIES
   cocoapods (>= 1.11.3)
 
 RUBY VERSION
-   ruby 2.7.6p219
+   ruby 2.7.5p203
 
 BUNDLED WITH
-   2.4.12
+   2.3.21

@@ -65,7 +65,7 @@ const useFormSubmission = ({endpoint, data}) => {
   }, [fetchBody, endpoint])
 
   return state
-}
+};
 
 const Spinner = () => {
   return (
@@ -73,7 +73,7 @@ const Spinner = () => {
       <Text>loading...</Text>
     </View>
   )
-}
+};
 
 export default () => {
   const {navigate} = useNavigation<NavigationProps>()
@@ -108,4 +108,4 @@ export default () => {
       <Text>{errorMessage}</Text>
     </>
   )
-}
+};

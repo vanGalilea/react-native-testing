@@ -44,5 +44,5 @@ it('scrolls to top and refreshes all items', async () => {
 
   await waitFor(() => {
     expect(getByText(/the impossible burger/i)).toBeTruthy()
-  })
+  });
 })

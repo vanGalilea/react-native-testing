@@ -26,5 +26,5 @@ it('renders/navigates throughout app screens', async () => {
   await waitFor(() => {
     const counterText = getByText(/Current count:/i)
     expect(counterText.props.children).toEqual(['Current count: ', 0])
-  })
+  });
 })

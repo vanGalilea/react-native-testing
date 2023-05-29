@@ -44,7 +44,7 @@ export default () => {
       setRefreshing(false)
       setData(DATA)
     }, NETWORK_DELAY)
-  }
+  };
 
   const onEndReached = () => {
     if (data.length > 15) {
@@ -55,7 +55,7 @@ export default () => {
       setData([...data, ...EXTRA_DATA])
       setLoadingMore(false)
     }, NETWORK_DELAY)
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,7 +73,7 @@ export default () => {
       <LoadingMore isEnabled={loadingMore} />
     </SafeAreaView>
   )
-}
+};
 
 const LoadingMore = ({isEnabled}: {isEnabled: boolean}) => {
   const innerText = isEnabled && 'Loading More Dishes...'
@@ -82,7 +82,7 @@ const LoadingMore = ({isEnabled}: {isEnabled: boolean}) => {
       <Text>{innerText}</Text>
     </View>
   )
-}
+};
 
 const styles = StyleSheet.create({
   container: {

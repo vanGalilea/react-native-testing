@@ -11,13 +11,15 @@ import LoginSubmission from '../src/components/LoginSubmission'
 import AsyncStorage from '@react-native-community/async-storage'
 import {useNavigationMock} from '../src/test/test-utils'
 
-jest.mock('@react-native-community/async-storage', () => ({setItem: jest.fn()}))
+jest.mock('@react-native-community/async-storage', () => ({
+  setItem: jest.fn(),
+}))
 jest.mock('@react-navigation/native', () => {
   return {
     createNavigatorFactory: jest.fn(),
     useNavigation: jest.fn(),
   }
-})
+});
 jest.mock('@react-navigation/stack', () => ({
   createStackNavigator: jest.fn(),
 }))
@@ -26,7 +28,7 @@ jest.mock('@react-native-community/masked-view', () => ({}))
 afterEach(cleanup)
 beforeEach(() => {
   useNavigationMock.mockReset()
-})
+});
 it('renders correctly', async () => {
   const fetchMock = global.fetch as jest.MockedFunction<typeof global.fetch>
   const mockNavigate = jest.fn()
@@ -72,4 +74,4 @@ it('renders correctly', async () => {
   await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1))
   expect(mockNavigate).toHaveBeenCalledWith('Home')
   expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token')
-})
+});

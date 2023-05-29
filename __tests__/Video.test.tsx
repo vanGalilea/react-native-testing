@@ -64,5 +64,5 @@ it('renders/navigates throughout app screens', async () => {
   fireEvent.press(exitFullScreenButton)
   await waitFor(() => {
     expect(video.props.fullscreen).toBeFalsy()
-  })
+  });
 })

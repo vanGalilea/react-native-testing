@@ -23,7 +23,7 @@ test('displays images from the server', async () => {
 
   //no error is visible
   expect(queryByLabelText(/alert/i)).toBeNull()
-})
+});
 
 test('displays error upon error response from server', async () => {
   server.resetHandlers(
@@ -47,4 +47,4 @@ test('displays error upon error response from server', async () => {
 
   //loading spinner no longer shows
   expect(queryByLabelText(/loader/i)).toBeNull()
-})
+});

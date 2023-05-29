@@ -14,7 +14,7 @@ import {ModalProps} from 'react-native'
 jest.mock('react-native/Libraries/Modal/Modal', () => {
   const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
   return (props: ModalProps) => <Modal {...props} />
-})
+});
 
 afterEach(cleanup)
 
@@ -33,4 +33,4 @@ it('renders modal screen correctly', async () => {
   expect(() => getByText(/hide modal/i)).toThrow(
     'Unable to find an element with text: /hide modal/i',
   ) //modal is closed again
-})
+});

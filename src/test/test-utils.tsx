@@ -11,7 +11,7 @@ const render = (ui: any, {theme = 'light', ...options} = {}) => {
   )
   // @ts-ignore
   return rtlRender(ui, {wrapper: Wrapper, ...options})
-}
+};
 
 export * from '@testing-library/react-native'
 // override React Testing Library's render with our own

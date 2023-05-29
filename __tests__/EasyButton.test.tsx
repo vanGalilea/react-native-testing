@@ -16,7 +16,7 @@ it('renders with the light styles for the light theme', () => {
 
   expect(button.props.style).toMatchObject({backgroundColor: 'white'})
   expect(innerText.props.style).toMatchObject({color: 'black'})
-})
+});
 
 it('renders with the dark styles for the dark theme', () => {
   render(<EasyButton>Click me!</EasyButton>, {
@@ -29,4 +29,4 @@ it('renders with the dark styles for the dark theme', () => {
 
   expect(button.props.style).toMatchObject({backgroundColor: 'black'})
   expect(innerText.props.style).toMatchObject({color: 'white'})
-})
+});

@@ -1,5 +1,10 @@
 import React from 'react'
-import {cleanup, fireEvent, render, screen} from '@testing-library/react-native'
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+} from '@testing-library/react-native'
 import Login from '../src/components/Login'
 
 afterEach(cleanup)
@@ -20,4 +25,4 @@ it('renders correctly', async () => {
   expect(submittedData).toEqual({password, username})
   expect(handleSubmit).toHaveBeenCalledWith({password, username})
   expect(handleSubmit).toHaveBeenCalledTimes(1)
-})
+});
