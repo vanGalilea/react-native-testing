@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native'
+import React, {useState} from 'react';
+import {FlatList, SafeAreaView, StyleSheet, Text, View} from 'react-native';
 
 const DATA = [
   'Pizza',
@@ -12,7 +12,7 @@ const DATA = [
   'Coke',
   'Beer',
   'Cheese Cake',
-]
+];
 
 const EXTRA_DATA = [
   'Pancakes',
@@ -23,44 +23,44 @@ const EXTRA_DATA = [
   'Nep Shrimps',
   'Soda',
   'Cheesy Mushroom',
-]
+];
 
-const NETWORK_DELAY = 1000
+const NETWORK_DELAY = 1000;
 
 const Item = ({title}: {title: string}) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
   </View>
-)
+);
 
 export default () => {
-  const [refreshing, setRefreshing] = useState(false)
-  const [data, setData] = useState(DATA)
-  const [loadingMore, setLoadingMore] = useState(false)
+  const [refreshing, setRefreshing] = useState(false);
+  const [data, setData] = useState(DATA);
+  const [loadingMore, setLoadingMore] = useState(false);
   const onRefresh = () => {
-    setRefreshing(true)
-    setData([])
+    setRefreshing(true);
+    setData([]);
     setTimeout(() => {
-      setRefreshing(false)
-      setData(DATA)
-    }, NETWORK_DELAY)
+      setRefreshing(false);
+      setData(DATA);
+    }, NETWORK_DELAY);
   };
 
   const onEndReached = () => {
     if (data.length > 15) {
-      return null
+      return null;
     }
-    setLoadingMore(true)
+    setLoadingMore(true);
     setTimeout(() => {
-      setData([...data, ...EXTRA_DATA])
-      setLoadingMore(false)
-    }, NETWORK_DELAY)
+      setData([...data, ...EXTRA_DATA]);
+      setLoadingMore(false);
+    }, NETWORK_DELAY);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        testID={'flat-list'}
+        accessibilityLabel={'dishes-list'}
         data={data}
         keyExtractor={(item, index) => item + index}
         renderItem={({item}) => <Item title={item} />}
@@ -70,18 +70,22 @@ export default () => {
         progressViewOffset={100}
         refreshing={refreshing}
       />
+      {refreshing && <Text>Refreshing...</Text>}
       <LoadingMore isEnabled={loadingMore} />
     </SafeAreaView>
-  )
+  );
 };
 
 const LoadingMore = ({isEnabled}: {isEnabled: boolean}) => {
-  const innerText = isEnabled && 'Loading More Dishes...'
+  if (!isEnabled) {
+    return null;
+  }
+
   return (
-    <View style={{paddingVertical: 12}}>
-      <Text>{innerText}</Text>
+    <View style={styles.loadingMoreContainer}>
+      <Text>Loading More Dishes...</Text>
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
@@ -101,4 +105,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
   },
-})
+  loadingMoreContainer: {paddingVertical: 12},
+});
