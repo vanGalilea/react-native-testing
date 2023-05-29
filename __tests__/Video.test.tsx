@@ -5,18 +5,10 @@ import {
   fireEvent,
   render,
   screen,
-  waitFor,
 } from '@testing-library/react-native';
-import {useNavigationMock} from '../src/test/test-utils';
 import App from '../App';
 
 // 'react-native-video' is being mocked in /__mocks__/react-native-video.ts
-
-const navigationMock = {
-  setOptions: jest.fn(),
-};
-
-jest.fn(useNavigationMock).mockReturnValue(navigationMock);
 jest.mock('@react-native-community/async-storage', () => ({
   setItem: jest.fn(),
 }));
@@ -24,44 +16,43 @@ jest.mock('@react-native-community/async-storage', () => ({
 afterEach(cleanup);
 
 it('renders/navigates throughout app screens', async () => {
+  // Render the app from the root
   render(<App />);
-  const {getByText, getAllByLabelText} = screen;
-  const videoText = getByText(/video/i);
-  expect(videoText).not.toBeNull();
-  fireEvent.press(getByText(/video/i));
+  // Navigate to video screen
+  fireEvent.press(screen.getByText(/video/i));
 
-  const [video] = getAllByLabelText(/video component/i);
-  const enterFullScreenButton = getByText(/full screen/i);
-  const pauseStartButton = getByText(/pause\/start/i);
+  // Grab video comp., full-screen and pause/start pressables
+  const videoTestInstance = screen.getByLabelText('video-player');
+  const enterFullScreenButton = screen.getByText(/full screen/i);
+  const pauseStartButton = screen.getByText(/pause\/start/i);
 
-  //video is initially playing and presented not on full screen
-  expect(video.props.paused).toBeFalsy();
-  expect(video.props.fullscreen).toBeFalsy();
-
-  expect(video).toHaveStyle({
+  // We make sure to veify that the video is initially playing and
+  // presented not in full screen mode
+  expect(videoTestInstance).toHaveProp('paused', false);
+  expect(videoTestInstance).toHaveProp('fullscreen', false);
+  expect(videoTestInstance).toHaveStyle({
     width: 200,
     height: 200,
   });
 
-  //pause video and enter full screen mode
+  // Simulate pause video and enter full screen mode
   fireEvent.press(enterFullScreenButton);
   fireEvent.press(pauseStartButton);
 
-  expect(video.props.paused).toBeTruthy();
-  expect(video.props.fullscreen).toBeTruthy();
-  expect(video).toHaveStyle({
+  // Props indeed changed and match the scenario with the style we expect
+  expect(videoTestInstance).toHaveProp('paused', true);
+  expect(videoTestInstance).toHaveProp('fullscreen', true);
+  expect(videoTestInstance).toHaveStyle({
     width: '100%',
     height: 200,
     zIndex: 5,
   });
-  //play video and exit full screen mode
-  const pauseStartFSButton = getByText(/pause \/ start/i);
-  fireEvent.press(pauseStartFSButton);
-  expect(video.props.paused).toBeFalsy();
 
-  const exitFullScreenButton = getByText(/exit full screen/i);
-  fireEvent.press(exitFullScreenButton);
-  await waitFor(() => {
-    expect(video.props.fullscreen).toBeFalsy();
-  });
+  // Play video and assert not paused anymore
+  fireEvent.press(pauseStartButton);
+  expect(videoTestInstance).toHaveProp('paused', false);
+
+  // Exit full screen mode and assert by value of prop
+  fireEvent.press(screen.getByText(/exit full screen/i));
+  expect(videoTestInstance).toHaveProp('fullscreen', false);
 });

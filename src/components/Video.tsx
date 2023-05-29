@@ -10,9 +10,8 @@ const SOME_VIDEO =
 // @ts-ignore
 export default () => {
   const {setOptions} = useNavigation<NavigationProps>();
-
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
 
   useEffect(() => {
     setOptions({headerShown: !isFullScreen});
@@ -34,7 +33,7 @@ export default () => {
       </View>
       <>
         <Video
-          accessibilityLabel={'video component'}
+          accessibilityLabel={'video-player'}
           source={{uri: SOME_VIDEO}}
           style={isFullScreen ? styles.videoFullScreen : styles.video}
           resizeMode={'cover'}
