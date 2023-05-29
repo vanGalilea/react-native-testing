@@ -1,11 +1,8 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   preset: 'react-native',
-  setupFilesAfterEnv: [
-    '@testing-library/jest-native/extend-expect',
-    './jest.setup.js',
-  ],
+  setupFilesAfterEnv: ['./jest.setup.js'],
   clearMocks: true,
   moduleDirectories: ['node_modules', path.join(__dirname, 'src')],
   moduleNameMapper: {
@@ -14,4 +11,4 @@ module.exports = {
     '\\.(css|less)$': '<rootDir>/assetsTransformer.js',
   },
   transform: {},
-}
+};

@@ -1,26 +1,26 @@
-import React, {useEffect, useState} from 'react'
-import {Pressable, StatusBar, StyleSheet, Text, View} from 'react-native'
-import {Colors} from 'react-native/Libraries/NewAppScreen'
-import Video from 'react-native-video'
-import {useNavigation} from '@react-navigation/native'
-import {NavigationProps} from './App'
+import React, {useEffect, useState} from 'react';
+import {Pressable, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Video from 'react-native-video';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProps} from '../../App';
 
 const SOME_VIDEO =
-  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 // @ts-ignore
 export default () => {
-  const {setOptions} = useNavigation<NavigationProps>()
+  const {setOptions} = useNavigation<NavigationProps>();
 
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isFullScreen, setIsFullScreen] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   useEffect(() => {
-    setOptions({headerShown: !isFullScreen})
-  }, [isFullScreen, setOptions])
+    setOptions({headerShown: !isFullScreen});
+  }, [isFullScreen, setOptions]);
 
-  const showFullScreen = () => setIsFullScreen(true)
-  const exitFullScreen = () => setIsFullScreen(false)
-  const togglePause = () => setIsPlaying(!isPlaying)
+  const showFullScreen = () => setIsFullScreen(true);
+  const exitFullScreen = () => setIsFullScreen(false);
+  const togglePause = () => setIsPlaying(!isPlaying);
 
   return (
     <View style={styles.body}>
@@ -54,7 +54,7 @@ export default () => {
         </View>
       )}
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
@@ -93,4 +93,4 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.black,
     ...StyleSheet.absoluteFillObject,
   },
-})
+});
