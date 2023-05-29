@@ -1,11 +1,11 @@
-import React from 'react'
-import {Pressable, StyleSheet, Text, View} from 'react-native'
-import {Colors} from 'react-native/Libraries/NewAppScreen'
+import React, {useState} from 'react';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export default () => {
-  const [count, setCount] = React.useState(0)
-  const increment = () => setCount(c => c + 1)
-  const decrement = () => setCount(c => c - 1)
+  const [count, setCount] = useState<number>(0);
+  const increment = () => setCount(c => c + 1);
+  const decrement = () => setCount(c => c - 1);
 
   return (
     <View style={styles.body}>
@@ -19,7 +19,7 @@ export default () => {
         </Pressable>
       </View>
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-})
+});
