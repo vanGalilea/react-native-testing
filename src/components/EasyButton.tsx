@@ -9,7 +9,7 @@ export default (props: any) => {
   return (
     <Pressable
       accessibilityLabel={'easy-button'}
-      style={[backgroundColor, styles.pressable]}
+      style={[{backgroundColor}, styles.pressable]}
       {...props}>
       <Text style={{color}}>{props.children || 'Click me!'}</Text>
     </Pressable>

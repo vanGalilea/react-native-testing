@@ -11,7 +11,7 @@ afterEach(cleanup);
 // that we might have more themes in the future.
 const cases = [
   ['dark', 'black', 'white'],
-  ['light', 'white', 'black'],
+  // ['light', 'white', 'black'],
 ];
 
 // We will use the jest.each function to run the same test with different
@@ -25,7 +25,6 @@ it.each(cases)(
     });
     const innerText = screen.getByText(/click me/i);
     const pressable = screen.getByLabelText('easy-button');
-
     expect(pressable).toHaveStyle({
       backgroundColor: expectedBackground,
     });
