@@ -9,10 +9,11 @@ import EasyButton from './src/components/EasyButton';
 import Video from './src/components/Video';
 import FlatList from './src/components/FlatList';
 import Modal from './src/components/Modal';
-import { ThemeProvider } from './src/utils/theme';
+import {ThemeProvider} from './src/utils/theme';
 import ListWithFetch from './src/components/ListWithFetch';
 import LoginSubmission from './src/components/LoginSubmission';
 import Counter from './src/components/Counter';
+import {Alert} from 'react-native';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -38,6 +39,12 @@ export const SCREENS: Record<string, keyof RootStackParamList> = {
   FLATLIST: 'FlatList',
   LIST_WITH_FETCH: 'ListWithFetch',
 };
+const EasyButtonScreen = () => {
+  const handleOnPress = () => {
+    Alert.alert('EasyButton', 'You clicked me!');
+  };
+  return <EasyButton onPress={handleOnPress} />;
+};
 export default () => {
   return (
     <>
@@ -46,7 +53,10 @@ export default () => {
           <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name={SCREENS.HOME} component={Home} />
             <Stack.Screen name={SCREENS.LOGIN} component={LoginSubmission} />
-            <Stack.Screen name={SCREENS.EASYBUTTON} component={EasyButton} />
+            <Stack.Screen
+              name={SCREENS.EASYBUTTON}
+              component={EasyButtonScreen}
+            />
             <Stack.Screen name={SCREENS.COUNTER} component={Counter} />
             <Stack.Screen name={SCREENS.VIDEO} component={Video} />
             <Stack.Screen name={SCREENS.MODAL} component={Modal} />
@@ -60,4 +70,4 @@ export default () => {
       </ThemeProvider>
     </>
   );
-}
+};
