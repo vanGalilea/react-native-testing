@@ -1,4 +1,4 @@
-import React, {SetStateAction, useEffect} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import {Text, View} from 'react-native';
 import Login from './Login';
 import {useNavigation} from '@react-navigation/native';
@@ -34,7 +34,7 @@ const formSubmissionReducer = (state, action) => {
 
 // @ts-ignore
 const useFormSubmission = ({endpoint, data}) => {
-  const [state, dispatch] = React.useReducer(formSubmissionReducer, {
+  const [state, dispatch] = useReducer(formSubmissionReducer, {
     status: 'idle',
     responseData: null,
     errorMessage: null,
@@ -77,7 +77,13 @@ const Spinner = () => {
 
 export default () => {
   const {navigate} = useNavigation<NavigationProps>();
-  const [formData, setFormData] = React.useState(null);
+  const [formData, setFormData] = useState<
+    | {
+        username: string;
+        password: string;
+      }
+    | undefined
+  >();
   const {status, responseData, errorMessage} = useFormSubmission({
     endpoint: ENDPOINT_URL,
     data: formData,
@@ -85,23 +91,22 @@ export default () => {
   const token = responseData?.token;
 
   useEffect(() => {
+    if (status === 'resolved') {
+      navigate('Home');
+    }
     const setAndNavigate = async () => {
-      if (token) {
-        await AsyncStorage.setItem('token', token);
-        navigate('Home');
+      if (!token) {
+        return;
       }
+
+      await AsyncStorage.setItem('token', token);
     };
     setAndNavigate();
-  }, [token, navigate]);
-
-  if (status === 'resolved') {
-    // TODO: navigate away on submission success
-    return null;
-  }
+  }, [token, navigate, status]);
 
   return (
     <>
-      <Login onSubmit={(data: SetStateAction<null>) => setFormData(data)} />
+      <Login onSubmit={data => setFormData(data)} />
       {status === 'pending' ? <Spinner /> : null}
       <Text>{errorMessage}</Text>
     </>

@@ -6,8 +6,8 @@ import {useNavigation} from '@react-navigation/native';
 import {NavigationProps} from '../../App';
 
 const SOME_VIDEO =
-  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-// @ts-ignore
+  'https://d192a4z5wljn2.cloudfront.net/ervNPPeH/hoookedup/5938/TvtX4P6AYH.mp4';
+
 export default () => {
   const {setOptions} = useNavigation<NavigationProps>();
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -37,6 +37,7 @@ export default () => {
           source={{uri: SOME_VIDEO}}
           style={isFullScreen ? styles.videoFullScreen : styles.video}
           resizeMode={'cover'}
+          onError={console.log}
           paused={isPlaying}
           fullscreen={isFullScreen}
         />

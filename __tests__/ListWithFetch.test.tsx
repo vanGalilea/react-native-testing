@@ -34,7 +34,7 @@ test('displays images from the server', async () => {
 test('displays error upon error response from server', async () => {
   // Simulate an error response from the server
   server.resetHandlers(
-    rest.get('https://random-data-api.com/api/v2/users', (res, req, ctx) => {
+    rest.get('https://fakerapi.it/api/v1/users', (res, req, ctx) => {
       // @ts-ignore
       res(ctx.status(500));
     }),

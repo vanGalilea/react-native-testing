@@ -12,28 +12,26 @@ import axios from 'axios';
 const AVATAR_SIZE = 68;
 
 export interface IUser {
-  first_name: string;
-  last_name: string;
+  firstname: string;
+  lastname: string;
   email: string;
-  phone_number: string;
-  uid: string;
-  avatar: string;
+  macAddress: string;
+  uuid: string;
+  image: string;
 }
 
 export default () => {
   const [usersData, setUsersData] = useState<IUser[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          'https://random-data-api.com/api/v2/users?size=10',
+          'https://fakerapi.it/api/v1/users?_quantity=10',
         );
-        // @ts-ignore
-        setUsersData(response.data);
+        setUsersData(response.data.data);
       } catch (e) {
         setHasError(true);
       } finally {
@@ -46,22 +44,22 @@ export default () => {
 
   const handleRenderItem = useCallback(
     ({
-      item: {first_name, last_name, email, phone_number, uid, avatar},
+      item: {firstname, lastname, email, image, macAddress, uuid},
     }: {
       item: IUser;
     }) => (
       <View
         style={styles.userContainer}
-        accessibilityLabel={`${uid}-user-container`}>
+        accessibilityLabel={`${uuid}-user-container`}>
         <View style={styles.avatarWrapper}>
-          <Image source={{uri: avatar}} style={styles.image} />
+          <Image source={{uri: image}} style={styles.image} />
         </View>
         <View style={styles.userInfoContainer}>
           <Text>
-            {first_name} {last_name}
+            {firstname} {lastname}
           </Text>
           <Text>{email}</Text>
-          <Text>{phone_number}</Text>
+          <Text>{macAddress}</Text>
         </View>
       </View>
     ),
@@ -86,7 +84,7 @@ export default () => {
       <FlatList
         data={usersData}
         renderItem={handleRenderItem}
-        keyExtractor={item => item.uid}
+        keyExtractor={item => item.uuid}
       />
     </View>
   );
