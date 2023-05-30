@@ -7,7 +7,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import axios from 'axios';
 
 const AVATAR_SIZE = 68;
@@ -94,11 +93,6 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
-  body: {
-    backgroundColor: Colors.white,
-    alignItems: 'center',
-    flex: 1,
-  },
   errorContainer: {backgroundColor: '#C63939', padding: 16, borderRadius: 6},
   userContainer: {
     alignItems: 'center',
