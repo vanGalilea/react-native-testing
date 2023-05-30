@@ -1,28 +1,34 @@
-import React from 'react'
+import React from 'react';
 import {
   cleanup,
   fireEvent,
   render,
   screen,
-} from '@testing-library/react-native'
-import Login from '../src/components/Login'
+} from '@testing-library/react-native';
+import Login from '../src/components/Login';
 
-afterEach(cleanup)
+afterEach(cleanup);
 
-it('renders correctly', async () => {
-  const username = 'hi'
-  const password = 'qwerty1234'
-  let submittedData = {}
-  const handleSubmit = jest.fn(data => (submittedData = data))
-  render(<Login onSubmit={handleSubmit} />)
-  const {getByText, getByPlaceholderText} = screen
-  const button = getByText(/submit/i)
+it('fills in the form and handleSubmit is called', async () => {
+  const username = 'hi';
+  const password = 'qwerty1234';
+  // Create a mock function to pass as onSubmit prop
+  const handleSubmit = jest.fn();
+  // Render the component
+  render(<Login onSubmit={handleSubmit} />);
 
-  await fireEvent.changeText(getByPlaceholderText(/username/i), username)
-  await fireEvent.changeText(getByPlaceholderText(/password/i), password)
-  fireEvent.press(button)
+  // Fill in the form and submit it
+  await fireEvent.changeText(
+    screen.getByPlaceholderText(/username/i),
+    username,
+  );
+  await fireEvent.changeText(
+    screen.getByPlaceholderText(/password/i),
+    password,
+  );
+  fireEvent.press(screen.getByText(/submit/i));
 
-  expect(submittedData).toEqual({password, username})
-  expect(handleSubmit).toHaveBeenCalledWith({password, username})
-  expect(handleSubmit).toHaveBeenCalledTimes(1)
+  // Verify that handleSubmit was called with the correct arguments and only once
+  expect(handleSubmit).toHaveBeenCalledWith({password, username});
+  expect(handleSubmit).toHaveBeenCalledTimes(1);
 });

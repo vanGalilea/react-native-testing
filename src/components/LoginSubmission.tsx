@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {SetStateAction, useEffect} from 'react';
 import {Text, View} from 'react-native';
 import Login from './Login';
 import {useNavigation} from '@react-navigation/native';
@@ -42,7 +42,7 @@ const useFormSubmission = ({endpoint, data}) => {
 
   const fetchBody = data ? JSON.stringify(data) : null;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       if (fetchBody) {
         dispatch({type: 'START'});
@@ -84,7 +84,7 @@ export default () => {
   });
   const token = responseData?.token;
 
-  React.useEffect(() => {
+  useEffect(() => {
     const setAndNavigate = async () => {
       if (token) {
         await AsyncStorage.setItem('token', token);
@@ -101,9 +101,7 @@ export default () => {
 
   return (
     <>
-      <Login
-        onSubmit={(data: React.SetStateAction<null>) => setFormData(data)}
-      />
+      <Login onSubmit={(data: SetStateAction<null>) => setFormData(data)} />
       {status === 'pending' ? <Spinner /> : null}
       <Text>{errorMessage}</Text>
     </>
