@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
-import {Modal, Pressable, StyleSheet, Text, View} from 'react-native'
+import React, {useState} from 'react';
+import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
 
 export default () => {
-  const [modalVisible, setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -16,7 +16,7 @@ export default () => {
             <Pressable
               style={{...styles.openButton, backgroundColor: '#2196F3'}}
               onPress={() => {
-                setModalVisible(!modalVisible)
+                setModalVisible(!modalVisible);
               }}>
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
@@ -27,12 +27,12 @@ export default () => {
       <Pressable
         style={styles.openButton}
         onPress={() => {
-          setModalVisible(true)
+          setModalVisible(true);
         }}>
         <Text style={styles.textStyle}>Show Modal</Text>
       </Pressable>
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
-})
+});
