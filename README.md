@@ -1,3 +1,7 @@
+<p align="center">
+  <img alt="banner" src="https://github.com/vanGalilea/react-native-testing/assets/25864161/fd4d5148-4c8d-4fbc-8ebf-367d72da4fcb">
+</p>
+
 ### This is how you should test 🧪 your react-native ⚛️ components with [Jest](https://jestjs.io/) and [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
 
 In this repo you'll find several examples that will cover:
@@ -32,6 +36,7 @@ In this repo you'll find several examples that will cover:
 - ⚛️ Add tests for react native web project
 
 ### Inspiration, resources and further reading 📚
+- 📑 A blog by [Steve Galili]([url](https://github.com/vanGalilea)) on ["Where and How to Start Testing Your React Native App"]([url](https://medium.com/@stevegalili/where-and-how-to-start-testing-your-react-native-app-%EF%B8%8F-and-how-to-keep-on-testin-ec3464fb9b41))
 - 👏 Inspired by [Kent C. Dodds'](https://testingjavascript.com/) workshop [Test React Components with Jest and React Testing Library](https://github.com/testing-library/react-testing-library). 
 For more info check [Epic React](https://epicreact.dev/).
 - 📕 [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
