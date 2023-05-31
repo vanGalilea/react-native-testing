@@ -1,36 +1,33 @@
-import React from 'react'
+import React from 'react';
 import {
+  cleanup,
   fireEvent,
   render,
-  waitFor,
-  cleanup,
   screen,
-} from '@testing-library/react-native'
-import ModalScreen from '../src/components/Modal'
-import {ModalProps} from 'react-native'
+  waitFor,
+} from '@testing-library/react-native';
+import ModalScreen from '../src/components/Modal';
 
-//the modal component is automatically mocked by RN and apparently contains a bug which make the modal (and it's children) always visible in the test tree
-//this is a hack which fix this issue
-jest.mock('react-native/Libraries/Modal/Modal', () => {
-  const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
-  return (props: ModalProps) => <Modal {...props} />
-})
-
-afterEach(cleanup)
+afterEach(cleanup);
 
 it('renders modal screen correctly', async () => {
-  render(<ModalScreen />)
-  const {getByText} = screen
+  // Render component
+  render(<ModalScreen />);
 
-  expect(() => getByText(/hello world/i)).toThrow(
+  // Check if modal is initially closed
+  expect(() => screen.getByText(/hello world/i)).toThrow(
     'Unable to find an element with text: /hello world/i',
-  ) //modal is initially closed
+  );
 
-  fireEvent.press(getByText(/show modal/i))
-  await waitFor(() => getByText(/hello world/i)) //modal is now visible
+  // Simulate opening the modal
+  fireEvent.press(screen.getByText(/show modal/i));
+  // Validate that modal is open
+  await waitFor(() => screen.getByText(/hello world/i));
 
-  fireEvent.press(getByText(/hide modal/i))
-  expect(() => getByText(/hide modal/i)).toThrow(
+  // Simulate closing the modal
+  fireEvent.press(screen.getByText(/hide modal/i));
+  // Validate that modal is closed
+  expect(() => screen.getByText(/hide modal/i)).toThrow(
     'Unable to find an element with text: /hide modal/i',
-  ) //modal is closed again
-})
+  );
+});

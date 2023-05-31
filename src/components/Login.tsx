@@ -1,16 +1,18 @@
-import React, {useState} from 'react'
-import {StyleSheet, Text, TextInput, Pressable, View} from 'react-native'
-import {Colors} from 'react-native/Libraries/NewAppScreen'
+import React, {useCallback, useState} from 'react';
+import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 
-// @ts-ignore
-export default ({onSubmit}) => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const handleSubmit = () => {
-    setUsername('')
-    setPassword('')
-    onSubmit({username, password})
-  }
+export default ({
+  onSubmit,
+}: {
+  onSubmit(data: {username: string; password: string}): void;
+}) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const handleSubmit = useCallback(() => {
+    setUsername('');
+    setPassword('');
+    onSubmit({username, password});
+  }, [onSubmit, password, username]);
 
   return (
     <View style={styles.body}>
@@ -31,21 +33,16 @@ export default ({onSubmit}) => {
         </Pressable>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: Colors.white,
+    backgroundColor: '#fff',
   },
   sectionContainer: {
     padding: 24,
     alignItems: 'center',
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
   },
   button: {
     borderRadius: 12,
@@ -55,4 +52,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-})
+});

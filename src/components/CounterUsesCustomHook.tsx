@@ -1,10 +1,10 @@
-import React from 'react'
-import {StyleSheet, Text, Pressable, View} from 'react-native'
-import {Colors} from 'react-native/Libraries/NewAppScreen'
-import useCounter from '../hooks/useCounter'
+import React from 'react';
+import {StyleSheet, Text, Pressable, View} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import useCounter from '../hooks/useCounter';
 
 export default () => {
-  const {count, increment, decrement} = useCounter()
+  const {count, increment, decrement} = useCounter();
 
   return (
     <View style={styles.body}>
@@ -18,8 +18,8 @@ export default () => {
         </Pressable>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   body: {
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-})
+});

@@ -1,51 +1,63 @@
-import 'react-native'
-import React from 'react'
+import 'react-native';
+import React from 'react';
 import {
   cleanup,
   fireEvent,
   render,
   screen,
   waitFor,
-} from '@testing-library/react-native'
-import LoginSubmission from '../src/components/LoginSubmission'
-import AsyncStorage from '@react-native-community/async-storage'
-import {useNavigationMock} from '../src/test/test-utils'
+} from '@testing-library/react-native';
+import LoginSubmission from '../src/components/LoginSubmission';
+import AsyncStorage from '@react-native-community/async-storage';
+import {useNavigationMock} from '../src/test/test-utils';
 
-jest.mock('@react-native-community/async-storage', () => ({setItem: jest.fn()}))
+jest.mock('@react-native-community/async-storage', () => ({
+  setItem: jest.fn(),
+}));
 jest.mock('@react-navigation/native', () => {
   return {
     createNavigatorFactory: jest.fn(),
     useNavigation: jest.fn(),
-  }
-})
+  };
+});
 jest.mock('@react-navigation/stack', () => ({
   createStackNavigator: jest.fn(),
-}))
-jest.mock('@react-native-community/masked-view', () => ({}))
+}));
 
-afterEach(cleanup)
+afterEach(cleanup);
 beforeEach(() => {
-  useNavigationMock.mockReset()
-})
-it('renders correctly', async () => {
-  const fetchMock = global.fetch as jest.MockedFunction<typeof global.fetch>
-  const mockNavigate = jest.fn()
-  useNavigationMock.mockImplementation(() => ({navigate: mockNavigate}))
+  useNavigationMock.mockReset();
+});
+
+it('verifies happy flow of login', async () => {
+  // Mock navigate function from useNavigation hook, in order to verify that
+  // it's called with the correct arguments and not to actually navigate
+  const mockNavigate = jest.fn();
+  useNavigationMock.mockImplementation(() => ({navigate: mockNavigate}));
+
+  // Ensuring correct typing of the mock
+  const fetchMock = global.fetch as jest.MockedFunction<typeof global.fetch>;
+  // We're not going to implement all members of the fetch API, only what's needed
+  // @ts-ignore
   fetchMock.mockResolvedValueOnce({
-    json: () => Promise.resolve({token: 'fake-token'}),
-  } as Response | Awaited<Response>)
-  const username = 'chucknorris'
-  const password = 'i need no password'
+    json: jest.fn().mockResolvedValue({token: 'fake-token'}),
+  });
+  const username = 'chucknorris';
+  const password = 'i need no password';
 
-  render(<LoginSubmission />)
-  const {getByText, getByPlaceholderText} = screen
-  const button = getByText(/submit/i)
+  // Render the component
+  render(<LoginSubmission />);
 
-  fireEvent.changeText(getByPlaceholderText(/username/i), username)
-  fireEvent.changeText(getByPlaceholderText(/password/i), password)
-  fireEvent.press(button)
+  // Fill in the form and submit it
+  fireEvent.changeText(screen.getByPlaceholderText(/username/i), username);
+  fireEvent.changeText(screen.getByPlaceholderText(/password/i), password);
+  fireEvent.press(screen.getByText(/submit/i));
 
-  getByText(/loading/i)
+  // Verify that the loading indicator is shown
+  expect(screen.getByText(/loading/i)).toBeVisible();
+  // Verify that the fetch function was called with the correct arguments
+  // Can be done in 2 ways:
+  // 1. Using toHaveBeenCalledWith
   expect(fetchMock).toHaveBeenCalledWith(
     'https://e2c168f9-97f3-42e1-8b31-57f4ab52a3bc.mock.pstmn.io/api/login',
     {
@@ -53,7 +65,8 @@ it('renders correctly', async () => {
       body: JSON.stringify({username, password}),
       headers: {'content-type': 'application/json'},
     },
-  )
+  );
+  // 2. Using toMatchInlineSnapshot in combination with mock.calls property
   expect(fetchMock.mock.calls).toMatchInlineSnapshot(`
     [
       [
@@ -67,9 +80,11 @@ it('renders correctly', async () => {
         },
       ],
     ]
-  `)
+  `);
 
-  await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1))
-  expect(mockNavigate).toHaveBeenCalledWith('Home')
-  expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token')
-})
+  // Verify that the navigate function was called with the correct arguments and only once
+  await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1));
+  expect(mockNavigate).toHaveBeenCalledWith('Home');
+  // Verify that the token was saved to AsyncStorage
+  expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token');
+});

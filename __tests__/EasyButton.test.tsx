@@ -1,32 +1,35 @@
-import 'react-native'
-import React from 'react'
-import EasyButton from '../src/components/EasyButton'
-import {render} from '../src/test/test-utils'
-import {ReactTestInstance} from 'react-test-renderer'
-import {cleanup, screen} from '@testing-library/react-native'
+import 'react-native';
+import React from 'react';
+import EasyButton from '../src/components/EasyButton';
+import {render} from '../src/test/test-utils';
+import {cleanup, screen} from '@testing-library/react-native';
 
-afterEach(cleanup)
+afterEach(cleanup);
 
-it('renders with the light styles for the light theme', () => {
-  render(<EasyButton>Click me!</EasyButton>)
-  const {getByText} = screen
+// We will right the following test in a scalable way
+// At the moment we have only 2 themes, but we can imagine
+// that we might have more themes in the future.
+const cases = [
+  ['dark', 'black', 'white'],
+  // ['light', 'white', 'black'],
+];
 
-  const innerText = getByText(/click/i)
-  const button = innerText.parent as ReactTestInstance
-
-  expect(button.props.style).toMatchObject({backgroundColor: 'white'})
-  expect(innerText.props.style).toMatchObject({color: 'black'})
-})
-
-it('renders with the dark styles for the dark theme', () => {
-  render(<EasyButton>Click me!</EasyButton>, {
-    theme: 'dark',
-  })
-  const {getByText} = screen
-
-  const innerText = getByText(/click/i)
-  const button = innerText.parent as ReactTestInstance
-
-  expect(button.props.style).toMatchObject({backgroundColor: 'black'})
-  expect(innerText.props.style).toMatchObject({color: 'white'})
-})
+// We will use the jest.each function to run the same test with different
+// parameters. This will allow us to write a single test that will run
+// for each theme without repeating ourselves.
+it.each(cases)(
+  'renders with the light styles for the light theme',
+  (desiredTheme, expectedBackground, expectedColor) => {
+    render(<EasyButton>Click me!</EasyButton>, {
+      theme: desiredTheme,
+    });
+    const innerText = screen.getByText(/click me/i);
+    const pressable = screen.getByLabelText('easy-button');
+    expect(pressable).toHaveStyle({
+      backgroundColor: expectedBackground,
+    });
+    expect(innerText).toHaveStyle({
+      color: expectedColor,
+    });
+  },
+);

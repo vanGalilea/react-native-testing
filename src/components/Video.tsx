@@ -1,26 +1,25 @@
-import React, {useEffect, useState} from 'react'
-import {Pressable, StatusBar, StyleSheet, Text, View} from 'react-native'
-import {Colors} from 'react-native/Libraries/NewAppScreen'
-import Video from 'react-native-video'
-import {useNavigation} from '@react-navigation/native'
-import {NavigationProps} from './App'
+import React, {useEffect, useState} from 'react';
+import {Pressable, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Video from 'react-native-video';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProps} from '../../App';
 
 const SOME_VIDEO =
-  'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
-// @ts-ignore
-export default () => {
-  const {setOptions} = useNavigation<NavigationProps>()
+  'https://d192a4z5wljn2.cloudfront.net/ervNPPeH/hoookedup/5938/TvtX4P6AYH.mp4';
 
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isFullScreen, setIsFullScreen] = useState(false)
+export default () => {
+  const {setOptions} = useNavigation<NavigationProps>();
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
 
   useEffect(() => {
-    setOptions({headerShown: !isFullScreen})
-  }, [isFullScreen, setOptions])
+    setOptions({headerShown: !isFullScreen});
+  }, [isFullScreen, setOptions]);
 
-  const showFullScreen = () => setIsFullScreen(true)
-  const exitFullScreen = () => setIsFullScreen(false)
-  const togglePause = () => setIsPlaying(!isPlaying)
+  const showFullScreen = () => setIsFullScreen(true);
+  const exitFullScreen = () => setIsFullScreen(false);
+  const togglePause = () => setIsPlaying(!isPlaying);
 
   return (
     <View style={styles.body}>
@@ -34,10 +33,11 @@ export default () => {
       </View>
       <>
         <Video
-          accessibilityLabel={'video component'}
+          accessibilityLabel={'video-player'}
           source={{uri: SOME_VIDEO}}
           style={isFullScreen ? styles.videoFullScreen : styles.video}
           resizeMode={'cover'}
+          onError={console.log}
           paused={isPlaying}
           fullscreen={isFullScreen}
         />
@@ -54,8 +54,8 @@ export default () => {
         </View>
       )}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   body: {
@@ -93,4 +93,4 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.black,
     ...StyleSheet.absoluteFillObject,
   },
-})
+});

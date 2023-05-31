@@ -1,50 +1,51 @@
-import React from 'react'
-import {cleanup, render, screen} from '@testing-library/react-native'
-import ListWithFetch from '../src/components/ListWithFetch'
-import {server} from '../src/test/mocks/server'
-import {rest} from 'msw'
+import React from 'react';
+import {cleanup, render, screen} from '@testing-library/react-native';
+import ListWithFetch from '../src/components/ListWithFetch';
+import {server} from '../src/test/mocks/server';
+import {rest} from 'msw';
 
-afterEach(cleanup)
+afterEach(cleanup);
+
+// In this test suite, we are testing the component that fetches data from the server
+// We are using msw to mock the server response
 
 test('displays images from the server', async () => {
-  render(<ListWithFetch />)
-  const {getByLabelText, findAllByLabelText, queryByLabelText} = screen
+  // Render the component
+  render(<ListWithFetch />);
 
-  // show loading spinner
-  const loadingSpinner = getByLabelText(/loader/i)
-  expect(loadingSpinner).not.toBeUndefined()
+  // Loader is initially visible
+  expect(screen.getByLabelText(/loader/i)).toBeOnTheScreen();
 
-  //load images from server
-  const userContainers = await findAllByLabelText(/user-container/i)
-  expect(userContainers).toHaveLength(10)
+  // Verify that users are fetched and rendered
+  expect(await screen.findAllByLabelText(/user-container/i)).toHaveLength(10);
 
-  //loading spinner no longer shows
-  expect(queryByLabelText(/loader/i)).toBeNull()
+  // Verifying that the loader is no longer visible
+  // There are 2 ways to verify that a component is not in the UI tree
+  // 1. Use getBy* methods and expect them to throw an error with a corresponding message
+  // 2. Use queryBy* methods and expect them to return null (See the next expect statement)
+  expect(() => screen.getByLabelText(/loader/i)).toThrow(
+    'Unable to find an element with accessibilityLabel: /loader/i',
+  );
 
-  //no error is visible
-  expect(queryByLabelText(/alert/i)).toBeNull()
-})
+  // Verifying that there are no errors
+  expect(screen.queryByLabelText(/alert/i)).toBeNull();
+});
 
 test('displays error upon error response from server', async () => {
+  // Simulate an error response from the server
   server.resetHandlers(
-    rest.get('https://random-data-api.com/api/v2/users', (res, req, ctx) => {
+    rest.get('https://fakerapi.it/api/v1/users', (res, req, ctx) => {
       // @ts-ignore
-      res(ctx.status(500))
+      res(ctx.status(500));
     }),
-  )
-  render(<ListWithFetch />)
-  const {findByLabelText, getByLabelText, getByText, queryByLabelText} = screen
+  );
+  // Render the component
+  render(<ListWithFetch />);
 
-  // show loading spinner
-  const loadingSpinner = getByLabelText(/loader/i)
-  expect(loadingSpinner).not.toBeUndefined()
-
-  //show error
-  const error = await findByLabelText('alert')
-  expect(error).not.toBeUndefined()
-  // name option doesn't work for this particular dom
-  expect(getByText('Error oopsie!')).not.toBeNull()
-
-  //loading spinner no longer shows
-  expect(queryByLabelText(/loader/i)).toBeNull()
-})
+  // Loader is initially visible
+  expect(screen.getByLabelText(/loader/i)).toBeOnTheScreen();
+  // Verify that the error is rendered
+  expect(await screen.findByText(/error oopsie/i)).toBeOnTheScreen();
+  // Verifying that the loader is no longer visible
+  expect(screen.queryByLabelText(/loader/i)).toBeNull();
+});
