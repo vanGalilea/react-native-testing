@@ -2,9 +2,9 @@
   <img alt="banner" src="https://github.com/vanGalilea/react-native-testing/assets/25864161/fd4d5148-4c8d-4fbc-8ebf-367d72da4fcb">
 </p>
 
-### This is how you should test 🧪 your react-native ⚛️ components with [Jest](https://jestjs.io/) and [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
-
-In this repo you'll find several examples that will cover:
+## No More Hacks and Headaches | Learn How to Test Your Components Before Your Users Will 
+ 
+### Covered Examples 🎞
 - 👆 [Clicking buttons and asserting onPress' outcome](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Counter.test.tsx).
 - 📲 [Filling a simple login form and asserting successful submission](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/LoginSubmission.test.tsx).
 - 🎣 [Custom hook testing (number of alternatives)](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/CounterUsesCustomHook.test.tsx).
@@ -16,6 +16,11 @@ In this repo you'll find several examples that will cover:
 - 🎭 [Mocking and interacting with RN's Modal component](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Modal.test.tsx).
 - 🧾 [Handling with a screen with RN's FlatList component](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/FlatList.test.tsx).
 - 📡 [Using MSW to mock api calls and handling loading/errors](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/ListWithFetch.test.tsx).
+
+### Tools in use 🛠️
+- [Jest](https://jestjs.io/)
+- [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
+
 
 ### How to run the tests 🏃‍♀️
 - Clone the repo
