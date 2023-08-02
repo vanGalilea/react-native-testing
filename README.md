@@ -41,7 +41,7 @@
 - ⚛️ Add tests for react native web project
 
 ### Inspiration, resources and further reading 📚
-- 📑 A blog by [Steve Galili]([url](https://github.com/vanGalilea)) on ["Where and How to Start Testing Your React Native App"]([url](https://medium.com/@stevegalili/where-and-how-to-start-testing-your-react-native-app-%EF%B8%8F-and-how-to-keep-on-testin-ec3464fb9b41))
+- 📑 A blog by [Steve Galili]([url](https://github.com/vanGalilea)) on ["Where and How to Start Testing Your React Native App"](https://medium.com/@stevegalili/where-and-how-to-start-testing-your-react-native-app-%EF%B8%8F-and-how-to-keep-on-testin-ec3464fb9b41)
 - 👏 Inspired by [Kent C. Dodds'](https://testingjavascript.com/) workshop [Test React Components with Jest and React Testing Library](https://github.com/testing-library/react-testing-library). 
 For more info check [Epic React](https://epicreact.dev/).
 - 📕 [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
