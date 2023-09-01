@@ -36,3 +36,15 @@ appId: com.reactnativetesting
 - tapOn: ${output.screens.video.exitFullScreen}
 - tapOn: ${output.screens.video.pauseStartButton}
 - runFlow: goBackHome.yaml
+# test Modal screen flow
+- tapOn: ${output.screens.home.modalButton}
+- tapOn: ${output.screens.modal.showButton}
+- assertVisible: ${output.screens.modal.description}
+- tapOn: ${output.screens.modal.hideButton}
+- assertVisible: ${output.screens.modal.showButton}
+- runFlow: goBackHome.yaml
+# flat list screen flow
+- tapOn: ${output.screens.home.flatListButton}
+- assertVisible: ${output.screens.flatList.item1Page1}
+- runFlow: goBackHome.yaml
+

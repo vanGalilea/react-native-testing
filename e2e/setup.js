@@ -7,7 +7,9 @@ output.screens = {
     counterButton: 'Counter',
     loginButton: 'Login',
     easyButtonButton: 'EasyButton',
-    videoButton: 'video',
+    videoButton: 'Video',
+    modalButton: 'Modal',
+    flatListButton: 'FlatList',
   },
   counter: {
     currentCountIs0: 'Current count: 0',
@@ -33,5 +35,14 @@ output.screens = {
     exitFullScreen: 'Exit full screen',
     pauseStartButton: 'Pause/Start',
     playerA11yId: 'video-player',
+  },
+  modal: {
+    showButton: 'Show modal',
+    hideButton: 'Hide modal',
+    description: 'Hello world!',
+  },
+  flatList: {
+    item1Page1: 'Pizza',
+    item5Page2: 'Onion Fries',
   },
 };
