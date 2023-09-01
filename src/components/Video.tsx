@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Pressable, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Video from 'react-native-video';
@@ -10,7 +10,7 @@ const SOME_VIDEO =
 
 export default () => {
   const {setOptions} = useNavigation<NavigationProps>();
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [isFullScreen, setIsFullScreen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -19,7 +19,17 @@ export default () => {
 
   const showFullScreen = () => setIsFullScreen(true);
   const exitFullScreen = () => setIsFullScreen(false);
-  const togglePause = () => setIsPlaying(!isPlaying);
+
+  const togglePause = useCallback(() => setIsPlaying(!isPlaying), [isPlaying]);
+
+  const resetMediaState = useCallback(() => {
+    setIsPlaying(false);
+    setIsFullScreen(false);
+  }, []);
+
+  useEffect(() => {
+    return resetMediaState;
+  }, [resetMediaState]);
 
   return (
     <View style={styles.body}>
@@ -38,7 +48,7 @@ export default () => {
           style={isFullScreen ? styles.videoFullScreen : styles.video}
           resizeMode={'cover'}
           onError={console.log}
-          paused={isPlaying}
+          paused={!isPlaying}
           fullscreen={isFullScreen}
         />
       </>

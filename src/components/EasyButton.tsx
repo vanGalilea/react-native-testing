@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, Pressable} from 'react-native';
+import {StyleSheet, Text, Pressable, View} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {useTheme} from '../utils/theme';
 
 export default (props: any) => {
@@ -7,12 +8,14 @@ export default (props: any) => {
   const {backgroundColor, color} = styles[theme];
 
   return (
-    <Pressable
-      accessibilityLabel={'easy-button'}
-      style={[{backgroundColor}, styles.pressable]}
-      {...props}>
-      <Text style={{color}}>{props.children || 'Click me!'}</Text>
-    </Pressable>
+    <SafeAreaView style={{padding: 32}}>
+      <Pressable
+        accessibilityLabel={'easy-button'}
+        style={[{backgroundColor}, styles.pressable]}
+        {...props}>
+        <Text style={{color}}>{props.children || 'Click me!'}</Text>
+      </Pressable>
+    </SafeAreaView>
   );
 };
 

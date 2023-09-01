@@ -7,8 +7,11 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test:unit": "jest",
+    "test:unit:dev": "jest --watch",
+    "test:unit:coverage": "jest --coverage",
+    "test:e2e": "maestro test e2e/flow.yaml",
+    "test:e2e:dev": "maestro test e2e/flow.yaml"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",
@@ -20,7 +23,7 @@
     "react-native-gesture-handler": "^2.10.1",
     "react-native-safe-area-context": "^4.5.3",
     "react-native-screens": "^3.20.0",
-    "react-native-video": "6.0.0-alpha.6"
+    "react-native-video": "6.0.0-alpha.7"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -20,14 +20,20 @@
 ### Tools in use 🛠️
 - [Jest](https://jestjs.io/)
 - [React Native Testing Library](https://callstack.github.io/react-native-testing-library/)
+- [Maestro](https://maestro.mobile.dev/)
 
+### Setup and requirements 📋
+- [RN- Setting up the development environment](https://reactnative.dev/docs/environment-setup)
+- [Installing Maestro](https://maestro.mobile.dev/getting-started/installing-maestro)
 
 ### How to run the tests 🏃‍♀️
 - Clone the repo
 - Run `yarn` to install dependencies
-- Run `yarn test` to run the tests
-- Run `yarn test:coverage` to run the tests and generate a coverage report
-
+- Run `yarn test:unit` to run the unit tests 
+- Run `yarn test:unit:dev` to run the unit tests in dev/watch mode
+- Run `yarn test:unit:coverage` to run the tests and generate a coverage report
+- Run `yarn test:e2e` to run the e2e tests
+- Run `yarn test:e2e:dev` to run the e2e tests in dev/watch mode
 
 ### How to run the app 📱
 - Clone the repo
@@ -37,7 +43,6 @@
 - Click `i` to run the app on iOS simulator or `a` to run it on Android emulator
 
 ### Ideas and future improvements 🚀
-- 📱 Add E2E tests with Maestro
 - ⚛️ Add tests for react native web project
 
 ### Inspiration, resources and further reading 📚
