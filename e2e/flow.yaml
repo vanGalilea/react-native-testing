@@ -1,0 +1,38 @@
+# flow.yaml
+
+appId: com.reactnativetesting
+---
+- launchApp
+# load all output constants saved in the setup file
+- runScript: ./setup.js
+## test counter screen flow
+#- tapOn: ${output.screens.home.counterButton}
+#- assertVisible: ${output.screens.counter.currentCountIs0}
+#- tapOn: ${output.screens.counter.incrementButton}
+#- assertVisible: ${output.screens.counter.currentCountIs1}
+#- tapOn: ${output.screens.counter.decrementButton}
+#- assertVisible: ${output.screens.counter.currentCountIs0}
+#- runFlow: goBackHome.yaml
+### test Login screen flow
+#- tapOn: ${output.screens.home.loginButton}
+#- tapOn: ${output.screens.login.usernamePlaceholder}
+#- inputText: ${output.screens.login.username}
+#- tapOn: ${output.screens.login.passwordPlaceholder}
+#- inputText: ${output.screens.login.password}
+#- tapOn: ${output.screens.login.submitButton}
+#- assertVisible: ${output.screens.login.loadingIsVisible}
+## after login, we should be redirected to home screen
+## test EasyButton screen flow
+#- tapOn: ${output.screens.home.easyButtonButton}
+#- tapOn: ${output.screens.easyButton.button}
+#- assertVisible: ${output.screens.easyButton.modalDescription}
+#- tapOn: ${output.screens.easyButton.modalDismissButton}
+#- runFlow: goBackHome.yaml
+# test Video screem flow
+- tapOn: ${output.screens.home.videoButton}
+- assertVisible: ${output.screens.video.playerA11yId}
+- tapOn: ${output.screens.video.fullScreenButton}
+- tapOn: ${output.screens.video.pauseStartButton}
+- tapOn: ${output.screens.video.exitFullScreen}
+- tapOn: ${output.screens.video.pauseStartButton}
+- runFlow: goBackHome.yaml
