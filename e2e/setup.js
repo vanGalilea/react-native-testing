@@ -10,6 +10,7 @@ output.screens = {
     videoButton: 'Video',
     modalButton: 'Modal',
     flatListButton: 'FlatList',
+    listWithFetchButton: 'ListWithFetch',
   },
   counter: {
     currentCountIs0: 'Current count: 0',
@@ -42,7 +43,12 @@ output.screens = {
     description: 'Hello world!',
   },
   flatList: {
-    item1Page1: 'Pizza',
-    item5Page2: 'Onion Fries',
+    firstItemPage1: 'Pizza',
+    lastItemPage1: 'Cheese Cake',
+    fifthItemPage2: 'Onion Fries',
+  },
+  listWitchFetch: {
+    firstItemId: '1-user-container',
+    twentyNinthItemId: '29-user-container',
   },
 };

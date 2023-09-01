@@ -45,6 +45,23 @@ appId: com.reactnativetesting
 - runFlow: goBackHome.yaml
 # flat list screen flow
 - tapOn: ${output.screens.home.flatListButton}
-- assertVisible: ${output.screens.flatList.item1Page1}
+- assertVisible: ${output.screens.flatList.firstItemPage1}
+- scrollUntilVisible:
+    element: ${output.screens.flatList.lastItemPage1}
+    direction: "DOWN"
+- scrollUntilVisible:
+    element: ${output.screens.flatList.fifthItemPage2}
+    direction: "DOWN"
 - runFlow: goBackHome.yaml
-
+# ListWithFetch screen flow
+- tapOn: ${output.screens.home.listWithFetchButton}
+- assertVisible: ${output.screens.listWitchFetch.firstItemId}
+- scrollUntilVisible:
+      element: ${output.screens.listWitchFetch.twentyNinthItemId}
+      direction: "DOWN"
+      # default scroll speed is 40, at that scroll speed finding the element will fail most
+      # of the times, so we need to slow down the scroll speed to detect the element
+      # 100% of the times
+      speed: 25
+- runFlow: goBackHome.yaml
+- assertVisible: ${output.screens.home.title}
