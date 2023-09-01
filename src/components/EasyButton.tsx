@@ -7,7 +7,10 @@ export default (props: any) => {
   const {backgroundColor, color} = styles[theme];
 
   return (
-    <Pressable style={[{backgroundColor}, styles.pressable]} {...props}>
+    <Pressable
+      accessibilityRole="button"
+      style={[{backgroundColor}, styles.pressable]}
+      {...props}>
       <Text style={{color}}>{props.children || 'Click me!'}</Text>
     </Pressable>
   );
