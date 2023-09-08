@@ -56,3 +56,6 @@ For more info check [Epic React](https://epicreact.dev/).
 - 🗺 [React Navigation](https://reactnavigation.org/)
 - 🛰 [MSW](https://mswjs.io/)
 
+- #### Impression of the the project 📸
+
+![app-in-e2e-testing-gif](https://github.com/vanGalilea/react-native-testing/assets/25864161/7015cb21-5347-453a-aee7-4f848ae7a780)
