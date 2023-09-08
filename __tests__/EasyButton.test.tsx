@@ -24,7 +24,7 @@ it.each(cases)(
       theme: desiredTheme,
     });
     const innerText = screen.getByText(/click me/i);
-    const pressable = screen.getByLabelText('easy-button');
+    const pressable = screen.getByRole('button');
     expect(pressable).toHaveStyle({
       backgroundColor: expectedBackground,
     });

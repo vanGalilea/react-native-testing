@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, Pressable} from 'react-native';
+import {Pressable, StyleSheet, Text} from 'react-native';
 import {useTheme} from '../utils/theme';
 
 export default (props: any) => {
@@ -8,7 +8,7 @@ export default (props: any) => {
 
   return (
     <Pressable
-      accessibilityLabel={'easy-button'}
+      accessibilityRole="button"
       style={[{backgroundColor}, styles.pressable]}
       {...props}>
       <Text style={{color}}>{props.children || 'Click me!'}</Text>

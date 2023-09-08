@@ -12,12 +12,12 @@ import axios from 'axios';
 const AVATAR_SIZE = 68;
 
 export interface IUser {
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  macAddress: string;
-  uuid: string;
+  id: string;
   image: string;
+  birthDate: string;
 }
 
 export default () => {
@@ -28,10 +28,8 @@ export default () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(
-          'https://fakerapi.it/api/v1/users?_quantity=10',
-        );
-        setUsersData(response.data.data);
+        const response = await axios.get('https://dummyjson.com/users');
+        setUsersData(response.data.users);
       } catch (e) {
         setHasError(true);
       } finally {
@@ -44,22 +42,22 @@ export default () => {
 
   const handleRenderItem = useCallback(
     ({
-      item: {firstname, lastname, email, image, macAddress, uuid},
+      item: {firstName, lastName, email, image, id, birthDate},
     }: {
       item: IUser;
     }) => (
       <View
         style={styles.userContainer}
-        accessibilityLabel={`${uuid}-user-container`}>
+        accessibilityLabel={`${id}-user-container`}>
         <View style={styles.avatarWrapper}>
           <Image source={{uri: image}} style={styles.image} />
         </View>
         <View style={styles.userInfoContainer}>
           <Text>
-            {firstname} {lastname}
+            {firstName} {lastName}
           </Text>
           <Text>{email}</Text>
-          <Text>{macAddress}</Text>
+          <Text>{birthDate}</Text>
         </View>
       </View>
     ),
@@ -84,7 +82,7 @@ export default () => {
       <FlatList
         data={usersData}
         renderItem={handleRenderItem}
-        keyExtractor={item => item.uuid}
+        keyExtractor={item => item.id}
       />
     </View>
   );

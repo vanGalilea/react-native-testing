@@ -50,7 +50,11 @@ export default () => {
     <>
       <ThemeProvider initialTheme={'dark'}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home">
+          <Stack.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+              headerBackTestID: 'go-back-home-button',
+            }}>
             <Stack.Screen name={SCREENS.HOME} component={Home} />
             <Stack.Screen name={SCREENS.LOGIN} component={LoginSubmission} />
             <Stack.Screen

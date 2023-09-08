@@ -1,0 +1,6 @@
+appId: com.reactnativetesting
+---
+## go back to home screen
+- tapOn:
+    id: ${output.screens.navigation.goBackHomeButtonTestID}
+- assertVisible: ${output.screens.home.title}

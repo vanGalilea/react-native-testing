@@ -1,0 +1,67 @@
+# flow.yaml
+
+appId: com.reactnativetesting
+---
+- launchApp
+# load all output constants saved in the setup file
+- runScript: ./setup.js
+# test counter screen flow
+- tapOn: ${output.screens.home.counterButton}
+- assertVisible: ${output.screens.counter.currentCountIs0}
+- tapOn: ${output.screens.counter.incrementButton}
+- assertVisible: ${output.screens.counter.currentCountIs1}
+- tapOn: ${output.screens.counter.decrementButton}
+- assertVisible: ${output.screens.counter.currentCountIs0}
+- runFlow: goBackHome.yaml
+# test Login screen flow
+- tapOn: ${output.screens.home.loginButton}
+- tapOn: ${output.screens.login.usernamePlaceholder}
+- inputText: ${output.screens.login.username}
+- tapOn: ${output.screens.login.passwordPlaceholder}
+- inputText: ${output.screens.login.password}
+- tapOn: ${output.screens.login.submitButton}
+- assertVisible: ${output.screens.login.loadingIsVisible}
+# after login, we should be redirected to home screen
+# test EasyButton screen flow
+- tapOn: ${output.screens.home.easyButtonButton}
+- tapOn: ${output.screens.easyButton.button}
+- assertVisible: ${output.screens.easyButton.modalDescription}
+- tapOn: ${output.screens.easyButton.modalDismissButton}
+- runFlow: goBackHome.yaml
+# test Video screen flow
+- tapOn: ${output.screens.home.videoButton}
+- assertVisible: ${output.screens.video.playerA11yId}
+- tapOn: ${output.screens.video.fullScreenButton}
+- tapOn: ${output.screens.video.pauseStartButton}
+- tapOn: ${output.screens.video.exitFullScreen}
+- tapOn: ${output.screens.video.pauseStartButton}
+- runFlow: goBackHome.yaml
+# test Modal screen flow
+- tapOn: ${output.screens.home.modalButton}
+- tapOn: ${output.screens.modal.showButton}
+- assertVisible: ${output.screens.modal.description}
+- tapOn: ${output.screens.modal.hideButton}
+- assertVisible: ${output.screens.modal.showButton}
+- runFlow: goBackHome.yaml
+# flat list screen flow
+- tapOn: ${output.screens.home.flatListButton}
+- assertVisible: ${output.screens.flatList.firstItemPage1}
+- scrollUntilVisible:
+    element: ${output.screens.flatList.lastItemPage1}
+    direction: "DOWN"
+- scrollUntilVisible:
+    element: ${output.screens.flatList.fifthItemPage2}
+    direction: "DOWN"
+- runFlow: goBackHome.yaml
+# ListWithFetch screen flow
+- tapOn: ${output.screens.home.listWithFetchButton}
+- assertVisible: ${output.screens.listWitchFetch.firstItemId}
+- scrollUntilVisible:
+      element: ${output.screens.listWitchFetch.twentyNinthItemId}
+      direction: "DOWN"
+      # default scroll speed is 40, at that scroll speed finding the element will fail most
+      # of the times, so we need to slow down the scroll speed to detect the element
+      # 100% of the times
+      speed: 25
+- runFlow: goBackHome.yaml
+- assertVisible: ${output.screens.home.title}
