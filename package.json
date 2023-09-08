@@ -11,7 +11,8 @@
     "test:unit:dev": "jest --watch",
     "test:unit:coverage": "jest --coverage",
     "test:e2e": "maestro test e2e/flow.yaml",
-    "test:e2e:dev": "maestro test -c e2e/flow.yaml"
+    "test:e2e:dev": "maestro test -c e2e/flow.yaml",
+    "test:e2e:record": "maestro record e2e/flow.yaml"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.12.1",

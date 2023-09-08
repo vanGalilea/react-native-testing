@@ -34,6 +34,7 @@
 - Run `yarn test:unit:coverage` to run the tests and generate a coverage report
 - Run `yarn test:e2e` to run the e2e tests
 - Run `yarn test:e2e:dev` to run the e2e tests in dev/watch mode
+- Run `yarn test:e2e:record` to run the e2e tests and record a video of the tests
 
 ### How to run the app 📱
 - Clone the repo
