@@ -1,0 +1,89 @@
+name: 'Bootstrap'
+description: 'Bootstrap Dependencies'
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "IMAGE=${ImageOS}-${ImageVersion}" >> $GITHUB_ENV
+      shell: bash
+
+    - uses: actions/setup-node@v3
+      if: ${{ env.INSTALL_NODE == 'true' }}
+      with:
+        node-version: 18.x
+        cache: 'yarn'
+
+    - name: Install Yarn Dependencies
+      if: ${{ env.INSTALL_NODE == 'true' }}
+      run: yarn install --immutable
+      shell: bash
+
+    - name: Cache pods
+      uses: actions/cache@v3
+      if: ${{ env.INSTALL_PODS == 'true' }}
+      with:
+        path: ios/Pods
+        key: ${{ env.IMAGE }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-pods-
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1
+        bundler-cache: true
+
+    - name: Cache Gradle
+      if: ${{ env.INSTALL_JAVA == 'true' }}
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ env.IMAGE }}-gradle-${{ hashFiles('*.gradle*', 'gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
+    - uses: actions/setup-java@v3
+      if: ${{ env.INSTALL_JAVA == 'true' }}
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+        check-latest: true
+
+    - name: Install pods
+      if: ${{ env.INSTALL_PODS == 'true' }}
+      run: bundle exec fastlane pod_install
+      shell: bash
+
+    # Retrieve the cached emulator snapshot
+    - uses: actions/cache@v3
+      if: ${{ env.INSTALL_ANDROID_EMULATOR == 'true' }}
+      id: avd-cache
+      with:
+        path: |
+          ~/.android/avd/*
+          ~/.android/adb*
+        key: ${{ env.IMAGE }}-android-emulator
+
+    # Required for Maestro on iOS
+    - uses: actions/setup-python@v4.3.0
+      if: ${{ env.INSTALL_PYTHON == 'true' }}
+      with:
+        python-version: 3.8
+        cache: 'pip'
+
+    # Required to run E2E testing
+    - name: Install Maestro
+      if: ${{ env.INSTALL_MAESTRO == 'true' }}
+      shell: bash
+      run: |
+        if [ "${{ env.INSTALL_PYTHON }}" = "true" ]; then
+          brew install facebook/fb/idb-companion
+          pip install fb-idb
+        fi
+        env MAESTRO_VERSION="1.29.0" curl -Ls 'https://get.maestro.mobile.dev' | bash
+        echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+
+    # Required to capture Android video during E2E testing
+    - name: Install FFmpeg
+      if: ${{ env.INSTALL_FFMPEG == 'true' }}
+      uses: FedericoCarboni/setup-ffmpeg@v2
