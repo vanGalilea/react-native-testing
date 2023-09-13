@@ -3,7 +3,11 @@
 </p>
 
 ## No More Hacks and Headaches | Learn How to Test Your Components Before Your Users Will 
- 
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vanGalilea_react-native-testing&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vanGalilea_react-native-testing)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=vanGalilea_react-native-testing&metric=coverage)](https://sonarcloud.io/summary/new_code?id=vanGalilea_react-native-testing)
+[![Unit Testing](https://github.com/vanGalilea/react-native-testing/actions/workflows/unit-testing.yml/badge.svg)](https://github.com/vanGalilea/react-native-testing/actions/workflows/unit-testing.yml)
+
 ### Covered Examples 🎞
 - 👆 [Clicking buttons and asserting onPress' outcome](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Counter.test.tsx).
 - 📲 [Filling a simple login form and asserting successful submission](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/LoginSubmission.test.tsx).
