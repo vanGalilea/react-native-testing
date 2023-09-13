@@ -18,9 +18,9 @@ export default () => {
   return (
     <View style={styles.body}>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={styles.flex1}>
         <ScrollView
-          style={{flex: 1}}
+          style={styles.flex1}
           contentInsetAdjustmentBehavior="automatic">
           <View style={styles.innerScrollView}>
             <Text>Go to component...</Text>
@@ -49,6 +49,9 @@ export default () => {
 };
 
 const styles = StyleSheet.create({
+  flex1: {
+    flex: 1,
+  },
   body: {
     backgroundColor: Colors.white,
     ...StyleSheet.absoluteFillObject,

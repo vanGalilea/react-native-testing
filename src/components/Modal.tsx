@@ -14,7 +14,7 @@ export default () => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
             <Pressable
-              style={{...styles.openButton, backgroundColor: '#2196F3'}}
+              style={[styles.openButton, styles.specialBGColor]}
               onPress={() => {
                 setModalVisible(!modalVisible);
               }}>
@@ -73,5 +73,8 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  specialBGColor: {
+    backgroundColor: '#2196F3',
   },
 });
