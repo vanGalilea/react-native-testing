@@ -1,0 +1,43 @@
+name: Unit Testing
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  install-lint-test-scan:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      # Setup Node environment
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'yarn'
+      # Load previous cache
+      - name: ESLint Cache
+        uses: actions/cache@v3
+        with:
+          path: './.eslintcache'
+          key: ${{ runner.os }}-eslintcache-${{ github.ref_name }}-${{ hashFiles('.eslintcache') }}
+
+      - name: Install Dependencies
+        run: yarn install --immutable
+      # Verify linting
+      - name: Lint
+        run: yarn lint
+      # Run unit tests with coverage
+      - name: test
+        run: yarn test:unit:coverage
+      # Run Code Analysis Scan
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
