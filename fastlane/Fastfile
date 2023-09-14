@@ -37,8 +37,6 @@ end
 
 lane :test_android do |options|
   build_android unless is_ci || options[:skip_install]
-
-  sleep 3
   wait_android_emu_idle(load_threshold: 1, timeout: 2200)
   emulator_status = -> { sh('adb devices').include?('emulator') }
 
