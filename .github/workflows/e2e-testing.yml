@@ -54,11 +54,10 @@ jobs:
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 28
+          api-level: 33
           arch: x86_64
           target: google_apis
-          profile: pixel_5
-          disable-animations: false
+          profile: pixel_6
           force-avd-creation: false
           avd-name: test
           ram-size: 8192M
@@ -70,11 +69,10 @@ jobs:
       - name: Test
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 28
+          api-level: 3
           arch: x86_64
           target: google_apis
-          profile: pixel_5
-          disable-animations: true
+          profile: pixel_6
           force-avd-creation: false
           avd-name: test
           ram-size: 8192M
