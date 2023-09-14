@@ -28,8 +28,6 @@ lane :load_package do
 end
 
 lane :build_android do
-  bump_android_version_number if is_ci
-
   gradle(project_dir: 'android', tasks: %w[clean assembleRelease])
 
   Dir.chdir('..') do
