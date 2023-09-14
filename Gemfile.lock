@@ -154,6 +154,8 @@ GEM
       xcodeproj (>= 1.13.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    fastlane-plugin-stream_actions (0.3.19)
+      xctest_list (= 1.2.1)
     ffi (1.15.5)
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)
@@ -268,6 +270,7 @@ GEM
       rouge (~> 2.0.7)
     xcpretty-travis-formatter (1.0.1)
       xcpretty (~> 0.2, >= 0.0.7)
+    xctest_list (1.2.1)
 
 PLATFORMS
   ruby
@@ -275,6 +278,7 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (~> 1.12, >= 1.12.1)
   fastlane
+  fastlane-plugin-stream_actions
 
 RUBY VERSION
    ruby 2.7.5p203
