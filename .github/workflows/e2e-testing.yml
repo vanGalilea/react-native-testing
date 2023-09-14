@@ -54,10 +54,10 @@ jobs:
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 33
+          api-level: 30
           arch: x86_64
           target: google_apis
-          profile: pixel_6
+          profile: pixel_5
           force-avd-creation: false
           avd-name: test
           ram-size: 8192M
@@ -69,10 +69,10 @@ jobs:
       - name: Test
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 3
+          api-level: 30
           arch: x86_64
           target: google_apis
-          profile: pixel_6
+          profile: pixel_5
           force-avd-creation: false
           avd-name: test
           ram-size: 8192M
@@ -87,6 +87,5 @@ jobs:
           name: Android Test Data
           path: |
             **/fastlane/recordings
-            **/fastlane/video-buddy-log.txt
             ~/.maestro/tests
     
