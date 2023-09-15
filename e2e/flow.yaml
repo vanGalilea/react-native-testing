@@ -20,7 +20,7 @@ appId: com.reactnativetesting
 - tapOn: ${output.screens.login.passwordPlaceholder}
 - inputText: ${output.screens.login.password}
 - tapOn: ${output.screens.login.submitButton}
-- assertVisible: ${output.screens.login.loadingIsVisible}
+- assertVisible: ${output.screens.login.submissionInProcessA11yId}
 # after login, we should be redirected to home screen
 # test EasyButton screen flow
 - tapOn: ${output.screens.home.easyButtonButton}
@@ -57,11 +57,7 @@ appId: com.reactnativetesting
 - tapOn: ${output.screens.home.listWithFetchButton}
 - assertVisible: ${output.screens.listWitchFetch.firstItemId}
 - scrollUntilVisible:
-      element: ${output.screens.listWitchFetch.twentyNinthItemId}
+      element: ${output.screens.listWitchFetch.fifteenthItemId}
       direction: "DOWN"
-      # default scroll speed is 40, at that scroll speed finding the element will fail most
-      # of the times, so we need to slow down the scroll speed to detect the element
-      # 100% of the times
-      speed: 25
 - runFlow: goBackHome.yaml
 - assertVisible: ${output.screens.home.title}

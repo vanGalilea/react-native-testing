@@ -29,6 +29,8 @@ beforeEach(() => {
   useNavigationMock.mockReset();
 });
 
+jest.useFakeTimers();
+
 it('verifies happy flow of login', async () => {
   // Mock navigate function from useNavigation hook, in order to verify that
   // it's called with the correct arguments and not to actually navigate
@@ -54,7 +56,7 @@ it('verifies happy flow of login', async () => {
   fireEvent.press(screen.getByText(/submit/i));
 
   // Verify that the loading indicator is shown
-  expect(screen.getByText(/loading/i)).toBeVisible();
+  expect(screen.getByLabelText(/submission-in-process/i)).toBeVisible();
   // Verify that the fetch function was called with the correct arguments
   // Can be done in 2 ways:
   // 1. Using toHaveBeenCalledWith
@@ -81,9 +83,12 @@ it('verifies happy flow of login', async () => {
       ],
     ]
   `);
-
-  // Verify that the navigate function was called with the correct arguments and only once
-  await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1));
+  // Advance timers by 2.5 seconds to allow the simulated delay after fetch to complete
+  jest.advanceTimersByTime(2500);
+  // // Verify that the navigate function was called with the correct arguments and only once
+  await waitFor(() => expect(mockNavigate).toHaveBeenCalledTimes(1), {
+    timeout: 2500,
+  });
   expect(mockNavigate).toHaveBeenCalledWith('Home');
   // Verify that the token was saved to AsyncStorage
   expect(AsyncStorage.setItem).toHaveBeenCalledWith('token', 'fake-token');

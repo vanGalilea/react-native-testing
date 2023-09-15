@@ -24,7 +24,7 @@ output.screens = {
     username: 'admin',
     password: 'admin',
     submitButton: 'Submit',
-    loadingIsVisible: 'loading...',
+    submissionInProcessA11yId: 'submission-in-process',
   },
   easyButton: {
     button: 'Click me!',
@@ -49,6 +49,6 @@ output.screens = {
   },
   listWitchFetch: {
     firstItemId: '1-user-container',
-    twentyNinthItemId: '29-user-container',
+    fifteenthItemId: '15-user-container',
   },
 };

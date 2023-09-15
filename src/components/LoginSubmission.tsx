@@ -1,5 +1,5 @@
 import React, {useEffect, useReducer, useState} from 'react';
-import {Text, View} from 'react-native';
+import {ActivityIndicator, Text, View} from 'react-native';
 import Login from './Login';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -55,7 +55,8 @@ const useFormSubmission = ({endpoint, data}) => {
             },
           });
           const responseData = await response.json();
-          dispatch({type: 'RESOLVE', responseData});
+          // add a delay to simulate network latency
+          setTimeout(() => dispatch({type: 'RESOLVE', responseData}), 2000);
         } catch (error) {
           dispatch({type: 'REJECT', error});
         }
@@ -69,8 +70,8 @@ const useFormSubmission = ({endpoint, data}) => {
 
 const Spinner = () => {
   return (
-    <View accessibilityLabel="loading...">
-      <Text>loading...</Text>
+    <View accessibilityLabel={'submission-in-process'}>
+      <ActivityIndicator size="large" color="#000" />
     </View>
   );
 };

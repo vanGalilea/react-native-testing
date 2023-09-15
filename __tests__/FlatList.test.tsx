@@ -26,14 +26,14 @@ const eventData = {
 };
 
 afterEach(cleanup);
-
+jest.useFakeTimers();
 it('scrolls to bottom and loads more items', async () => {
   // Render the SectionList component
   render(<SectionList />);
 
   // First dish is visible
   expect(screen.getByText(/pizza/i)).toBeOnTheScreen();
-  // First dish from 2nd page is no visible yet
+  // First dish from 2nd page is not visible yet
   expect(() => screen.getByText(/the impossible burger/i)).toThrow(
     'Unable to find an element with text: /the impossible burger/i',
   );

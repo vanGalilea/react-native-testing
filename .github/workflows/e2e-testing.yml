@@ -1,0 +1,91 @@
+name: E2E Testing
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+concurrency:
+  group: react-native-workflow-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_android:
+    name: Build Android
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/bootstrap
+        timeout-minutes: 15
+        env:
+          INSTALL_NODE: true
+          INSTALL_JAVA: true
+
+      - name: Build
+        run: bundle exec fastlane build_android
+
+      - name: Upload .apk
+        uses: actions/upload-artifact@v3
+        with:
+          name: apk
+          path: '**/dist/*.apk'
+
+  test_android:
+    name: Test Android
+    needs: build_android
+    timeout-minutes: 100
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/bootstrap
+        timeout-minutes: 15
+        env:
+          INSTALL_NODE: true
+          INSTALL_FFMPEG: true
+          INSTALL_MAESTRO: true
+          INSTALL_ANDROID_EMULATOR: true
+
+      - name: Download .apk
+        uses: actions/download-artifact@v3
+        with:
+          name: apk
+
+      - name: Create AVD Snapshot
+        if: steps.avd-cache.outputs.cache-hit != 'true'
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          target: google_apis
+          profile: pixel_5
+          force-avd-creation: false
+          avd-name: test
+          ram-size: 8192M
+          disk-size: 2048M
+          emulator-boot-timeout: 1000
+          emulator-options: -no-window -no-boot-anim -no-audio -no-snapshot-load -gpu swiftshader_indirect
+          script: echo 'AVD snapshot is generated and will be cached for the future runs.'
+
+      - name: Test
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          arch: x86_64
+          target: google_apis
+          profile: pixel_5
+          force-avd-creation: false
+          avd-name: test
+          ram-size: 8192M
+          disk-size: 2048M
+          emulator-boot-timeout: 1000
+          emulator-options: -no-window -no-boot-anim -no-audio -no-snapshot-load -gpu swiftshader_indirect
+          script: bundle exec fastlane test_android
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: Android Test Data
+          path: |
+            **/fastlane/recordings
+            ~/.maestro/tests
+    
