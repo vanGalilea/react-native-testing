@@ -2,7 +2,7 @@ import React, {useEffect, useReducer, useState} from 'react';
 import {ActivityIndicator, Text, View} from 'react-native';
 import Login from './Login';
 import {useNavigation} from '@react-navigation/native';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {NavigationProps} from '../../App';
 
 const ENDPOINT_URL =

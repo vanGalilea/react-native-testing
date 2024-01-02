@@ -11,7 +11,7 @@ afterEach(cleanup);
 
 //mocking async storage module
 const mockedSetItem = jest.fn();
-jest.mock('@react-native-community/async-storage', () => ({
+jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: mockedSetItem,
 }));
 

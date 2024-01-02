@@ -9,7 +9,7 @@ import {
 import App from '../App';
 
 // 'react-native-video' is being mocked in /__mocks__/react-native-video.ts
-jest.mock('@react-native-community/async-storage', () => ({
+jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
 }));
 

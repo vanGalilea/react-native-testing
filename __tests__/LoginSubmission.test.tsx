@@ -8,10 +8,10 @@ import {
   waitFor,
 } from '@testing-library/react-native';
 import LoginSubmission from '../src/components/LoginSubmission';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigationMock} from '../src/test/test-utils';
 
-jest.mock('@react-native-community/async-storage', () => ({
+jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
 }));
 jest.mock('@react-navigation/native', () => {
