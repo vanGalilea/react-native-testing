@@ -2,28 +2,28 @@ import React from 'react';
 import {
   act,
   cleanup,
-  fireEvent,
+  // fireEvent,
   render,
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react-native';
 import SectionList from '../src/components/FlatList';
 
-const SCREEN_SIZE = {
-  height: 500,
-  width: 300,
-};
-const eventData = {
-  nativeEvent: {
-    contentOffset: {
-      y: SCREEN_SIZE.height,
-    },
-    // Dimensions of the scrollable content
-    contentSize: SCREEN_SIZE,
-    // Dimensions of the device
-    layoutMeasurement: SCREEN_SIZE,
-  },
-};
+// const SCREEN_SIZE = {
+//   height: 500,
+//   width: 300,
+// };
+// const eventData = {
+//   nativeEvent: {
+//     contentOffset: {
+//       y: SCREEN_SIZE.height,
+//     },
+//     // Dimensions of the scrollable content
+//     contentSize: SCREEN_SIZE,
+//     // Dimensions of the device
+//     layoutMeasurement: SCREEN_SIZE,
+//   },
+// };
 
 afterEach(cleanup);
 jest.useFakeTimers();
