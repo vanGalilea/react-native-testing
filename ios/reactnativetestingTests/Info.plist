@@ -20,5 +20,10 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+    <!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
+    <key>NSAllowsArbitraryLoads</key>
+    <false/>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
 </dict>
 </plist>
