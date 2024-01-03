@@ -1,5 +1,5 @@
 import {server} from './src/test/mocks/server';
-import '@testing-library/jest-native/extend-expect';
+import '@testing-library/react-native/extend-expect';
 import {jest, beforeAll, beforeEach, afterEach, afterAll} from '@jest/globals';
 
 // surpressing warning resulted by useLinking due to usage of NavigationContainer
