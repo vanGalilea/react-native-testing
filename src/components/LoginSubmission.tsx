@@ -100,7 +100,7 @@ export default () => {
         return;
       }
 
-      await AsyncStorage.setItem('token', token);
+      // await AsyncStorage.setItem('token', token);
     };
     setAndNavigate();
   }, [token, navigate, status]);

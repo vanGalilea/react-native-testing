@@ -15,7 +15,6 @@
     "test:e2e:record": "maestro record e2e/flow.yaml"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.21.0",
     "@react-native-masked-view/masked-view": "^0.3.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.2.0",
