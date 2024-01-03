@@ -2,6 +2,8 @@ import {server} from './src/test/mocks/server';
 import '@testing-library/react-native/extend-expect';
 import {jest, beforeAll, beforeEach, afterEach, afterAll} from '@jest/globals';
 
+// increasing jest timeout to 10 seconds due to slow ci env
+jest.setTimeout(10000);
 // surpressing warning resulted by useLinking due to usage of NavigationContainer
 jest.mock('@react-navigation/native/lib/commonjs/useLinking.native', () => ({
   default: () => ({getInitialState: {then: () => null}}),
