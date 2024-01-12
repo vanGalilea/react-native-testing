@@ -25,7 +25,7 @@ jobs:
         working-directory: /home/runner/
         run: |
           ls -la
-          touch gradle.properties
+          mkdir -p .gradle && touch gradle.properties
           echo RN_TESTING_APP_UPLOAD_STORE_FILE=${{ secrets.RN_TESTING_APP_UPLOAD_STORE_FILE }} > gradle.properties
           echo RN_TESTING_APP_UPLOAD_KEY_ALIAS=${{ secrets.RN_TESTING_APP_UPLOAD_KEY_ALIAS }} >> gradle.properties
           echo RN_TESTING_APP_UPLOAD_STORE_PASSWORD=${{ secrets.RN_TESTING_APP_UPLOAD_STORE_PASSWORD }} >> gradle.properties
