@@ -54,7 +54,7 @@ jobs:
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 33
           arch: x86_64
           target: google_apis
           profile: pixel_5
@@ -69,7 +69,7 @@ jobs:
       - name: Test
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 33
           arch: x86_64
           target: google_apis
           profile: pixel_5
