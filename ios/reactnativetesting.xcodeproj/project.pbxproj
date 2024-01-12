@@ -486,7 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B7HS9UCVQ8;
+				DEVELOPMENT_TEAM = TW5TFWL2UD;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = reactnativetesting/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = reactnativetesting;
@@ -514,8 +514,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B7HS9UCVQ8;
+				DEVELOPMENT_TEAM = TW5TFWL2UD;
 				INFOPLIST_FILE = reactnativetesting/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = reactnativetesting;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -530,6 +532,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.reactnativetesting;
 				PRODUCT_NAME = reactnativetesting;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
