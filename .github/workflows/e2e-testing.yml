@@ -22,7 +22,7 @@ jobs:
           java-version: '17'
           check-latest: true
       - name: Save Keystore Credentials
-#        working-directory: ~/.gradle/
+        working-directory: /home/runner/work
         run: |
           ls -la
           touch gradle.properties
