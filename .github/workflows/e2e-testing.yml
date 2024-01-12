@@ -15,16 +15,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
           check-latest: true
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+
       - name: Run Yarn Install
         run: yarn install
 
@@ -37,9 +40,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: mobile-dev-inc/action-maestro-cloud@v1.8.0
+        run: |
+          pwd
         with:
           api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
-          app-file: app/build/outputs/apk/release/app-release.apk
+          app-file: /react-native-testing/android/app/build/outputs/apk/release/app-release.apk
 
 
 #  build_ios:
