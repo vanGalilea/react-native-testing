@@ -88,12 +88,12 @@ android {
             keyPassword 'android'
         }
         release {
-            if (project.hasProperty('RN_TESTING_APP_UPLOAD_STORE_FILE')) {
-                storeFile file(RN_TESTING_APP_UPLOAD_STORE_FILE)
-                storePassword RN_TESTING_APP_UPLOAD_STORE_PASSWORD
-                keyAlias RN_TESTING_APP_UPLOAD_KEY_ALIAS
-                keyPassword RN_TESTING_APP_UPLOAD_KEY_PASSWORD
-            }
+            // Caution! In production, you need to generate your own keystore file.
+            // see https://reactnative.dev/docs/signed-apk-android.
+            storeFile file('release.keystore')
+            storePassword 'your_key_alias'
+            keyAlias '!igF-.z6Tw@BscKx'
+            keyPassword '!igF-.z6Tw@BscKx'
         }
     }
     buildTypes {

@@ -21,16 +21,8 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
           check-latest: true
-      - name: Save Keystore Credentials
-        working-directory: /home/runner/
-        run: |
-          mkdir -p .gradle && touch gradle.properties
-          echo RN_TESTING_APP_UPLOAD_STORE_FILE=${{ secrets.RN_TESTING_APP_UPLOAD_STORE_FILE }} > gradle.properties
-          echo RN_TESTING_APP_UPLOAD_KEY_ALIAS=${{ secrets.RN_TESTING_APP_UPLOAD_KEY_ALIAS }} >> gradle.properties
-          echo RN_TESTING_APP_UPLOAD_STORE_PASSWORD=${{ secrets.RN_TESTING_APP_UPLOAD_STORE_PASSWORD }} >> gradle.properties
-          echo RN_TESTING_APP_UPLOAD_KEY_PASSWORD=${{ secrets.RN_TESTING_APP_UPLOAD_KEY_PASSWORD }} >> gradle.properties
       - name: Make Gradle executable
-        working-directory: /home/runner/work/react-native-testing/react-native-testing/android/
+        working-directory: /android/
         run: chmod +x ./gradlew
       - name: Build Release APK
         run: ./gradlew assembleRelease
