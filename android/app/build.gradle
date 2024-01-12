@@ -87,6 +87,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('RN_TESTING_APP_UPLOAD_STORE_FILE')) {
+                storeFile file(RN_TESTING_APP_UPLOAD_STORE_FILE)
+                storePassword RN_TESTING_APP_UPLOAD_STORE_PASSWORD
+                keyAlias RN_TESTING_APP_UPLOAD_KEY_ALIAS
+                keyPassword RN_TESTING_APP_UPLOAD_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {

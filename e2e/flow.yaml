@@ -12,7 +12,7 @@ appId: com.reactnativetesting
 - assertVisible: ${output.screens.counter.currentCountIs1}
 - tapOn: ${output.screens.counter.decrementButton}
 - assertVisible: ${output.screens.counter.currentCountIs0}
-- runFlow: goBackHome.yaml
+- runFlow: ./subFlows/goBackHome.yaml
 # test Login screen flow
 - tapOn: ${output.screens.home.loginButton}
 - tapOn: ${output.screens.login.usernamePlaceholder}
@@ -27,7 +27,7 @@ appId: com.reactnativetesting
 - tapOn: ${output.screens.easyButton.button}
 - assertVisible: ${output.screens.easyButton.modalDescription}
 - tapOn: ${output.screens.easyButton.modalDismissButton}
-- runFlow: goBackHome.yaml
+- runFlow: ./subFlows/goBackHome.yaml
 # test Video screen flow
 - tapOn: ${output.screens.home.videoButton}
 - assertVisible: ${output.screens.video.playerA11yId}
@@ -35,14 +35,14 @@ appId: com.reactnativetesting
 - tapOn: ${output.screens.video.pauseStartButton}
 - tapOn: ${output.screens.video.exitFullScreen}
 - tapOn: ${output.screens.video.pauseStartButton}
-- runFlow: goBackHome.yaml
+- runFlow: ./subFlows/goBackHome.yaml
 # test Modal screen flow
 - tapOn: ${output.screens.home.modalButton}
 - tapOn: ${output.screens.modal.showButton}
 - assertVisible: ${output.screens.modal.description}
 - tapOn: ${output.screens.modal.hideButton}
 - assertVisible: ${output.screens.modal.showButton}
-- runFlow: goBackHome.yaml
+- runFlow: ./subFlows/goBackHome.yaml
 # flat list screen flow
 - tapOn: ${output.screens.home.flatListButton}
 - assertVisible: ${output.screens.flatList.firstItemPage1}
@@ -52,12 +52,12 @@ appId: com.reactnativetesting
 - scrollUntilVisible:
     element: ${output.screens.flatList.fifthItemPage2}
     direction: "DOWN"
-- runFlow: goBackHome.yaml
+- runFlow: ./subFlows/goBackHome.yaml
 # ListWithFetch screen flow
 - tapOn: ${output.screens.home.listWithFetchButton}
 - assertVisible: ${output.screens.listWitchFetch.firstItemId}
 - scrollUntilVisible:
       element: ${output.screens.listWitchFetch.fifteenthItemId}
       direction: "DOWN"
-- runFlow: goBackHome.yaml
+- runFlow: ./subFlows/goBackHome.yaml
 - assertVisible: ${output.screens.home.title}
