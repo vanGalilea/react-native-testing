@@ -11,7 +11,7 @@ concurrency:
 jobs:
   build_android:
     name: Build Android
-    timeout-minutes: 60
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,11 +21,15 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
           check-latest: true
-      - name: Make Gradle executable
-        working-directory: /android/
-        run: chmod +x ./gradlew
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Run Yarn Install
+        run: yarn install
+
       - name: Build Release APK
-        run: ./gradlew assembleRelease
+        run: cd android && ./gradlew assembleRelease
 
   test_android:
     name: Test Android
