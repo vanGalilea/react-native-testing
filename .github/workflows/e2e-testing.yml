@@ -54,7 +54,7 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-xcode@v2
+    - uses: maxim-lobanov/setup-xcode@v1.6.0
       with:
         xcode-version: 15
     - run: xcodebuild -project reactnativetesting.xcodeproj -scheme reactnativetesting -destination 'platform=iOS Simulator,name=iPhone 11'
