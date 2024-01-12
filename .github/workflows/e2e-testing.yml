@@ -22,8 +22,9 @@ jobs:
           java-version: '17'
           check-latest: true
       - name: Save Keystore Credentials
-        working-directory: ~/.gradle/
+#        working-directory: ~/.gradle/
         run: |
+          ls -la
           touch gradle.properties
           echo RN_TESTING_APP_UPLOAD_STORE_FILE=${{ secrets.RN_TESTING_APP_UPLOAD_STORE_FILE }} > gradle.properties
           echo RN_TESTING_APP_UPLOAD_KEY_ALIAS=${{ secrets.RN_TESTING_APP_UPLOAD_KEY_ALIAS }} >> gradle.properties
