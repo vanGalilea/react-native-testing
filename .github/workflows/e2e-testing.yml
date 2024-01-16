@@ -36,10 +36,9 @@ jobs:
 
       - name: Upload to Maestro Cloud
         uses: mobile-dev-inc/action-maestro-cloud@v1.8.0
-        run:  find . -type f -name "*.apk"
         with:
           api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
-          app-file: ./app/build/outputs/apk/release/app-release.apk
+          app-file: /home/runner/work/react-native-testing/react-native-testing/android/app/build/outputs/apk/release/app-release.apk
 
   build_ios:
     name: Build IOS
