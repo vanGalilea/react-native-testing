@@ -45,7 +45,8 @@ jobs:
     timeout-minutes: 60
     runs-on: macos-latest
     steps:
-      run: echo "TODO: Build IOS"
+      - name: Archive iOS app
+        run: echo "To be implemented"
 #    - uses: actions/checkout@v2
 #    - uses: maxim-lobanov/setup-xcode@v1.6.0
 #      with:
