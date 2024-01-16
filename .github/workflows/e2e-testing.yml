@@ -32,13 +32,14 @@ jobs:
         run: yarn install
 
       - name: Build Release APK
-        run: cd android && ./gradlew assembleRelease && find . -type f -name "*.apk"
+        run: cd android && ./gradlew assembleRelease
 
       - name: Upload to Maestro Cloud
         uses: mobile-dev-inc/action-maestro-cloud@v1.8.0
+        run:  find . -type f -name "*.apk"
         with:
           api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
-          app-file: app/build/outputs/apk/release/app-release.apk
+          app-file: ./app/build/outputs/apk/release/app-release.apk
 
   build_ios:
     name: Build IOS
