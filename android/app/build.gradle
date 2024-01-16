@@ -87,6 +87,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            // Caution! In production, you need to generate your own keystore file.
+            // see https://reactnative.dev/docs/signed-apk-android.
+            storeFile file('release.keystore')
+            storePassword 'your_key_alias'
+            keyAlias '!igF-.z6Tw@BscKx'
+            keyPassword '!igF-.z6Tw@BscKx'
+        }
     }
     buildTypes {
         debug {

@@ -10,82 +10,45 @@ concurrency:
 
 jobs:
   build_android:
-    name: Build Android
-    timeout-minutes: 60
+    name: Build & Test Android
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/bootstrap
-        timeout-minutes: 15
-        env:
-          INSTALL_NODE: true
-          INSTALL_JAVA: true
 
-      - name: Build
-        run: bundle exec fastlane build_android
-
-      - name: Upload .apk
-        uses: actions/upload-artifact@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          name: apk
-          path: '**/dist/*.apk'
+          distribution: 'zulu'
+          java-version: '17'
+          check-latest: true
 
-  test_android:
-    name: Test Android
-    needs: build_android
-    timeout-minutes: 100
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Run Yarn Install
+        run: yarn install
+
+      - name: Build Release APK
+        run: cd android && ./gradlew assembleRelease
+
+      - name: Upload to Maestro Cloud
+        uses: mobile-dev-inc/action-maestro-cloud@v1.8.0
+        with:
+          api-key: ${{ secrets.MAESTRO_CLOUD_API_KEY }}
+          app-file: /home/runner/work/react-native-testing/react-native-testing/android/app/build/outputs/apk/release/app-release.apk
+
+  build_ios:
+    name: Build IOS
+    timeout-minutes: 60
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/bootstrap
-        timeout-minutes: 15
-        env:
-          INSTALL_NODE: true
-          INSTALL_FFMPEG: true
-          INSTALL_MAESTRO: true
-          INSTALL_ANDROID_EMULATOR: true
-
-      - name: Download .apk
-        uses: actions/download-artifact@v3
-        with:
-          name: apk
-
-      - name: Create AVD Snapshot
-        if: steps.avd-cache.outputs.cache-hit != 'true'
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          arch: x86_64
-          target: google_apis
-          profile: pixel_5
-          force-avd-creation: false
-          avd-name: test
-          ram-size: 8192M
-          disk-size: 2048M
-          emulator-boot-timeout: 1000
-          emulator-options: -no-window -no-boot-anim -no-audio -no-snapshot-load -gpu swiftshader_indirect
-          script: echo 'AVD snapshot is generated and will be cached for the future runs.'
-
-      - name: Test
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          arch: x86_64
-          target: google_apis
-          profile: pixel_5
-          force-avd-creation: false
-          avd-name: test
-          ram-size: 8192M
-          disk-size: 2048M
-          emulator-boot-timeout: 1000
-          emulator-options: -no-window -no-boot-anim -no-audio -no-snapshot-load -gpu swiftshader_indirect
-          script: bundle exec fastlane test_android
-
-      - uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: Android Test Data
-          path: |
-            **/fastlane/recordings
-            ~/.maestro/tests
-    
+      - name: Archive iOS app
+        run: echo "To be implemented"
+#    - uses: actions/checkout@v2
+#    - uses: maxim-lobanov/setup-xcode@v1.6.0
+#      with:
+#        xcode-version: 14.2.0
+#    - run: cd ios && xcodebuild -project reactnativetesting.xcodeproj -scheme reactnativetesting -destination 'platform=iOS Simulator,name=iPhone 11'
