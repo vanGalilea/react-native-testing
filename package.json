@@ -2,7 +2,7 @@
   "version": "1.1.0",
   "private": true,
   "name": "react-native-testing",
-  "workspaces": ["rn-cli-app", "expo-app"],
+  "workspaces": ["packages/*"],
   "repository": "https://github.com/vanGalilea/react-native-testing.git",
   "author": "vanGalilea <me@stevegalili.com>",
   "license": "MIT"
