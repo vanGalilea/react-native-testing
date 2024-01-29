@@ -486,7 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TW5TFWL2UD;
+				DEVELOPMENT_TEAM = B7HS9UCVQ8;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = reactnativetesting/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = reactnativetesting;
@@ -517,7 +517,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TW5TFWL2UD;
+				DEVELOPMENT_TEAM = X9S663787V;
 				INFOPLIST_FILE = reactnativetesting/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = reactnativetesting;
 				LD_RUNPATH_SEARCH_PATHS = (

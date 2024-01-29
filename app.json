@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "react-native-testing",
+    "slug": "react-native-testing",
+    "version": "1.2.0",
+    "sdkVersion": "49.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.stevegalili.react-native-testing"
+    }
+  }
+}
