@@ -9,7 +9,7 @@
   "author": "vanGalilea <me@stevegalili.com>",
   "license": "MIT",
     "scripts": {
-      "test:unit": "yarn workspaces run test:unit:coverage",
+      "test:unit:coverage": "yarn workspaces run test:unit:coverage",
       "lint": "yarn workspaces run lint"
     }
 }
