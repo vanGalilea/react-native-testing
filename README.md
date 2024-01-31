@@ -7,9 +7,10 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=vanGalilea_react-native-testing&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=vanGalilea_react-native-testing)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=vanGalilea_react-native-testing&metric=coverage)](https://sonarcloud.io/summary/new_code?id=vanGalilea_react-native-testing)
 [![Unit Testing](https://github.com/vanGalilea/react-native-testing/actions/workflows/unit-testing.yml/badge.svg)](https://github.com/vanGalilea/react-native-testing/actions/workflows/unit-testing.yml)
+[![E2E Testing](https://github.com/vanGalilea/react-native-testing/actions/workflows/e2e-testing.yml/badge.svg)](https://github.com/vanGalilea/react-native-testing/actions/workflows/e2e-testing.yml)
 
 ### Covered Examples 🎞
-- 👆 [Clicking buttons and asserting onPress' outcome](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Counter.test.tsx).
+- 👆 [Clicking buttons and asserting onPress' outcome](https://github.com/vanGalilea/react-native-testing/blob/main/apps/rn-cli-app/__tests__/Counter.test.tsx).
 - 📲 [Filling a simple login form and asserting successful submission](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/LoginSubmission.test.tsx).
 - 🎣 [Custom hook testing (number of alternatives)](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/CounterUsesCustomHook.test.tsx).
 - 📡 [Mocking fetch calls](https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/LoginSubmission.test.tsx#L36).
