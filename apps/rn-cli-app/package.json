@@ -3,10 +3,10 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios",
     "lint": "eslint .",
-    "start": "react-native start",
+    "start": "npx react-native start",
     "test:unit": "jest",
     "test:unit:dev": "jest --watch",
     "test:unit:coverage": "jest --coverage",
@@ -51,5 +51,8 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "installConfig": {
+    "hoistingLimits": "workspaces"
   }
 }

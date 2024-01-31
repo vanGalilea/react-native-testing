@@ -7,9 +7,5 @@
   ],
   "repository": "https://github.com/vanGalilea/react-native-testing.git",
   "author": "vanGalilea <me@stevegalili.com>",
-  "license": "MIT",
-  "scripts": {
-    "android": "expo run:android",
-    "ios": "expo run:ios"
-  }
+  "license": "MIT"
 }
