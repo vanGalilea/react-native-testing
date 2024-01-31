@@ -1,4 +1,4 @@
-import { renderRouter, userEvent, screen } from "expo-router/testing-library";
+import {renderRouter, userEvent, screen} from 'expo-router/testing-library';
 
 jest.useFakeTimers();
 

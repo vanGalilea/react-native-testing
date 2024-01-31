@@ -32,7 +32,7 @@ jobs:
         run: yarn install
 
       - name: Build Release APK
-        run: cd android && ./gradlew assembleRelease
+        run: cd apps/rn-cli-app/android/ && ./gradlew assembleRelease
 
       - name: Upload to Maestro Cloud
         uses: mobile-dev-inc/action-maestro-cloud@v1.8.0

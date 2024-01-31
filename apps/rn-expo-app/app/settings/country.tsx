@@ -1,6 +1,9 @@
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 
 export default function Page() {
-  return <><Text >Country page!</Text></>;
+  return (
+    <>
+      <Text>Country page!</Text>
+    </>
+  );
 }
-
