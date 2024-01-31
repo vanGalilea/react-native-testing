@@ -4,13 +4,11 @@ import { Link } from "expo-router";
 export default function Page() {
   return (
     <>
-      <Text>Home page!</Text>
-      <Link href="/blogs" asChild>
-        <Pressable>
-          <Text>Blogs</Text>
-        </Pressable>
-      </Link>
-      <Link href="/settings">Settings</Link>
+      <Text>RN Media Group</Text>
+      <Text>Trending</Text>
+      <Text>For you</Text>
+      <Text>Following</Text>
+      <Text>Listen</Text>
     </>
   );
 }
