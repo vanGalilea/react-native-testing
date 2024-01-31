@@ -19,7 +19,6 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/stack": "^6.3.17",
-    "@shopify/flash-list": "^1.6.3",
     "react": "18.2.0",
     "react-native": "0.73.1",
     "react-native-gesture-handler": "^2.14.0",
