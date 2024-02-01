@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {
   createStackNavigator,
   StackNavigationProp,
@@ -13,7 +13,7 @@ import {ThemeProvider} from './src/utils/theme';
 import ListWithFetch from './src/components/ListWithFetch';
 import LoginSubmission from './src/components/LoginSubmission';
 import Counter from './src/components/Counter';
-import {Alert} from 'react-native';
+import {Alert, Pressable, Text} from 'react-native';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -53,7 +53,7 @@ export default () => {
           <Stack.Navigator
             initialRouteName="Home"
             screenOptions={{
-              headerBackTestID: 'go-back-home-button',
+              headerLeft: HeaderLeft,
             }}>
             <Stack.Screen name={SCREENS.HOME} component={Home} />
             <Stack.Screen name={SCREENS.LOGIN} component={LoginSubmission} />
@@ -73,5 +73,20 @@ export default () => {
         </NavigationContainer>
       </ThemeProvider>
     </>
+  );
+};
+
+const HeaderLeft = () => {
+  const navigation = useNavigation();
+  if (!navigation.canGoBack()) {
+    return null;
+  }
+
+  return (
+    <Pressable
+      testID={'go-back-home-button'}
+      onPress={() => navigation.goBack()}>
+      <Text style={{fontSize: 24}}>←</Text>
+    </Pressable>
   );
 };
